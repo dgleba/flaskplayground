@@ -1,0 +1,6 @@
+#
+# redirect to 919 if "cif207" is matched
+#RewriteEngine on
+#Options +FollowSymLinks
+##RewriteBase /
+#RewriteRule ^(cif207)\/(.+)$ http://localhost/ [R=301]#
