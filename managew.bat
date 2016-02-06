@@ -9,15 +9,15 @@ rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ std2
 set wpy=c:\p2\python27\python
 set wpip=c:\p2\Python27\Scripts\pip
 
-cd C:\p2\xampp\htdocs\python\pdb218
+cd C:\n\Dropbox\csd\VCS-git\flaskplay
 c: 
 
 :%wpip% install -r requirements.txt
 
 set wpy=c:\p2\python27\python
-%wpy% pdb218.py
+%wpy% flplay.py
 
-timeout 0
+timeout 987
 
 rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ std2
 

@@ -1,7 +1,7 @@
 #
 # orginally from flask-admin auth example.
 
-# http://v206b2:922/admin/#
+# http://localhost:9xx/admin/#
 
 
 import os
@@ -40,11 +40,11 @@ db = SQLAlchemy(app)
 # reflect models from the database...
 
 connection = db.engine.connect()
-db.metadata.reflect(db.engine, only=['tkb_prodtrak', 'pr_who_list'])
+db.metadata.reflect(db.engine, only=['Album'])
 Base = automap_base(metadata=db.metadata)
 Base.prepare()
 
-Prodtrak = Base.classes.tkb_prodtrak
+dbc_album = Base.classes.Album
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,7 +116,6 @@ class MyModelView(sqla.ModelView):
 
 # Flask views
 
-# flask admin cuts off my url  --- this noworky.. #  http://stackoverflow.com/questions/26585050/flask-admin-pages-inaccessible-in-production
 @app.route('/')
 
 def index():
@@ -127,31 +126,30 @@ def index():
 
 admin = flask_admin.Admin(
     app,
-    'Prodigy (Flask, pdb218)',
+    'flaskplayground',
     base_template='my_master.html',
     template_mode='bootstrap3',
 )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# customize trakberry
+# customize table
 
 
-class dc_prodtrak(MyModelView):
+class album_view(MyModelView):
 
     column_display_pk = True
     
     can_delete = False
-    page_size = 30
-    # ('timestamp', True) true means decending sort.
-    column_default_sort = ('part_timestamp', True)
+    page_size = 20
+    # column_default_sort = ('part_timestamp', True)
     can_export = True
     
     #column_exclude_list = [ 'comments' ]
     
-    column_searchable_list = ['machine', 'part_number',  ]
+    #column_searchable_list = ['machine', 'part_number',  ]
     
-    column_filters = ['machine', 'cycletime', 'part_number',]
+    #column_filters = ['machine', 'cycletime', 'part_number',]
 
 
     
@@ -160,7 +158,7 @@ class dc_prodtrak(MyModelView):
 # Add model views
 
 
-admin.add_view(dc_prodtrak(Prodtrak, db.session))
+admin.add_view(album_view(dbc_album, db.session))
 
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
@@ -181,6 +179,8 @@ def security_context_processor():
 
 def build_sample_db():
     """
+    Do this, or just run the sql to create the users/roles tables...
+    
     Populate a small db with some example entries.
     """
 
@@ -189,7 +189,7 @@ def build_sample_db():
 
     #db.drop_all()
     db.create_all()
-
+ 
     with app.app_context():
         user_role = Role(name='user')
         super_user_role = Role(name='superuser')
@@ -214,7 +214,7 @@ if __name__ == '__main__':
     database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
     #uncomment to build.... 
     #if not os.path.exists(database_path):
-     #  build_sample_db()
+       #build_sample_db()
 
     # Start app
     app.run(host='0.0.0.0', debug=True)

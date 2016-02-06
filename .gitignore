@@ -10,7 +10,7 @@ static/
 db.sqlite3
 *.jpg
 *.png
-*.7z
+*.sqlite
 *.zip
 #
 

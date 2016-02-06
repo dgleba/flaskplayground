@@ -6,8 +6,8 @@ import creds
 SECRET_KEY = creds.cred['secretkey']
 
 # Create in-memory database
-DATABASE_FILE = 'sample_db.sqlite'
-SQLALCHEMY_DATABASE_URI = creds.cred['dbspec']
+DATABASE_FILE = 'Chinook_Sqlite_AutoIncrementPKs.sqlite'
+SQLALCHEMY_DATABASE_URI = creds.cred['dbspec'] + DATABASE_FILE
 SQLALCHEMY_ECHO = True
 
 # Flask-Security config
