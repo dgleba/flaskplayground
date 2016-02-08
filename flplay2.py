@@ -1,9 +1,10 @@
 #
-# purpose: reflect album table.
+# purpose: get 2 columns from customer. 2016-02-08_Mon_13.38-PM
 #
 # orginally from flask-admin auth example.
 #
 #
+
 
 import os
 from flask import Flask, url_for, redirect, render_template, request, abort
