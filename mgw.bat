@@ -15,7 +15,13 @@ c:
 :%wpip% install -r requirements.txt
 
 set wpy=c:\p2\python27\python
-%wpy% flplay.py
+
+c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
+
+
+%wpy% flplay2.py
+
+:%wpy% flplay.py
 
 timeout 987
 

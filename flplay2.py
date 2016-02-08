@@ -1,5 +1,5 @@
 #
-# purpose: get 2 columns from customer. 2016-02-08_Mon_13.38-PM
+# purpose: get 3 columns from customer table. 2016-02-08_Mon_13.38-PM
 #
 # orginally from flask-admin auth example.
 #
@@ -37,16 +37,12 @@ db = SQLAlchemy(app)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Define models - reflect
+# Define models 
 
-# reflect models from the database...
-
-connection = db.engine.connect()
-db.metadata.reflect(db.engine, only=['Album'])
-Base = automap_base(metadata=db.metadata)
-Base.prepare()
-
-dbc_album = Base.classes.Album
+class Customer(db.Model, UserMixin):
+    CustomerId = db.Column(db.Integer(), primary_key=True)
+    FirstName = db.Column(db.String(40))
+    LastName = db.Column(db.String(20))
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,6 +62,7 @@ class Role(db.Model, RoleMixin):
 
     def __str__(self):
         return self.name
+
 
 
 class User(db.Model, UserMixin):
@@ -138,7 +135,7 @@ admin = flask_admin.Admin(
 # customize table
 
 
-class album_view(MyModelView):
+class customer_view(MyModelView):
 
     column_display_pk = True
     
@@ -160,12 +157,10 @@ class album_view(MyModelView):
 # Add model views
 
 
-admin.add_view(album_view(dbc_album, db.session))
+admin.add_view(customer_view(Customer, db.session))
 
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
-
-dir(dbc_album)
 
    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
