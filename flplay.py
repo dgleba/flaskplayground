@@ -127,7 +127,7 @@ def index():
 admin = flask_admin.Admin(
     app,
     'flaskplayground',
-    base_template='my_master.html',
+    base_template='dgmaster.html',
     template_mode='bootstrap3',
 )
 
@@ -163,7 +163,9 @@ admin.add_view(album_view(dbc_album, db.session))
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
 
+dir(dbc_album)
 
+   
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -216,5 +218,6 @@ if __name__ == '__main__':
     #if not os.path.exists(database_path):
        #build_sample_db()
 
+ 
     # Start app
     app.run(host='0.0.0.0', debug=True)

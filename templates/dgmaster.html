@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+{% block access_control %}
+{% if current_user.is_authenticated %}
+<div class="navbar-text btn-group pull-right">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <i class="glyphicon glyphicon-user"></i>
+        {% if current_user.first_name -%}
+        {{ current_user.first_name }}
+        {% else -%}
+        {{ current_user.email }}
+        {%- endif %}<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="{{ url_for('security.logout') }}">Log out</a></li>
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+<!--Change layout to use the entire width of the screen. David Gleba 2016-02-08-->
+
+    {% block page_body %}
+    <div class="container-fluid">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#admin-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {% block brand %}
+          <a class="navbar-brand" href="#">{{ admin_view.admin.name }}</a>
+          {% endblock %}
+        </div>
+        <!-- navbar content -->
+        <div class="collapse navbar-collapse" id="admin-navbar-collapse">
+          {% block main_menu %}
+          <ul class="nav navbar-nav">
+            {{ layout.menu() }}
+          </ul>
+          {% endblock %}
+
+          {% block menu_links %}
+          <ul class="nav navbar-nav navbar-right">
+            {{ layout.menu_links() }}
+          </ul>
+          {% endblock %}
+        </div>
+      </nav>
+
+      {% block messages %}
+      {{ layout.messages() }}
+      {% endblock %}
+
+      {# store the jinja2 context for form_rules rendering logic #}
+      {% set render_ctx = h.resolve_ctx() %}
+
+      {% block body %}{% endblock %}
+    </div>
+    {% endblock %}
