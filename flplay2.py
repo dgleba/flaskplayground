@@ -110,6 +110,9 @@ security = Security(app, user_datastore)
 
 class MyModelView(sqla.ModelView):
 
+    column_display_pk = True
+    can_view_details = True
+
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
             return False

@@ -10,9 +10,9 @@ set wpy=c:\p2\python27\python
 set wpip=c:\p2\Python27\Scripts\pip
 
 cd C:\n\Dropbox\csd\VCS-git\flaskplay
-c: 
 
-:%wpip% install -r requirements.txt
+
+: %wpip% install -r requirements.txt
 
 set wpy=c:\p2\python27\python
 
@@ -24,7 +24,7 @@ set wpy=c:\p2\python27\python
 
 :  %wpy% flplay.py
 
-timeout 987
+: timeout 987
 
 rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ std2
 

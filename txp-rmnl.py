@@ -1,6 +1,8 @@
 # remove newlines..
 
-# %wpy% txp-rnl.py
+# David Gleba 2016-02-09
+
+# %wpy% txp-rmnl.py
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -10,8 +12,13 @@
 #http://stackoverflow.com/questions/4791080/delete-newline-return-carriage-in-file-output
 
 # works...
+
+# rf is read file..
 rf = open("modelsgen.txt")
+
+# wf is write file..
 wf = open("tmpout9.txt","w")
+
 for line in rf:
     newline = line.rstrip('\n')
     wf.write(newline)
@@ -24,14 +31,13 @@ for line in rf:
     
 # #!/usr/bin/env python
 # import fileinput
-
 # import shutil
 # shutil.copy2('modelsgen.txt', 'tmpout2.txt')
-
 # for line in fileinput.input("tmpout2.txt", inplace=True):
     # if line != '\n':
         # line.strip("\r\n")
         # print line,  
        
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        
        

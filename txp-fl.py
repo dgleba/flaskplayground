@@ -1,9 +1,15 @@
 # create field list...
-# process sqlacodegen output to create comma delimited fields list...
+#
+# process sqlacodegen output to create comma delimited fields list that
+# can be copied and pasted into flask-admin app...
 
-# %wpy% txp-Rmw.py
+# David Gleba 2016-02-09
+
+# %wpy% txp-fl.py
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# phase 1  remove white space and add ', to the = signs.
 
 #output file..
 wf = open("tmpout1.txt","w")
@@ -19,6 +25,8 @@ with open("modelsgen.txt", "r") as f:
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#phase 2 - add a ' to the begininng of every line..
+
 #http://stackoverflow.com/questions/7633485/insert-string-at-the-beginning-of-each-line
 
 infile = 'tmpout1.txt'
@@ -29,6 +37,8 @@ with open(infile) as finput:
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#phase 3 -  if tablename is not found in the line, remove everything after the = sign.
 
 #ref..
 #http://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
