@@ -6,25 +6,27 @@
 #
 
 
-import os
 from flask import Flask, url_for, redirect, render_template, request, abort
+from flask.ext.admin import Admin
+from flask.ext.admin.contrib.sqla import ModelView
+from flask_admin import helpers as admin_helpers
+from flask_admin.contrib import sqla
+from flask_admin.contrib.sqla import ModelView
+from flask_admin.contrib.sqla.filters import IntGreaterFilter
+from flask_security.utils import encrypt_password
 from flask_sqlalchemy import SQLAlchemy
+
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm import column_property
+import flask_admin
+import flask_admin as admin
+import os
+
 from flask_security import Security, SQLAlchemyUserDatastore, \
     UserMixin, RoleMixin, login_required, current_user
-from flask_security.utils import encrypt_password
-import flask_admin
-from flask_admin.contrib import sqla
-from flask_admin import helpers as admin_helpers
-
-from sqlalchemy.ext.automap import automap_base
-from flask.ext.admin.contrib.sqla import ModelView
-from flask_admin.contrib.sqla import ModelView
-from flask.ext.admin import Admin
-from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import column_property
-
-import flask_admin as admin
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,10 +43,27 @@ db = SQLAlchemy(app)
 
 class Customer(db.Model, UserMixin):
     CustomerId = db.Column(db.Integer(), primary_key=True)
-    FirstName = db.Column(db.String(40))
+    FirstName = db.Column(db.Unicode(40))
     LastName = db.Column(db.String(20))
+    Company = db.Column(db.Unicode(80))
+    Address = db.Column(db.Unicode(70))
+    City = db.Column(db.Unicode(40))
+    State = db.Column(db.Unicode(40))
+    Country = db.Column(db.Unicode(40))
+    PostalCode = db.Column(db.Unicode(10))
+    Phone = db.Column(db.Unicode(24))
+    Fax = db.Column(db.Unicode(24))
+    Email = db.Column(db.Unicode(60), nullable=False)
+    
+    @hybrid_property
+    def fullname(self):
+        return self.FirstName + " " + self.LastName
+ 
+    def __str__(self):
+        return self.CustomerId
+        
 
-
+        
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 				
 		
@@ -138,17 +157,23 @@ admin = flask_admin.Admin(
 class customer_view(MyModelView):
 
     column_display_pk = True
-    
     can_delete = False
     page_size = 20
+    can_view_details = True
     # column_default_sort = ('part_timestamp', True)
     can_export = True
     
-    #column_exclude_list = [ 'comments' ]
+    column_list = [ 'CustomerId','Company','Email','Address','City','State','Country','PostalCode','Phone','fullname' ]
     
-    #column_searchable_list = ['machine', 'part_number',  ]
+    column_exclude_list = [ 'Address' ]
+   
+    column_searchable_list = ['CustomerId','Company','Address','City','State','Country','PostalCode','Phone','Fax','Email' ,'FirstName','LastName', ]
     
-    #column_filters = ['machine', 'cycletime', 'part_number',]
+    # make sure the type of your filter matches your hybrid_property
+    column_filters = ['FirstName','LastName','Company','Address','City','State','Country','PostalCode','Phone','Fax','Email' \
+    ]
+
+    #column_filters = [IntGreaterFilter(Screen.number_of_pixels,  'Number of Pixels')]
 
 
     

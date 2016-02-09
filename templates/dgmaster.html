@@ -1,4 +1,11 @@
+{% import 'admin/layout.html' as layout with context -%}
 {% extends 'admin/base.html' %}
+
+{% block head_tail %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='layout.css') }}" rel="stylesheet">
+{% endblock %}
+
 
 {% block access_control %}
 {% if current_user.is_authenticated %}
@@ -16,6 +23,7 @@
 </div>
 {% endif %}
 {% endblock %}
+
 
 <!--Change layout to use the entire width of the screen. David Gleba 2016-02-08-->
 

@@ -1,0 +1,182 @@
+# coding: utf-8
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Index, Integer, Numeric, String, Table, Unicode
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql.sqltypes import NullType
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Base = declarative_base()
+metadata = Base.metadata
+
+
+class Album(Base):
+    __tablename__ = 'Album'
+
+    AlbumId = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.Unicode(160), nullable=False)
+    ArtistId = db.Column(db.ForeignKey(u'Artist.ArtistId'), nullable=False, index=True)
+
+    Artist = relationship(u'Artist')
+
+
+class Artist(Base):
+    __tablename__ = 'Artist'
+
+    ArtistId = db.Column(db.Integer, primary_key=True, unique=True)
+    Name = db.Column(db.Unicode(120))
+
+
+class Customer(Base):
+    __tablename__ = 'Customer'
+
+    CustomerId = db.Column(db.Integer, primary_key=True, unique=True)
+    FirstName = db.Column(db.Unicode(40), nullable=False)
+    LastName = db.Column(db.Unicode(20), nullable=False)
+    Company = db.Column(db.Unicode(80))
+    Address = db.Column(db.Unicode(70))
+    City = db.Column(db.Unicode(40))
+    State = db.Column(db.Unicode(40))
+    Country = db.Column(db.Unicode(40))
+    PostalCode = db.Column(db.Unicode(10))
+    Phone = db.Column(db.Unicode(24))
+    Fax = db.Column(db.Unicode(24))
+    Email = db.Column(db.Unicode(60), nullable=False)
+    SupportRepId = db.Column(db.ForeignKey(u'Employee.EmployeeId'), index=True)
+
+    Employee = relationship(u'Employee')
+
+
+class Employee(Base):
+    __tablename__ = 'Employee'
+
+    EmployeeId = db.Column(db.Integer, primary_key=True, unique=True)
+    LastName = db.Column(db.Unicode(20), nullable=False)
+    FirstName = db.Column(db.Unicode(20), nullable=False)
+    Title = db.Column(db.Unicode(30))
+    ReportsTo = db.Column(db.ForeignKey(u'Employee.EmployeeId'), index=True)
+    BirthDate = db.Column(db.DateTime)
+    HireDate = db.Column(db.DateTime)
+    Address = db.Column(db.Unicode(70))
+    City = db.Column(db.Unicode(40))
+    State = db.Column(db.Unicode(40))
+    Country = db.Column(db.Unicode(40))
+    PostalCode = db.Column(db.Unicode(10))
+    Phone = db.Column(db.Unicode(24))
+    Fax = db.Column(db.Unicode(24))
+    Email = db.Column(db.Unicode(60))
+
+    parent = relationship(u'Employee', remote_side=[EmployeeId])
+
+
+class Genre(Base):
+    __tablename__ = 'Genre'
+
+    GenreId = db.Column(db.Integer, primary_key=True, unique=True)
+    Name = db.Column(db.Unicode(120))
+
+
+class Invoice(Base):
+    __tablename__ = 'Invoice'
+
+    InvoiceId = db.Column(db.Integer, primary_key=True, unique=True)
+    CustomerId = db.Column(db.ForeignKey(u'Customer.CustomerId'), nullable=False, index=True)
+    InvoiceDate = db.Column(db.DateTime, nullable=False)
+    BillingAddress = db.Column(db.Unicode(70))
+    BillingCity = db.Column(db.Unicode(40))
+    BillingState = db.Column(db.Unicode(40))
+    BillingCountry = db.Column(db.Unicode(40))
+    BillingPostalCode = db.Column(db.Unicode(10))
+    Total = db.Column(db.Numeric(10, 2), nullable=False)
+
+    Customer = relationship(u'Customer')
+
+
+class InvoiceLine(Base):
+    __tablename__ = 'InvoiceLine'
+
+    InvoiceLineId = db.Column(db.Integer, primary_key=True, unique=True)
+    InvoiceId = db.Column(db.ForeignKey(u'Invoice.InvoiceId'), nullable=False, index=True)
+    TrackId = db.Column(db.ForeignKey(u'Track.TrackId'), nullable=False, index=True)
+    UnitPrice = db.Column(db.Numeric(10, 2), nullable=False)
+    Quantity = db.Column(db.Integer, nullable=False)
+
+    Invoice = relationship(u'Invoice')
+    Track = relationship(u'Track')
+
+
+class MediaType(Base):
+    __tablename__ = 'MediaType'
+
+    MediaTypeId = db.Column(db.Integer, primary_key=True, unique=True)
+    Name = db.Column(db.Unicode(120))
+
+
+class Playlist(Base):
+    __tablename__ = 'Playlist'
+
+    PlaylistId = db.Column(db.Integer, primary_key=True, unique=True)
+    Name = db.Column(db.Unicode(120))
+
+    Track = relationship(u'Track', secondary='PlaylistTrack')
+
+
+t_PlaylistTrack = Table(
+    'PlaylistTrack', metadata,
+    Column('PlaylistId', ForeignKey(u'Playlist.PlaylistId'), primary_key=True, nullable=False),
+    Column('TrackId', ForeignKey(u'Track.TrackId'), primary_key=True, nullable=False, index=True),
+    Index('IPK_PlaylistTrack', 'PlaylistId', 'TrackId', unique=True)
+)
+
+
+class Track(Base):
+    __tablename__ = 'Track'
+
+    TrackId = db.Column(db.Integer, primary_key=True, unique=True)
+    Name = db.Column(db.Unicode(200), nullable=False)
+    AlbumId = db.Column(db.ForeignKey(u'Album.AlbumId'), index=True)
+    MediaTypeId = db.Column(db.ForeignKey(u'MediaType.MediaTypeId'), nullable=False, index=True)
+    GenreId = db.Column(db.ForeignKey(u'Genre.GenreId'), index=True)
+    Composer = db.Column(db.Unicode(220))
+    Milliseconds = db.Column(db.Integer, nullable=False)
+    Bytes = db.Column(db.Integer)
+    UnitPrice = db.Column(db.Numeric(10, 2), nullable=False)
+
+    Album = relationship(u'Album')
+    Genre = relationship(u'Genre')
+    MediaType = relationship(u'MediaType')
+
+
+class Role(Base):
+    __tablename__ = 'role'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.String(255))
+
+    users = relationship(u'User', secondary='roles_users')
+
+
+t_roles_users = Table(
+    'roles_users', metadata,
+    Column('user_id', ForeignKey(u'user.id')),
+    Column('role_id', ForeignKey(u'role.id'))
+)
+
+
+t_sqlite_sequence = Table(
+    'sqlite_sequence', metadata,
+    Column('name', NullType),
+    Column('seq', NullType)
+)
+
+
+class User(Base):
+    __tablename__ = 'user'
+
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(255))
+    last_name = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True)
+    password = db.Column(db.String(255))
+    active = db.Column(db.Boolean)
+    confirmed_at = db.Column(db.DateTime)

@@ -16,13 +16,13 @@ c:
 
 set wpy=c:\p2\python27\python
 
-c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
+: c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
 
-%wpy% txp-fl.py
+: %wpy% txp-fl.py
 
 %wpy% flplay2.py
 
-:%wpy% flplay.py
+:  %wpy% flplay.py
 
 timeout 987
 

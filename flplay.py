@@ -145,6 +145,7 @@ class album_view(MyModelView):
     page_size = 20
     # column_default_sort = ('part_timestamp', True)
     can_export = True
+    can_view_details = True
     
     #column_exclude_list = [ 'comments' ]
     

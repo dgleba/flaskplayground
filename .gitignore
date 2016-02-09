@@ -6,7 +6,6 @@ creds.py
 
 
 # for trakberry
-static/
 db.sqlite3
 *.jpg
 *.png
