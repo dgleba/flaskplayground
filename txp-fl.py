@@ -1,4 +1,5 @@
-# clean sqlacodegen for comma delimited fields list...
+# create field list...
+# process sqlacodegen output to create comma delimited fields list...
 
 # %wpy% txp-Rmw.py
 
@@ -12,7 +13,7 @@ with open("modelsgen.txt", "r") as f:
         # remove white space
         line = line.replace(' ', '') 
         # replace = with ",=  -- we will get rid of the = later..
-        line = line.replace('=', '",=') 
+        line = line.replace("=", "',=") 
         wf.write(line)
 
 
@@ -24,7 +25,7 @@ infile = 'tmpout1.txt'
 with open(infile) as finput:
     with open('tmpout2.txt', 'w') as fout:
         for line in finput:
-            fout.write('"'+line)
+            fout.write("'"+line)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +37,7 @@ with open(infile) as finput:
 #in file... 
 rf = open("tmpout2.txt")
 #output file..
-wf = open("tmpout3.txt","w")
+wf = open("modelsgen-fieldlist.txt","w")
 for line in rf:
     if line.find("_tablename_") == -1:  # if that string is not found..
         # remove everything after the = sign. i guess it gets rid of the newline as well, this is what I want.
@@ -47,5 +48,4 @@ for line in rf:
         wf.write(line) #if it is found.. (in my case -- do nothing - just write the line that was found.)
     
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
