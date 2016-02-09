@@ -2,10 +2,17 @@
 /* David Gleba change brand to yellow as an example. 2016-02-08_Mon_23.13-PM */
 .navbar-brand {
     background: yellow;
-	}
+}
 
 /* Hide edit pencil, just use eye to view then hit edit tab. David Gleba  2016-02-08_Mon_23.13-PM */
 .fa.fa-pencil.glyphicon.glyphicon-pencil {
     background: yellow;
     visibility: hidden;
-	}
+}
+
+/* Hide edit trash can, just select item and delete with selected. David Gleba  2016-02-09 */
+.glyphicon-trash {
+    background: yellow;
+    visibility: hidden;
+}
+        

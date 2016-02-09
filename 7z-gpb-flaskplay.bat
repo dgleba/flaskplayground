@@ -1,18 +1,21 @@
-:Prepare date and temp folders
-set ymd=%date:~12,2%%date:~4,2%%date:~7,2%&set dhms=%date:~12,2%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
-c: & md c:\temp\ & cd c:\temp & md c:\temp\log & md c:\temp\log\"%dhms%"  & cd c:\temp\log\"%dhms%"
-:main
-:goto skip1
+:Prepare date and temp folders - http://serverfault.com/questions/147515/need-leading-zero-for-batch-script-using-time-variable
+set timea=%TIME: =0%
+set ymd=%date:~12,2%%date:~4,2%%date:~7,2%&set dhms=%date:~12,2%%date:~4,2%%date:~7,2%_%timea:~0,2%%timea:~3,2%%timea:~6,2%
+c: & md c:\temp\log\"%dhms%"  & cd c:\temp\log\"%dhms%"
 
+:main
 rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start here..
+
 : below is not with prjfold
 set srcdir=C:\n\Dropbox\csd\VCS-git
 ::next item is in the above folder.
-set prjfold=cif207
-set bkdir=c:\backup\cif207
-set bkfname=cif207
+set prjfold=flaskplay
+set bkdir=c:\backup\flaskplay
+set bkfname=flaskplay
 set dbxcpy=C:\n\Dropbox\csd\copyof
+
 rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %bkfname%
+
 :Title:
 :7z-gpb = 7zip generic project folder backup routine...  David Gleba 2015-07-10
 
@@ -29,12 +32,7 @@ mkdir %dbxcpy%\%prjfold%
 copy "%bkdir%\%bkfname%.%computername%.%dhms%.7z" %dbxcpy%\%prjfold%\%bkfname%.%computername%.latest.7z
 
 
-
 rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %bkfname%
-
-
-
-
 
 
 
@@ -48,7 +46,6 @@ goto end
 goto end
 goto end
 :#######
-
 
 
 

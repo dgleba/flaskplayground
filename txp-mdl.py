@@ -9,7 +9,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # output file..
-wf = open("modelsgen-m.txt","w")
+wf = open("modelsgen-mdl.txt","w")
 # input file..
 with open("modelsgen.txt", "r") as f:
     for line in f:
