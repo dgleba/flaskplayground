@@ -3,13 +3,12 @@
 #flask
 sample_db.sqlite
 creds.py
-
+Chinook_Sqlite_AutoIncrementPKs.sqlite
 
 # for trakberry
 db.sqlite3
 *.jpg
 *.png
-*.sqlite
 *.zip
 #
 
