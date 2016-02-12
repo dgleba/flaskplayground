@@ -1,0 +1,43 @@
+# coding: utf-8
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, Text
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Base = declarative_base()
+metadata = Base.metadata
+
+
+class Car(Base):
+    __tablename__ = 'cars'
+
+    id = Column(Integer, primary_key=True)
+    desc = Column(String(50))
+
+
+class Tyre(Base):
+    __tablename__ = 'tyres'
+
+    car_id = Column(ForeignKey(u'cars.id'), primary_key=True, nullable=False)
+    tyre_id = Column(Integer, primary_key=True, nullable=False)
+    desc = Column(String(50))
+
+    car = relationship(u'Car')
+
+
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(Text(50), unique=True)
+    email = Column(Text(120), unique=True)
+    comment = Column(Text(245))
+    c3 = Column(Text(99))
+
+
+t_vw_user1 = Table(
+    'vw_user1', metadata,
+    Column('id', Integer),
+    Column('name', Text(50)),
+    Column('comment', Text(245))
+)

@@ -1,0 +1,128 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>c:\p2\python27\python flplay4d.py
+Traceback (most recent call last):
+  File "flplay4d.py", line 58, in <module>
+    class vw_User1 (Base):
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\api.py", line 55, in __init__
+    _as_declarative(cls, classname, cls.__dict__)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 88, in _as_declarative
+    _MapperConfig.setup_mapping(cls, classname, dict_)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 103, in setup_mapping
+    cfg_cls(cls_, classname, dict_)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 135, in __init__
+    self._early_mapping()
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 138, in _early_mapping
+    self.map()
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 529, in map
+    **self.mapper_args
+  File "<string>", line 2, in mapper
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\orm\mapper.py", line 629, in __init__
+    self._configure_pks()
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\orm\mapper.py", line 1223, in _configure_pks
+    (self, self.mapped_table.description))
+sqlalchemy.exc.ArgumentError: Mapper Mapper|vw_User1|vw_user1 could not assemble any primary key columns for mapped table 'vw_user1'
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ std2
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>goto end
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>pause
+Press any key to continue . . .
+
+
+
+ggl..
+
+sqlalchemy.exc.ArgumentError: Mapper Mapper could not assemble any primary key columns for mapped table ''
+
+
+http://stackoverflow.com/questions/24872541/could-not-assemble-any-primary-key-columns-for-mapped-table
+
+
+flask-sqlalchemy primary key-columns-for-mapped-table
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>c:\p2\python27\python flplay4d.py
+Traceback (most recent call last):
+  File "flplay4d.py", line 58, in <module>
+    class vw_User1 (Base):
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\api.py", line 55, in __init__
+    _as_declarative(cls, classname, cls.__dict__)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 88, in _as_declarative
+    _MapperConfig.setup_mapping(cls, classname, dict_)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 103, in setup_mapping
+    cfg_cls(cls_, classname, dict_)
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 131, in __init__
+    self._setup_table()
+  File "c:\p2\python27\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 402, in _setup_table
+    "specifying __table__" % c.key
+sqlalchemy.exc.ArgumentError: Can't add additional column 'id' when specifying __table__
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+https://www.google.ca/search?rlz=1C1CHWA_enCA652CA670&biw=2133&bih=1064&q=sqlalchemy+primarykeyconstraint&revid=1824895948&sa=X&ved=0ahUKEwjFs8L88fDKAhUCPj4KHZIZCJQQ1QIIXigB
+
+
+http://stackoverflow.com/questions/9034271/sqlalchemy-orm-how-to-declare-a-table-class-that-contains-multi-column-primary
+
+http://stackoverflow.com/questions/9034271/sqlalchemy-orm-how-to-declare-a-table-class-that-contains-multi-column-primary
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+flask-sqlalchemy reflect view 
+
+
+http://stackoverflow.com/questions/33326224/getting-sqlalchemy-view-reflection-to-work-in-flask-sqlalchemy
+
+
+
+
+class MyView(db_session.Model):
+    __table__ = db_session.Table(
+        'vw_user1', meta,
+        db_session.Column('id', db_session.Integer,  primary_key=True),
+        
+        #...other column defs...
+        autoload=True,
+        autoload_with=engine
+    )
+    
+    
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\4dbreflect>c:\p2\python27\python flplay4d.py
+Traceback (most recent call last):
+  File "flplay4d.py", line 59, in <module>
+    class MyView(db_session.Model):
+AttributeError: 'scoped_session' object has no attribute 'Model'
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2016-02-11_Thu_19.46-PM
+
+
+http://stackoverflow.com/questions/23292931/flask-sqlalchemy-views-reflection
+
+
+http://alextechrants.blogspot.ca/
+
+http://stackoverflow.com/questions/33326224/getting-sqlalchemy-view-reflection-to-work-in-flask-sqlalchemy/33328526
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+

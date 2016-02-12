@@ -1,0 +1,58 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Flask-admin
+
+My learning path...
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+cif207  
+
+pdb218
+
+flask219 sqlalchemy basics
+
+flask-deploy
+
+flaskplay
+    flplay
+    flplay2
+    flplay3   db simple example
+    flplay4a
+    flplay4b declarative reflect
+    flplay4c cleaned declarative reflect
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+projects involved...
+
+flask-admin
+flask 
+jinja2
+twitter bootstrap3
+sqlalchemy
+flask-sqlalchemy
+flask-security
+deployment weurkzug apache nginx gnunicorn
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2016
+
+jan 7 start
+
+
+
+
+feb 11 reflect views flpg6 working.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+

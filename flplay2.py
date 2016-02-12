@@ -1,5 +1,10 @@
 #
-# purpose: get 3 columns from customer table. 2016-02-08_Mon_13.38-PM
+# purpose: 
+# get 3 columns from customer table. 2016-02-08_Mon_13.38-PM works!
+# reflect one table and define another directly with class. works.
+# derived/calculated/grafted column. works.
+# custom template with custom CSS. works.
+# 
 #
 # orginally from flask-admin auth example.
 #
@@ -202,8 +207,8 @@ class customer_view(MyModelView):
     column_searchable_list = ['CustomerId', 'Company', 'Address', 'City', 'State', 'Country', 'PostalCode', 'Phone', 'Fax', 'Email', 'FirstName', 'LastName',]
     
     # make sure the type of your filter matches your hybrid_property
-    column_filters = ['FirstName', 'LastName', 'Company', 'Address', 'City', 'State', 'Country', 'PostalCode', 'Phone', 'Fax', 'Email' \
-    ]
+    column_filters = ['FirstName', 'LastName', 'Company', 'Address', 'City', 'State', 'Country', 'PostalCode', 'Phone', 'Fax', \
+     'Email'   ]
 
     #column_filters = [IntGreaterFilter(Screen.number_of_pixels,  'Number of Pixels')]
 
