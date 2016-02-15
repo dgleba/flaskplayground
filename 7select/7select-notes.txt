@@ -1,0 +1,58 @@
+
+Note: i pasted mysql ddl below into firefox sqlite manager and it worked.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+http://www.w3schools.com/sql/sql_foreignkey.asp
+
+
+mysql
+
+CREATE TABLE Orders
+(
+O_Id int NOT NULL AUTOINCREMENT,
+OrderNo int NOT NULL,
+P_Id int,
+PRIMARY KEY (O_Id),
+FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)
+)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+db.Column('P_Id', db.Integer(), db.ForeignKey('persons.P_id')),
+
+
+db.ForeignKey('user.id')
+
+db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+                       
+_____________
+
+
+sqlite
+
+CREATE TABLE Orders
+(
+O_Id integer NOT NULL PRIMARY KEY,
+OrderNo integer NOT NULL,
+P_Id integer,
+FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)
+)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+CREATE TABLE Persons
+(
+P_Id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Address varchar(255),
+City varchar(255)
+)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
