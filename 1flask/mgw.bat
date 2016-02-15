@@ -16,7 +16,11 @@ cd C:\n\Dropbox\csd\VCS-git\flaskplay
 
 set wpy=c:\p2\python27\python
 
-: c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
+:
+c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
+txp-fl.py
+
+
 
 :  %wpy% txp-fl.py
 :  %wpy% flplay2.py

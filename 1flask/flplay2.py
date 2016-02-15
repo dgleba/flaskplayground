@@ -218,10 +218,10 @@ class customer_view(MyModelView):
 # Add model views
 
 
-admin.add_view(customer_view(Customer, db.session))
-admin.add_view(MyModelView(dbc_album, db.session))
+#admin.add_view(customer_view(Customer, db.session))
+#admin.add_view(MyModelView(dbc_album, db.session))
 
-admin.add_view(MyModelView(Role, db.session))
+#admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
 
    
