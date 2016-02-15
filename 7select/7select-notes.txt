@@ -1,5 +1,6 @@
 
 Note: i pasted mysql ddl below into firefox sqlite manager and it worked.
+not sure about autoincerment now.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

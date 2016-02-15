@@ -1,7 +1,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
 select field working. 2016-02-15_Mon_14.51-PM
-foreign key defined in db.
+deleted foreign key in db. it is only defined in the sqlalchemy models below.
 
 ref.
 http://stackoverflow.com/questions/16160507/flask-admin-not-showing-foreignkey-columns
@@ -97,7 +97,7 @@ class dgview(sqla.ModelView):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 # Create admin
-admin = admin.Admin(app, name='flpg6 reflect view', template_mode='bootstrap3')
+admin = admin.Admin(app, name='fltg 8select', template_mode='bootstrap3')
 
 admin.add_view(dgview(users, db.session))
 admin.add_view(dgview(Person, db.session))

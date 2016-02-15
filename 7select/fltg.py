@@ -97,7 +97,7 @@ class dgview(sqla.ModelView):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 # Create admin
-admin = admin.Admin(app, name='flpg6 reflect view', template_mode='bootstrap3')
+admin = admin.Admin(app, name='fltg 7select', template_mode='bootstrap3')
 
 admin.add_view(dgview(users, db.session))
 admin.add_view(dgview(Person, db.session))

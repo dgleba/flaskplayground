@@ -1,0 +1,31 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+http://www.w3schools.com/sql/sql_foreignkey.asp
+
+
+
+CREATE TABLE Orders
+(
+O_Id integer NOT NULL Primary key AUTOINCREMENT,
+OrderNo int NOT NULL unique,
+P_Id int
+)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+CREATE TABLE Persons
+(
+P_Id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Address varchar(255),
+City varchar(255)
+)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
