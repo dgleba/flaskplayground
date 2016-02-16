@@ -1,11 +1,8 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-select field working. 2016-02-15_Mon_14.51-PM
-deleted foreign key in db. it is only defined in the sqlalchemy models below.
-works.
+datetime picker
 
-ref.
-http://stackoverflow.com/questions/16160507/flask-admin-not-showing-foreignkey-columns
+ref. user table in sqla example.
 
 '''
 
@@ -40,46 +37,16 @@ connection = db.engine.connect()
 # no need to reflect view...
 db.metadata.reflect(bind=db.engine, only=['users'])
  
-# from sqlacodegen, for order and person... 
-Base = declarative_base()
-meta = Base.metadata
- 
- 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-class Order(Base):
-    __tablename__ = 'Orders'
-
-    O_Id = Column(Integer, primary_key=True)
-    OrderNo = Column(Integer, nullable=False)
-    P_Id = Column(ForeignKey(u'Persons.P_Id'))
-
-    Person = relationship(u'Person')
-
-
-class Person(Base):
-    __tablename__ = 'Persons'
-
-    P_Id = Column(Integer, primary_key=True)
-    LastName = Column(String(255), nullable=False)
-    FirstName = Column(String(255))
-    Address = Column(String(255))
-    City = Column(String(255))
-
-    def __unicode__(self):
-        return self.LastName + "," + self.FirstName
-   
 
 #reflect table...   
 class users(db.Model):
     __table__ = db.Table(
         'users', db.metadata,
-        #db.Column('id', db.Integer, primary_key=True),
         autoload=True,
         autoload_with=db.engine
     )
-    
-    
+   
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
 # Flask views
@@ -93,23 +60,17 @@ def index():
    
 class dgview(sqla.ModelView):
     column_display_pk = True
-   
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 # Create admin
-admin = admin.Admin(app, name='fltg 8select', template_mode='bootstrap3')
+admin = admin.Admin(app, name='fltg 9datetime picker', template_mode='bootstrap3')
 
 admin.add_view(dgview(users, db.session))
-admin.add_view(dgview(Person, db.session))
-admin.add_view(dgview(Order, db.session))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if __name__ == '__main__':
-
-    # Create DB
-    #db.create_all()
 
     # Start app
     app.run(host='0.0.0.0', port=5000, debug=True)

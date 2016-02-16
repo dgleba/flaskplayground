@@ -2,7 +2,7 @@
 # http://stackoverflow.com/questions/5055042/whats-the-best-practice-using-a-settings-file-in-python
 import creds
 
-# Create dummy secrey key so we can use sessions
+# Create dummy secret key so we can use sessions
 SECRET_KEY = creds.cred['secretkey']
 
 # Create in-memory database
