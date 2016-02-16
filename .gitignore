@@ -8,7 +8,7 @@ Chinook_Sqlite_AutoIncrementPKs.sqlite
 # for trakberry
 db.sqlite3
 *.jpg
-*.png
+x*.png
 *.zip
 #
 
