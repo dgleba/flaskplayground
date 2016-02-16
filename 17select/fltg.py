@@ -45,6 +45,8 @@ meta = Base.metadata
  
  
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# i took these models from sqlacodegen. They cause the select widget for person in order to work. 
  
 class Order(Base):
     __tablename__ = 'Orders'
@@ -54,7 +56,6 @@ class Order(Base):
     P_Id = Column(ForeignKey(u'Persons.P_Id'))
 
     Person = relationship(u'Person')
-
 
 class Person(Base):
     __tablename__ = 'Persons'
@@ -67,7 +68,6 @@ class Person(Base):
 
     def __unicode__(self):
         return self.LastName + "," + self.FirstName
-   
 
 #reflect table...   
 class users(db.Model):
