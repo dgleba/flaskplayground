@@ -19,10 +19,8 @@ from sqlalchemy.ext.automap import automap_base
 from flask.ext.admin.contrib.sqla import ModelView
 from flask_admin.contrib.sqla import ModelView
 from flask.ext.admin import Admin
-from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import column_property
-
 import flask_admin as admin
 
 
@@ -91,6 +89,11 @@ security = Security(app, user_datastore)
 
 # Create customized model view class
 
+class MyModelView2(sqla.ModelView):
+
+    column_display_pk = True
+
+
 class MyModelView(sqla.ModelView):
 
     def is_accessible(self):
@@ -113,6 +116,7 @@ class MyModelView(sqla.ModelView):
             else:
                 # login
                 return redirect(url_for('security.login', next=request.url))
+
 
 
 # Flask views
@@ -162,8 +166,10 @@ class album_view(MyModelView):
 
 admin.add_view(album_view(dbc_album, db.session))
 
+
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
+
 
 dir(dbc_album)
 

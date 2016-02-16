@@ -1,0 +1,463 @@
+
+2016-02-16_Tue_16.14-PM
+I ran pip install requirements again.
+It did something.
+Now it works.
+
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\1flask>c:\p2\Python27\Scripts\pip install -r requirements.txt
+Requirement already satisfied (use --upgrade to upgrade): Flask-Admin in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 1))
+Requirement already satisfied (use --upgrade to upgrade): Flask-Security>=1.7.5 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 2))
+Requirement already satisfied (use --upgrade to upgrade): Flask>=0.7 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): wtforms in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 4))
+Requirement already satisfied (use --upgrade to upgrade): Flask-SQLAlchemy>=0.15 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 5))
+Requirement already satisfied (use --upgrade to upgrade): peewee in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 6))
+Requirement already satisfied (use --upgrade to upgrade): wtf-peewee in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 7))
+Requirement already satisfied (use --upgrade to upgrade): pymongo==2.8 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 8))
+Requirement already satisfied (use --upgrade to upgrade): flask-mongoengine in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 9))
+Requirement already satisfied (use --upgrade to upgrade): shapely==1.5.9 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 10))
+Requirement already satisfied (use --upgrade to upgrade): geoalchemy2 in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 11))
+Requirement already satisfied (use --upgrade to upgrade): nose in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 12))
+Requirement already satisfied (use --upgrade to upgrade): sphinx in c:\p2\python27\lib\site-packages (from -r requirements.txt (line 13))
+Collecting Flask-Login<0.4,>=0.3.0 (from Flask-Security>=1.7.5->-r requirements.txt (line 2))
+  Using cached Flask-Login-0.3.2.tar.gz
+Requirement already satisfied (use --upgrade to upgrade): Flask-Mail>=0.7.3 in c:\p2\python27\lib\site-packages (from Flask-Security>=1.7.5->-r requirements.txt (line
+ 2))
+Requirement already satisfied (use --upgrade to upgrade): Flask-Principal>=0.3.3 in c:\p2\python27\lib\site-packages (from Flask-Security>=1.7.5->-r requirements.txt
+(line 2))
+Requirement already satisfied (use --upgrade to upgrade): Flask-WTF>=0.8 in c:\p2\python27\lib\site-packages (from Flask-Security>=1.7.5->-r requirements.txt (line 2)
+)
+Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.17 in c:\p2\python27\lib\site-packages (from Flask-Security>=1.7.5->-r requirements.txt (lin
+e 2))
+Requirement already satisfied (use --upgrade to upgrade): passlib>=1.6.1 in c:\p2\python27\lib\site-packages (from Flask-Security>=1.7.5->-r requirements.txt (line 2)
+)
+Requirement already satisfied (use --upgrade to upgrade): Werkzeug>=0.7 in c:\p2\python27\lib\site-packages (from Flask>=0.7->-r requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in c:\p2\python27\lib\site-packages (from Flask>=0.7->-r requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): SQLAlchemy in c:\p2\python27\lib\site-packages (from Flask-SQLAlchemy>=0.15->-r requirements.txt (line 5))
+Requirement already satisfied (use --upgrade to upgrade): mongoengine>=0.7.10 in c:\p2\python27\lib\site-packages (from flask-mongoengine->-r requirements.txt (line 9
+))
+Requirement already satisfied (use --upgrade to upgrade): babel!=2.0,>=1.3 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): colorama>=0.3.5 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): snowballstemmer>=1.1 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): sphinx-rtd-theme<2.0,>=0.1 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): six>=1.4 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): Pygments>=2.0 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): docutils>=0.11 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): alabaster<0.8,>=0.7 in c:\p2\python27\lib\site-packages (from sphinx->-r requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): blinker in c:\p2\python27\lib\site-packages (from Flask-Mail>=0.7.3->Flask-Security>=1.7.5->-r requirements.
+txt (line 2))
+Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in c:\p2\python27\lib\site-packages (from Jinja2>=2.4->Flask>=0.7->-r requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in c:\p2\python27\lib\site-packages (from babel!=2.0,>=1.3->sphinx->-r requirements.txt (line 13))
+Installing collected packages: Flask-Login
+  Found existing installation: Flask-Login 0.2.11
+    Uninstalling Flask-Login-0.2.11:
+      Successfully uninstalled Flask-Login-0.2.11
+  Running setup.py install for Flask-Login
+Successfully installed Flask-Login-0.3.2
+You are using pip version 7.1.2, however version 8.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\1flask>set wpy=c:\p2\python27\python
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\1flask>c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite  1>modelsgen.txt
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\1flask>txp-fl.py
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\1flask>c:\p2\python27\python flplay.py
+2016-02-16 16:10:22,651 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2016-02-16 16:10:22,651 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,651 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2016-02-16 16:10:22,651 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,667 INFO sqlalchemy.engine.base.Engine SELECT name FROM sqlite_master WHERE type='table' ORDER BY name
+2016-02-16 16:10:22,667 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,683 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("Album")
+2016-02-16 16:10:22,683 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,683 INFO sqlalchemy.engine.base.Engine PRAGMA foreign_key_list("Album")
+2016-02-16 16:10:22,698 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,698 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+lbum' AND type = 'table'
+2016-02-16 16:10:22,698 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,713 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("Artist")
+2016-02-16 16:10:22,713 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,730 INFO sqlalchemy.engine.base.Engine PRAGMA foreign_key_list("Artist")
+2016-02-16 16:10:22,730 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,746 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+rtist' AND type = 'table'
+2016-02-16 16:10:22,746 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,746 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Artist")
+2016-02-16 16:10:22,760 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,760 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Artist")
+2016-02-16 16:10:22,760 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,776 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Artist")
+2016-02-16 16:10:22,776 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,776 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Artist")
+2016-02-16 16:10:22,792 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,792 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+rtist' AND type = 'table'
+2016-02-16 16:10:22,808 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,808 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Album")
+2016-02-16 16:10:22,808 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,823 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IFK_AlbumArtistId")
+2016-02-16 16:10:22,823 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,823 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Album")
+2016-02-16 16:10:22,838 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,838 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Album")
+2016-02-16 16:10:22,855 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,855 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IFK_AlbumArtistId")
+2016-02-16 16:10:22,855 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,871 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Album")
+2016-02-16 16:10:22,871 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:22,871 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+lbum' AND type = 'table'
+2016-02-16 16:10:22,885 INFO sqlalchemy.engine.base.Engine ()
+ * Restarting with stat
+2016-02-16 16:10:23,519 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2016-02-16 16:10:23,519 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,519 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2016-02-16 16:10:23,536 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,536 INFO sqlalchemy.engine.base.Engine SELECT name FROM sqlite_master WHERE type='table' ORDER BY name
+2016-02-16 16:10:23,551 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,551 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("Album")
+2016-02-16 16:10:23,566 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,566 INFO sqlalchemy.engine.base.Engine PRAGMA foreign_key_list("Album")
+2016-02-16 16:10:23,582 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,582 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+lbum' AND type = 'table'
+2016-02-16 16:10:23,598 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,598 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("Artist")
+2016-02-16 16:10:23,598 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,614 INFO sqlalchemy.engine.base.Engine PRAGMA foreign_key_list("Artist")
+2016-02-16 16:10:23,630 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,630 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+rtist' AND type = 'table'
+2016-02-16 16:10:23,644 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,644 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Artist")
+2016-02-16 16:10:23,661 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,676 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Artist")
+2016-02-16 16:10:23,676 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,691 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Artist")
+2016-02-16 16:10:23,691 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,707 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Artist")
+2016-02-16 16:10:23,707 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,707 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+rtist' AND type = 'table'
+2016-02-16 16:10:23,733 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,743 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Album")
+2016-02-16 16:10:23,749 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,757 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IFK_AlbumArtistId")
+2016-02-16 16:10:23,757 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,775 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Album")
+2016-02-16 16:10:23,783 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,788 INFO sqlalchemy.engine.base.Engine PRAGMA index_list("Album")
+2016-02-16 16:10:23,792 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,792 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IFK_AlbumArtistId")
+2016-02-16 16:10:23,808 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,823 INFO sqlalchemy.engine.base.Engine PRAGMA index_info("IPK_Album")
+2016-02-16 16:10:23,823 INFO sqlalchemy.engine.base.Engine ()
+2016-02-16 16:10:23,823 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'A
+lbum' AND type = 'table'
+2016-02-16 16:10:23,839 INFO sqlalchemy.engine.base.Engine ()
+ * Debugger is active!
+ * Debugger pin code: 157-823-540
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [16/Feb/2016 16:10:55] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap.min.css?v=3.3.5 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap-theme.min.css?v=3.3.5 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/admin/css/bootstrap3/admin.css?v=1.1.1 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /static/dglayout.css HTTP/1.1" 304 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/vendor/jquery.min.js?v=2.1.4 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/bootstrap/bootstrap3/js/bootstrap.min.js?v=3.3.5 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/vendor/moment.min.js?v=2.9.0 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/vendor/select2/select2.min.js?v=3.5.2 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2016 16:10:56] "GET /admin/static/bootstrap/bootstrap3/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

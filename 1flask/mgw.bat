@@ -9,24 +9,23 @@ rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ std2
 set wpy=c:\p2\python27\python
 set wpip=c:\p2\Python27\Scripts\pip
 
-cd C:\n\Dropbox\csd\VCS-git\flaskplay
+cd C:\n\Dropbox\csd\VCS-git\flaskplay\1flask
 
 
 : %wpip% install -r requirements.txt
 
 set wpy=c:\p2\python27\python
 
-:
-c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
-txp-fl.py
+: c:\p2\python27\scripts\sqlacodegen sqlite:///Chinook_Sqlite_AutoIncrementPKs.sqlite > modelsgen.txt
+: txp-fl.py
 
 
 
 :  %wpy% txp-fl.py
 :  %wpy% flplay2.py
-:  %wpy% flplay.py
+%wpy% flplay.py
 
-%wpy% flplay3dbsimple.py
+: %wpy% flplay3dbsimple.py
 
 : timeout 987
 
