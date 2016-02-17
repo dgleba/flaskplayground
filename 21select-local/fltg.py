@@ -5,6 +5,8 @@ I have used enum with other systems.
 
 ref.
 http://stackoverflow.com/questions/31081516/how-can-i-turn-a-string-model-field-into-a-select-input-in-flask-admin
+https://gist.github.com/mrjoes/3714266
+http://w3foverflow.com/question/flask-admin-form_override-selectfield-form_args-from-another-view-as-an-in-line-model/
 
 '''
 from flask import Flask
@@ -68,7 +70,6 @@ class persons_view(dvview):
             ]
         )
     )
-      
     def __init__(self):
         super(persons_view, self).__init__(persons_mdl, db.session)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
