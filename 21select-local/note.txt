@@ -3,16 +3,22 @@
 Title:  .
 -----------------------2016-02-16[Feb-Tue]19-54PM
 
-2016-02-16 19:54:17,854 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'P
-ersons' AND type = 'table'
+error:
+
+2016-02-16 19:54:17,854 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'Persons' AND type = 'table'
 2016-02-16 19:54:17,855 INFO sqlalchemy.engine.base.Engine ()
 Traceback (most recent call last):
   File "C:\n\Dropbox\csd\VCS-git\flaskplay\21select-local\fltg.py", line 78, in <module>
     admin.add_view(persons_view(persons, db.session))
 TypeError: __init__() takes exactly 1 argument (3 given)
 
-C:\n\Dropbox\csd\VCS-git\flaskplay\21select-local>
+ans.
 
+remove the __init__ lines.
 
+    '''def __init__(self):
+        super(persons_view, self).__init__(persons_mdl, db.session)'''
+
+They don't seem to be needed.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
