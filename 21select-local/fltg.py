@@ -4,12 +4,12 @@ select widget - local list - for small lists like shift: day night afternoon.
 I have used enum with other systems.
 
 ref.
-http://stackoverflow.com/questions/31081516/how-can-i-turn-a-string-model-field-into-a-select-input-in-flask-admin
 https://gist.github.com/mrjoes/3714266
+http://stackoverflow.com/questions/31081516/how-can-i-turn-a-string-model-field-into-a-select-input-in-flask-admin
 http://w3foverflow.com/question/flask-admin-form_override-selectfield-form_args-from-another-view-as-an-in-line-model/
 
-
 '''
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
@@ -50,17 +50,7 @@ class Person(db.Model):
     __table__ = db.Table('Persons', db.metadata,
         autoload=True, autoload_with=db.engine
     )
-'''
-class Person(Base):
-    __tablename__ = 'Persons'
-
-    P_Id = Column(Integer, primary_key=True)
-    LastName = Column(String(255), nullable=False)
-    FirstName = Column(String(255))
-    Address = Column(String(255))
-    City = Column(String(255))
-    Group = Column(Text)
-'''    
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Flask views
 @app.route('/')
@@ -73,18 +63,14 @@ class dvview(ModelView):
     column_display_pk = True
 
 class persons_view(dvview):
-    create_template = 'dv_editform.html'
-    edit_template = 'dv_editform.html'
-
     form_overrides = dict(City=SelectField)
     form_args = dict(City=dict(choices=[
-                ('London1', 'London'),
-                ('Kitchener1', 'Kitchener')
+                ('', 'Please Select'),
+                ('London', 'London'),
+                ('Kitchener', 'Kitchener')
             ]
         )
     )
-    '''def __init__(self):
-        super(persons_view, self).__init__(persons_mdl, db.session)'''
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create admin
 admin = admin.Admin(app, name='fltg 21selectlocal', template_mode='bootstrap3')
