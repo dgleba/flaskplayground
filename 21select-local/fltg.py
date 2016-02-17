@@ -1,6 +1,8 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
 select widget - local list - for small lists like shift: day night afternoon.
+I have used enum with other systems.
+
 ref.
 http://stackoverflow.com/questions/31081516/how-can-i-turn-a-string-model-field-into-a-select-input-in-flask-admin
 
@@ -42,14 +44,7 @@ class persons(db.Model):
     __table__ = db.Table('Persons', db.metadata,
         autoload=True, autoload_with=db.engine
     )
-    
-'''
-class cities(db.Model):
-    __table__ = db.Table('cities', db.metadata,
-        autoload=True, autoload_with=db.engine
-    )
-'''
- 
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Flask views
 @app.route('/')
@@ -81,7 +76,6 @@ admin = admin.Admin(app, name='fltg 21selectlocal', template_mode='bootstrap3')
 
 admin.add_view(dvview(users, db.session))
 admin.add_view(persons_view(persons, db.session))
-#admin.add_view(dvview(cities, db.session))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if __name__ == '__main__':
     # Start app
