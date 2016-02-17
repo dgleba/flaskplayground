@@ -40,7 +40,7 @@ class users(db.Model):
         autoload=True, autoload_with=db.engine
     )
    
-class persons(db.Model):
+class persons_mdl(db.Model):
     __table__ = db.Table('Persons', db.metadata,
         autoload=True, autoload_with=db.engine
     )
@@ -53,7 +53,7 @@ def index():
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # customize views..
   
-class dvview(sqla.ModelView):
+class dvview(ModelView):
     column_display_pk = True
 
 class persons_view(dvview):
@@ -68,14 +68,15 @@ class persons_view(dvview):
             ]
         )
     )
+      
     def __init__(self):
-        super(persons_view, self).__init__(persons, db.session)
+        super(persons_view, self).__init__(persons_mdl, db.session)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create admin
 admin = admin.Admin(app, name='fltg 21selectlocal', template_mode='bootstrap3')
 
 admin.add_view(dvview(users, db.session))
-admin.add_view(persons_view(persons, db.session))
+admin.add_view(persons_view(persons_mdl, db.session))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if __name__ == '__main__':
     # Start app
