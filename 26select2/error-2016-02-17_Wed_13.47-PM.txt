@@ -1,0 +1,47 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-02-17[Feb-Wed]13-46PM
+
+2016-02-17 13:45:58,961 INFO sqlalchemy.engine.base.Engine ()
+2016-02-17 13:45:58,961 INFO sqlalchemy.engine.base.Engine SELECT sql FROM  (SELECT * FROM sqlite_master UNION ALL   SELECT * FROM sqlite_temp_master) WHERE name = 'users' AND type = 'table'
+2016-02-17 13:45:58,961 INFO sqlalchemy.engine.base.Engine ()
+Traceback (most recent call last):
+  File "C:\n\Dropbox\csd\VCS-git\flaskplay\26select2\fltg.py", line 96, in <module>
+    admin.add_view(dgview(users, db.session))
+  File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\view.py", line 319, in __init__
+    menu_icon_value=menu_icon_value)
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 718, in __init__
+    self._refresh_cache()
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 794, in _refresh_cache
+    self._list_columns = self.get_list_columns()
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 889, in get_list_columns
+    columns = self.scaffold_list_columns()
+  File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\view.py", line 463, in scaffold_list_columns
+    for p in self._get_model_iterator():
+  File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\view.py", line 341, in _get_model_iterator
+    return model._sa_class_manager.mapper.iterate_properties
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\mapper.py", line 1819, in iterate_properties
+    configure_mappers()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\mapper.py", line 2768, in configure_mappers
+    mapper._post_configure_properties()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\mapper.py", line 1710, in _post_configure_properties
+    prop.init()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\interfaces.py", line 183, in init
+    self.do_init()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\relationships.py", line 1629, in do_init
+    self._setup_join_conditions()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\relationships.py", line 1704, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\relationships.py", line 1972, in __init__
+    self._determine_joins()
+  File "C:\p2\Python27\lib\site-packages\sqlalchemy\orm\relationships.py", line 2076, in _determine_joins
+    "specify a 'primaryjoin' expression." % self.prop)
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Order.Person 
+- there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or 
+ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\26select2>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
