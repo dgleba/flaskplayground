@@ -1,5 +1,7 @@
 """
 
+read table, print columns.
+
 http://stackoverflow.com/questions/6039342/how-to-print-all-columns-in-sqlalchemy-orm
 
 

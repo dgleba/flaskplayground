@@ -3,6 +3,7 @@
 #
 # orginally from flask-admin auth example.
 #
+# reflect album table
 #
 
 import os
@@ -36,7 +37,7 @@ db = SQLAlchemy(app)
 
 # Define models - reflect
 
-# reflect models from the database...
+# reflect model from the database...
 
 connection = db.engine.connect()
 db.metadata.reflect(db.engine, only=['Album'])

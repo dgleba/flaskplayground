@@ -1,6 +1,3 @@
-#
-# simple db sqla app. use this as a base for db testing. 2016-02-10. David Gleba
-#
 
 '''
 

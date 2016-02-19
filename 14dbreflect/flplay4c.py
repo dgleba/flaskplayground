@@ -1,7 +1,7 @@
 #
 # flplay4c.py  - cleaned version of flplay4b.py
 #
-# declarative reflect with derived column - hybrid_property - works. 2016-02-10. David Gleba
+# declarative reflect with derived/calculated/grafted column - hybrid_property - works. 2016-02-10. David Gleba
 
 '''
 This is declarative reflect from these web pages..

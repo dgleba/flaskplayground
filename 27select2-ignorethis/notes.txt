@@ -1,0 +1,84 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-02-17[Feb-Wed]13-34PM
+
+CREATE TABLE "Orders" (
+	`O_Id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`OrderNo`	int NOT NULL UNIQUE,
+	`P_Id`	int,
+	`Name_fnln`	TEXT NOT NULL,
+    FOREIGN KEY (Name_fnln) REFERENCES Persons(Name_fnln)
+);
+
+ref.
+
+CREATE TABLE child ( 
+    id           INTEGER PRIMARY KEY, 
+    parent_id    INTEGER, 
+    description  TEXT,
+    FOREIGN KEY (parent_id) REFERENCES parent(id)
+);
+
+
+
+noworks in sqlite..
+REF:
+http://stackoverflow.com/questions/1884818/how-do-i-add-a-foreign-key-to-an-existing-sqlite-3-6-21-table
+
+ALTER TABLE Orders
+ADD FOREIGN KEY (Name_fnln)
+REFERENCES Persons(Name_fnln)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-02-17[Feb-Wed]12-33PM
+
+this was copied from 18 select and modified to be 26select2
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2016-02-15
+
+http://www.w3schools.com/sql/sql_foreignkey.asp
+
+
+CREATE TABLE Orders
+(
+O_Id int NOT NULL PRIMARY KEY,
+OrderNo int NOT NULL,
+P_Id int FOREIGN KEY REFERENCES Persons(P_Id)
+)
+
+
+CREATE TABLE Orders
+(
+O_Id integer NOT NULL Primary key AUTOINCREMENT,
+OrderNo int NOT NULL unique,
+P_Id int
+)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2016-02-15
+
+
+CREATE TABLE Persons
+(
+P_Id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Address varchar(255),
+City varchar(255)
+)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

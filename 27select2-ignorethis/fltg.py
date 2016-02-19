@@ -1,9 +1,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-my goal here was to monkey patch a select2 widget.
-start with the working 17select.
-change the primary key in persons to be the full name.
-try to populate the full name to the field in orders rather than the id from persons.
+do this...
+http://stackoverflow.com/questions/26684029/select2-field-implementation-in-flask-flask-admin
 
 ref.
 http://stackoverflow.com/questions/16160507/flask-admin-not-showing-foreignkey-columns
@@ -19,6 +17,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy import Column, ForeignKey, Integer, String, Table, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
+from flask_admin.form.widgets import Select2Widget
 
 # Create application
 app = Flask(__name__)
@@ -51,7 +51,6 @@ class Order(Base):
 
     Person = relationship(u'Person')
 
-
 class Person(Base):
     __tablename__ = 'Persons'
 
@@ -63,8 +62,7 @@ class Person(Base):
     
     def __unicode__(self):
         return self.Name_fnln
-   
-
+        
 #reflect table...   
 class users(db.Model):
     __table__ = db.Table(
@@ -73,22 +71,27 @@ class users(db.Model):
         autoload=True,
         autoload_with=db.engine
     )
-    
-    
+  
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
 # Flask views
 @app.route('/')
 def index():
     return '<a href="/admin/">Click me to get to Admin!</a>'
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   
+
 # customize views..
-   
 class dgview(sqla.ModelView):
     column_display_pk = True
    
+    name= QuerySelectField(query_factory=lambda: models.User.query.all(),
+                           widget=Select2Widget())
+
+class Personview(sqla.ModelView):
+    column_display_pk = True
+  
+    Name_fnln= QuerySelectField(query_factory=lambda: models.User.query.all(),
+                           widget=Select2Widget())
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
@@ -96,15 +99,12 @@ class dgview(sqla.ModelView):
 admin = admin.Admin(app, name='fltg 8select', template_mode='bootstrap3')
 
 admin.add_view(dgview(users, db.session))
-admin.add_view(dgview(Person, db.session))
+admin.add_view(Personview(Person, db.session))
 admin.add_view(dgview(Order, db.session))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if __name__ == '__main__':
-
-    # Create DB
-    #db.create_all()
 
     # Start app
     app.run(host='0.0.0.0', port=5000, debug=True)

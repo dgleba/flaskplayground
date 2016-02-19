@@ -1,6 +1,3 @@
-#
-# declarative reflect with derived column - hybrid_property - works. 2016-02-10. David Gleba
-#
 
 '''
 

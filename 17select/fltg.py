@@ -1,6 +1,6 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-select field working. 2016-02-15_Mon_14.51-PM
+select2 field working. 2016-02-15_Mon_14.51-PM
 foreign key defined in db.
 
 ref.

@@ -35,13 +35,14 @@ twitter bootstrap3
 sqlalchemy
 flask-sqlalchemy
 flask-security
+select2
 deployment weurkzug apache nginx gnunicorn
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 2016
 
-jan 7 start
+jan 2 start
 
 
 
