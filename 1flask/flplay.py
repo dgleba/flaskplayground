@@ -1,9 +1,9 @@
 #
-# purpose: reflect album table.
+# purpose: 
+# -reflect album table.
+# -custom template with custom CSS - full width of screen - dgmaster.html. works.
 #
 # orginally from flask-admin auth example.
-#
-# reflect album table
 #
 
 import os
@@ -24,7 +24,6 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import column_property
 import flask_admin as admin
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Create Flask application
@@ -34,7 +33,6 @@ app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 # Define models - reflect
 
 # reflect model from the database...
@@ -46,16 +44,13 @@ Base.prepare()
 
 dbc_album = Base.classes.Album
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				
 		
 roles_users = db.Table(
     'roles_users',
 	db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
 )
-
 
 class Role(db.Model, RoleMixin):
     id = db.Column(db.Integer(), primary_key=True)
@@ -64,7 +59,6 @@ class Role(db.Model, RoleMixin):
 
     def __str__(self):
         return self.name
-
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -79,7 +73,6 @@ class User(db.Model, UserMixin):
 
     def __str__(self):
         return self.email
-
 		
 		
 # Setup Flask-Security
@@ -91,9 +84,7 @@ security = Security(app, user_datastore)
 # Create customized model view class
 
 class MyModelView2(sqla.ModelView):
-
     column_display_pk = True
-
 
 class MyModelView(sqla.ModelView):
 
@@ -118,15 +109,12 @@ class MyModelView(sqla.ModelView):
                 # login
                 return redirect(url_for('security.login', next=request.url))
 
-
-
 # Flask views
 
 @app.route('/')
 
 def index():
     return render_template('index.html')
-
 
 # Create admin
 
@@ -138,9 +126,7 @@ admin = flask_admin.Admin(
 )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 # customize table
-
 
 class album_view(MyModelView):
 
@@ -158,25 +144,18 @@ class album_view(MyModelView):
     
     #column_filters = ['machine', 'cycletime', 'part_number',]
 
-
-    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Add model views
 
-
 admin.add_view(album_view(dbc_album, db.session))
-
 
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
 
-
 dir(dbc_album)
-
    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # define a context processor for merging flask-admin's template context into the
 # flask-security views.
@@ -194,7 +173,6 @@ def build_sample_db():
     
     Populate a small db with some example entries.
     """
-
     import string
     import random
 

@@ -1,13 +1,11 @@
 #
 # purpose: 
-# get 3 columns from customer table. 2016-02-08_Mon_13.38-PM works!
-# reflect one table and define another directly with class. works.
-# derived/calculated/grafted column. works.
-# custom template with custom CSS. works.
+# -get 3 columns from customer table. 2016-02-08_Mon_13.38-PM works!
+# -reflect one table and define another directly with class. works.
+# -derived/calculated/grafted column. works.
+# -custom template with custom CSS - full width of screen - dgmaster.html. works.
 # 
-#
 # orginally from flask-admin auth example.
-#
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -179,17 +177,12 @@ def index():
 
 # Create admin
 
-admin = flask_admin.Admin(
-                          app,
-                          'flaskplayground',
-                          base_template='dgmaster.html',
-                          template_mode='bootstrap3',
-                          )
+admin = flask_admin.Admin(app,  'flaskplayground', 
+                          base_template='dgmaster.html', template_mode='bootstrap3',)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # customize tables
-
 
 class customer_view(MyModelView):
 
@@ -211,22 +204,18 @@ class customer_view(MyModelView):
      'Email'   ]
 
     #column_filters = [IntGreaterFilter(Screen.number_of_pixels,  'Number of Pixels')]
-
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Add model views
-
 
 #admin.add_view(customer_view(Customer, db.session))
 #admin.add_view(MyModelView(dbc_album, db.session))
 
 #admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
-
    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # define a context processor for merging flask-admin's template context into the
 # flask-security views.
