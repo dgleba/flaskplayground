@@ -12,7 +12,7 @@ set wpip=c:\p2\Python27\Scripts\pip
 cd C:\n\Dropbox\csd\VCS-git\flaskplay\1flask
 
 
-: %wpip% install -r requirements.txt
+ %wpip% install -r requirements.txt
 
 set wpy=c:\p2\python27\python
 
