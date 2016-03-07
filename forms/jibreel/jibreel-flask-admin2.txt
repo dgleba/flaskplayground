@@ -1,0 +1,27 @@
+
+
+
+http://jibreel.me/blog/1/
+
+
+https://github.com/spaceexperiment/Code-for-CRUD-admin-tutorial.git jibreel
+
+
+set wpy=c:\p2\python27\python
+set wpip=c:\p2\Python27\Scripts\pip
+
+c:
+cd C:\p2\xampp\htdocs\python\jibreel
+ 
+
+run --  create commands on python command line.
+
+
+%wpy% run.py
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

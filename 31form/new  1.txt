@@ -1,0 +1,47 @@
+"""
+        Base administrative view.
+
+        Derive from this class to implement your administrative interface piece. For example::
+
+from flask_admin import BaseView, expose
+class MyView(BaseView):
+    @expose('/')
+    def index(self):
+        return 'Hello World!'
+
+        Icons can be added to the menu by using `menu_icon_type` and `menu_icon_value`. For example::
+
+admin.add_view(MyView(name='My View', menu_icon_type='glyph', menu_icon_value='glyphicon-home'))
+"""
+
+
+
+
+!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+html
+    head
+        titleReusable Form Demo/title
+    /head
+    body
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                ul
+                    {% for message in messages %}
+                        li{{ message[1] }}/li
+                    {% endfor %}
+                /ul
+            {% endif %}
+        {% endwith %}
+        form action="" method="post"
+            {{ form.csrf }}
+ 
+            div class="input text"
+                {{ form.name.label }} {{ form.name }}
+            /div
+ 
+            div class="input submit"
+                input type="submit" value="Submit" /
+            /div
+        /form
+    /body
+/html
