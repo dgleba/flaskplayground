@@ -1,0 +1,242 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Flask SQLAlchemy</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: { inlineMath: [["$","$"],["\(","\)"]] },
+"HTML-CSS": {
+  linebreaks: { automatic: true, width: "container" }          
+}              
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+<script type="text/javascript" src="/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery-ui.min.js"></script>
+<link  rel="stylesheet" href="/scripts/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+<div class="row">
+             <h1 class="title">Flask – SQLAlchemy</h1>
+             <a href="http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm" id="print-source">http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>Using raw SQL in Flask web applications to perform CRUD operations on database can be tedious. Instead, <b>SQLAlchemy</b>, a Python toolkit is a powerful <b>OR Mapper</b> that gives application developers the full power and flexibility of SQL. Flask-SQLAlchemy is the Flask extension that adds support for SQLAlchemy to your Flask application.</p>
+<p><b>What is ORM (Object Relation Mapping)?</b></p>
+<p>Most programming language platforms are object oriented. Data in RDBMS servers on the other hand is stored as tables. Object relation mapping is a technique of mapping object parameters to the underlying RDBMS table structure. An ORM API provides methods to perform CRUD operations without having to write raw SQL statements.</p>
+<p>In this section, we are going to study the ORM techniques of Flask-SQLAlchemy and build a small web application.</p>
+<p><b>Step 1</b> &minus; Install Flask-SQLAlchemy extension.</p>
+<pre class="result notranslate">
+pip install flask-sqlalchemy
+</pre>
+<p><b>Step 2</b> &minus; You need to import SQLAlchemy class from this module.</p>
+<pre class="result notranslate">
+from flask_sqlalchemy import SQLAlchemy
+</pre>
+<p><b>Step 3</b> &minus; Now create a Flask application object and set URI for the database to be used.</p>
+<pre class="prettyprint notranslate">
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
+</pre>
+<p><b>Step 4</b> &minus; Then create an object of SQLAlchemy class with application object as the parameter. This object contains helper functions for ORM operations. It also provides a parent Model class using which user defined models are declared. In the snippet below, a <b>students</b> model is created.</p>
+<pre class="prettyprint notranslate">
+db = SQLAlchemy(app)
+class students(db.Model):
+   id = db.Column('student_id', db.Integer, primary_key = True)
+   name = db.Column(db.String(100))
+   city = db.Column(db.String(50))  
+   addr = db.Column(db.String(200))
+   pin = db.Column(db.String(10))
+
+def __init__(self, name, city, addr,pin):
+   self.name = name
+   self.city = city
+   self.addr = addr
+   self.pin = pin
+</pre>
+<p><b>Step 5</b> &minus; To create / use database mentioned in URI, run the <b>create_all()</b> method.</p>
+<pre class="result notranslate">
+db.create_all()
+</pre>
+<p>The <b>Session</b> object of <b>SQLAlchemy</b> manages all persistence operations of <b>ORM</b> object.</p>
+<p>The following session methods perform CRUD operations &minus;</p>
+<ul class="list">
+<li><p><b>db.session.add</b>(model object) &minus; inserts a record into mapped table</p></li>
+<li><p><b>db.session.delete</b>(model object) &minus; deletes record from table</p></li>
+<li><p><b>model.query.all()</b> &minus; retrieves all records from table (corresponding to SELECT query).</p></li>
+</ul>
+<p>You can apply a filter to the retrieved record set by using the filter attribute. For instance, in order to retrieve records with <b>city = ’Hyderabad’</b> in students table, use following statement &minus;</p>
+<pre class="result notranslate">
+Students.query.filter_by(city = ’Hyderabad’).all()
+</pre>
+<p>With this much of background, now we shall provide view functions for our application to add a student data.</p>
+<p>The entry point of the application is <b>show_all()</b> function bound to <b>‘/’</b> URL. The Record set of students table is sent as parameter to the HTML template. The Server side code in the template renders the records in HTML table form.</p>
+<pre class="prettyprint notranslate">
+@app.route('/')
+def show_all():
+   return render_template('show_all.html', students = students.query.all() )
+</pre>
+<p>The HTML script of the template <b>(‘show_all.html’)</b> is like this &minus;</p>
+<pre class="prettyprint notranslate">
+&lt;!DOCTYPE html&gt;
+&lt;html lang = "en"&gt;
+   &lt;head&gt;&lt;/head&gt;
+   &lt;body&gt;
+      
+      &lt;h3&gt;
+         &lt;a href = "{{ url_for('show_all') }}"&gt;Comments - Flask 
+            SQLAlchemy example&lt;/a&gt;
+      &lt;/h3&gt;
+      
+      &lt;hr/&gt;
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      &lt;h3&gt;Students (&lt;a href = "{{ url_for('new') }}"&gt;Add Student
+         &lt;/a&gt;)&lt;/h3&gt;
+      
+      &lt;table&gt;
+         &lt;thead&gt;
+            &lt;tr&gt;
+               &lt;th&gt;Name&lt;/th&gt;
+               &lt;th&gt;City&lt;/th&gt;
+               &lt;th&gt;Address&lt;/th&gt;
+               &lt;th&gt;Pin&lt;/th&gt;
+            &lt;/tr&gt;
+         &lt;/thead&gt;
+         
+         &lt;tbody&gt;
+            {% for student in students %}
+               &lt;tr&gt;
+                  &lt;td&gt;{{ student.name }}&lt;/td&gt;
+                  &lt;td&gt;{{ student.city }}&lt;/td&gt;
+                  &lt;td&gt;{{ student.addr }}&lt;/td&gt;
+                  &lt;td&gt;{{ student.pin }}&lt;/td&gt;
+               &lt;/tr&gt;
+            {% endfor %}
+         &lt;/tbody&gt;
+      &lt;/table&gt;
+      
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>The above page contains a hyperlink to <b>‘/new’</b> URL mapping <b>new()</b> function. When clicked, it opens a Student Information form. The data is posted to the same URL in <b>POST</b> method.</p>
+<h2>new.html</h2>
+<pre class="prettyprint notranslate">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;body&gt;
+   
+      &lt;h3&gt;Students - Flask SQLAlchemy example&lt;/h3&gt;
+      &lt;hr/&gt;
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         &lt;div class = "alert alert-danger"&gt;
+            {{ message }}
+         &lt;/div&gt;
+      {%- endfor %}
+      
+      &lt;form action = "{{ request.path }}" method = "post"&gt;
+         &lt;label for = "name"&gt;Name&lt;/label&gt;&lt;br&gt;
+         &lt;input type = "text" name = "name" placeholder = "Name" /&gt;&lt;br&gt;
+         &lt;label for = "email"&gt;City&lt;/label&gt;&lt;br&gt;
+         &lt;input type = "text" name = "city" placeholder = "city" /&gt;&lt;br&gt;
+         &lt;label for = "addr"&gt;addr&lt;/label&gt;&lt;br&gt;
+         &lt;textarea name = "addr" placeholder = "addr"&gt;&lt;/textarea&gt;&lt;br&gt;
+         &lt;label for = "PIN"&gt;City&lt;/label&gt;&lt;br&gt;
+         &lt;input type = "text" name = "pin" placeholder = "pin" /&gt;&lt;br&gt;
+         &lt;input type = "submit" value = "Submit" /&gt;
+      &lt;/form&gt;
+      
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>When the http method is detected as POST, the form data is added in the students table and the application returns to homepage showing the added data.</p>
+<pre class="prettyprint notranslate">
+@app.route('/new', methods = ['GET', 'POST'])
+def new():
+   if request.method == 'POST':
+      if not request.form['name'] or not request.form['city'] or not request.form['addr']:
+         flash('Please enter all the fields', 'error')
+      else:
+         student = students(request.form['name'], request.form['city'],
+            request.form['addr'], request.form['pin'])
+         
+         db.session.add(student)
+         db.session.commit()
+         
+         flash('Record was successfully added')
+         return redirect(url_for('show_all'))
+   return render_template('new.html')
+</pre>
+<p>Given below is the complete code of application <b>(app.py)</b>.</p>
+<pre class="prettyprint notranslate">
+from flask import Flask, request, flash, url_for, redirect, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
+app.config['SECRET_KEY'] = "random string"
+
+db = SQLAlchemy(app)
+
+class students(db.Model):
+   id = db.Column('student_id', db.Integer, primary_key = True)
+   name = db.Column(db.String(100))
+   city = db.Column(db.String(50))
+   addr = db.Column(db.String(200)) 
+   pin = db.Column(db.String(10))
+
+def __init__(self, name, city, addr,pin):
+   self.name = name
+   self.city = city
+   self.addr = addr
+   self.pin = pin
+
+@app.route('/')
+def show_all():
+   return render_template('show_all.html', students = students.query.all() )
+
+@app.route('/new', methods = ['GET', 'POST'])
+def new():
+   if request.method == 'POST':
+      if not request.form['name'] or not request.form['city'] or not request.form['addr']:
+         flash('Please enter all the fields', 'error')
+      else:
+         student = students(request.form['name'], request.form['city'],
+            request.form['addr'], request.form['pin'])
+         
+         db.session.add(student)
+         db.session.commit()
+         flash('Record was successfully added')
+         return redirect(url_for('show_all'))
+   return render_template('new.html')
+
+if __name__ == '__main__':
+   db.create_all()
+   app.run(debug = True)
+</pre>
+<p>Run the script from Python shell and enter <b>http://localhost:5000/</b> in the browser.</p>
+<img src="/flask/images/flask_sqlalchemy_example.jpg" alt="Flask SQLAlchemy Example" />
+<p>Click the <b>‘Add Student’</b> link to open <b>Student information</b> form.</p>
+<img src="/flask/images/add_student.jpg" alt="Add Student" />
+<p>Fill the form and submit. The home page reappears with the submitted data.</p>
+<p>We can see the output as shown below.</p>
+<img src="/flask/images/flask_sqlalchemy_example_output.jpg" alt="Flask SQLAlchemy Example Output" />
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>

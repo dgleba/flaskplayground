@@ -1,0 +1,297 @@
+@Charset "utf-8";
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+.content img {
+  max-width: 100%!important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 4px;
+}
+h1 {
+  font-size: 2.2em;
+  font-weight: normal;
+  padding-bottom: .3em!important;
+  margin-bottom: 1em;
+  text-shadow: 2px 2px 3px #ccc;
+  text-align: center;
+}
+.E, .B{
+   display:none;
+}
+#print-wrapper{
+  margin:0 auto;
+  word-wrap:break-word;
+}
+#print-content a, #print-content select, #print-content input {
+   outline:none;
+}
+#print-content{
+   background:none !important;
+   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+   font-size:14px;
+   position: relative;
+   word-wrap:break-word;
+}
+#print-content a{
+   color: #464242;
+   text-shadow: 1px 1px 1px #fff; /* FF3.5+, Opera 9+, Saf1+, Chrome */
+   cursor:pointer;
+   text-decoration:none;
+}
+a:hover
+{
+   color:#465e0c;
+   background-color:#dfdfdf;
+   background-color: rgba(0, 0, 0, 0.03);  /* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 */
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#07000000,endColorstr=#07000000); /* IE */
+}
+
+#print-area-wrapper{
+  background-color: #fefefe;
+  padding: 28px 36px;
+  border-left:1px solid #888;
+  border-right:1px solid #888;
+  border-bottom:1px solid #888;
+  border-top: 1px solid #dedede;
+  word-wrap:break-word;
+}
+#actual-print-area h1{
+   border-bottom:1px solid #000;
+   font-size:150%;
+   margin:0;
+   padding-bottom:4px;
+   text-transform:uppercase;
+}
+#actual-print-area h2, #actual-print-area h3, #actual-print-area h4{
+   font-size:120%;
+}
+table {
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th {
+  text-align: left;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table-bordered {
+  border: 1px solid #ddd;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 1px solid #ddd;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+#actual-print-area a, #actual-print-area a:active, #actual-print-area a:visited
+{
+   color: navy;
+   word-wrap: break-word;
+}
+#actual-print-area a#print-source, #actual-print-area a#print-source:visited
+{
+   float:left;
+   font-size:12px;
+   margin-top:4px;
+   color: #bbb;
+   text-decoration: none;
+   max-width:700px;
+}
+#page-print-copy {
+   float:right;
+   font-size:11px;
+   margin-top:4px;
+   color: #bbb;
+}
+#actual-print-area input {
+  visibility: hidden;
+}
+#actual-print-area hr{
+  clear: both;
+}
+#actual-print-area img{
+  margin: 0 auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#actual-print-area pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+#actual-print-area li{
+   margin:.75em 0;
+}
+#actual-print-area li img{
+   float:none; display:inline; margin-top:0; margin-bottom:0;
+}
+#actual-print-area blockquote {
+   margin:2.5em;
+   padding:0 .75em;
+   border-left:2px solid #ccc;
+   font-style:italic;
+   color:#666;
+}
+#actual-print-area table {
+    font-size: 1em;
+    margin: 2em 0;
+    border-collapse:collapse;
+} 
+#actual-print-area thead, #actual-print-area th {
+    font-weight: bold;
+    background-color: #efefef;
+}
+#actual-print-area th, #actual-print-area td, #actual-print-area caption {
+    padding:.5em .75em .5em .5em;
+    vertical-align: top;  
+}
+#actual-print-area tfoot {font-style:italic;}
+
+#actual-print-area code {
+    font:1em "Courier New", Monaco, Courier, monospace;
+}
+#actual-print-area center {
+  margin:0 !important; text-align: inherit !important;
+}
+#print-wrapper{
+   width:535pt;
+   word-wrap:break-word;
+   margin:0px;
+   padding:0px;
+/*
+   border-right:2px solid black;
+   border-bottom:2px solid black;
+   border-top:1px solid black;
+   border-left:1px solid black;
+*/
+   margin: 0 auto;
+   -webkit-box-shadow: 0 0 35px #000;
+   -moz-box-shadow: 0 0 35px #000;
+}
+body{
+   background:#aaa;
+}
+pre.prettyprint, pre.result { 
+   border:1px solid #464242;
+   background-color:#fff;
+   width: 98%%;
+   padding:5px;
+   margin:0px;
+   font-size: 13px;
+   white-space: pre-wrap;
+}
+table.src{
+   border:1px solid #d6d6d6;
+   width:100%;
+   border-collapse:collapse;
+   vertical-align:top;
+   margin-top:8px;
+   margin-bottom:8px;
+   background-color:#fff;
+}
+table.src td {
+   border-collapse:collapse;
+   border:1px solid #d6d6d6;
+   padding:5px;
+}
+table.src th{
+   border-collapse:collapse;
+   border:1px solid #d6d6d6;
+   background-color:#eee;
+   padding:5px;
+   text-align:left;
+}
+table.src th.fivepct{
+   width:5%;
+}
+table.src th.thirtypct{
+   width:30%;
+}
+@media print{
+    body{
+       background:#fff;
+    }
+    #print-wrapper{
+        width:auto;
+        word-wrap:break-word;
+        margin:0px;
+        padding:0px;
+        border:none;
+    }
+    #print-area-wrapper{
+     background-color: transparent;
+     padding: 0;
+     margin: 0;
+     border:none;
+   }
+   @page{
+     margin-top:1in;
+     margin-bottom:1in;
+     margin-left:0.5in;
+     margin-right:0.5in;
+   }
+
+   #actual-print-area img{
+      margin: 0 0 12pt 12pt!important;
+      padding:0;
+   }
+   body { 
+      font-family: Georgia, "Times New Roman", Times, serif;  
+      font-size: 14px;  
+   } 
+   table.src{
+      border:1px solid #d6d6d6;
+      width:100%;
+      border-collapse:collapse;
+      vertical-align:top;
+      margin-top:8px;
+      margin-bottom:8px;
+      background-color:#fff;
+   }
+   table.src td {
+      border-collapse:collapse;
+      border:1px solid #d6d6d6;
+      padding:5px;
+   }
+   table.src th{
+      border-collapse:collapse;
+      border:1px solid #d6d6d6;
+      background-color:#eee;
+      padding:5px;
+      text-align:left;
+   }
+   table.src th.fivepct{
+      width:5%;
+   }
+   table.src th.thirtypct{
+      width:30%;
+   }
+
+}

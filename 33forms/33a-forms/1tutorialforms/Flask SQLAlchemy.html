@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.tutorialspoint.com/cgi-bin/printpage.cgi -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Flask SQLAlchemy</title>
+<link rel="shortcut icon" href="http://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<!--<base href="http://www.tutorialspoint.com">--><base href=".">
+<script type="text/x-mathjax-config;executed=true">
+MathJax.Hub.Config({
+tex2jax: { inlineMath: [["$","$"],["\(","\)"]] },
+"HTML-CSS": {
+  linebreaks: { automatic: true, width: "container" }          
+}              
+});
+</script>
+<script type="text/javascript" src="./Flask SQLAlchemy_files/MathJax.js"> </script>
+<script type="text/javascript" src="./Flask SQLAlchemy_files/jquery.min.js"></script>
+<script type="text/javascript" src="./Flask SQLAlchemy_files/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="./Flask SQLAlchemy_files/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./Flask SQLAlchemy_files/print.css">
+<link rel="stylesheet" type="text/css" href="./Flask SQLAlchemy_files/prettify.css">
+<script type="text/javascript" src="./Flask SQLAlchemy_files/prettify.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body onload="prettyPrint()"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+<div class="row">
+             <h1 class="title">Flask – SQLAlchemy</h1>
+             <a href="http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm" id="print-source">http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm</a><div id="page-print-copy">Copyright © tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>Using raw SQL in Flask web applications to perform CRUD operations on database can be tedious. Instead, <b>SQLAlchemy</b>, a Python toolkit is a powerful <b>OR Mapper</b> that gives application developers the full power and flexibility of SQL. Flask-SQLAlchemy is the Flask extension that adds support for SQLAlchemy to your Flask application.</p>
+<p><b>What is ORM <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mi>b</mi><mi>j</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>R</mi><mi>e</mi><mi>l</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>M</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>g</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">Object Relation Mapping</script>?</b></p>
+<p>Most programming language platforms are object oriented. Data in RDBMS servers on the other hand is stored as tables. Object relation mapping is a technique of mapping object parameters to the underlying RDBMS table structure. An ORM API provides methods to perform CRUD operations without having to write raw SQL statements.</p>
+<p>In this section, we are going to study the ORM techniques of Flask-SQLAlchemy and build a small web application.</p>
+<p><b>Step 1</b> − Install Flask-SQLAlchemy extension.</p>
+<pre class="result notranslate">pip install flask-sqlalchemy
+</pre>
+<p><b>Step 2</b> − You need to import SQLAlchemy class from this module.</p>
+<pre class="result notranslate">from flask_sqlalchemy import SQLAlchemy
+</pre>
+<p><b>Step 3</b> − Now create a Flask application object and set URI for the database to be used.</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="pln">app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Flask</span><span class="pun">(</span><span class="pln">__name__</span><span class="pun">)</span><span class="pln">
+app</span><span class="pun">.</span><span class="pln">config</span><span class="pun">[</span><span class="str">'SQLALCHEMY_DATABASE_URI'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'sqlite:///students.sqlite3'</span></pre>
+<p><b>Step 4</b> − Then create an object of SQLAlchemy class with application object as the parameter. This object contains helper functions for ORM operations. It also provides a parent Model class using which user defined models are declared. In the snippet below, a <b>students</b> model is created.</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="pln">db </span><span class="pun">=</span><span class="pln"> </span><span class="typ">SQLAlchemy</span><span class="pun">(</span><span class="pln">app</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> students</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">Model</span><span class="pun">):</span><span class="pln">
+   id </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="str">'student_id'</span><span class="pun">,</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Integer</span><span class="pun">,</span><span class="pln"> primary_key </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">True</span><span class="pun">)</span><span class="pln">
+   name </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">100</span><span class="pun">))</span><span class="pln">
+   city </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">50</span><span class="pun">))</span><span class="pln">  
+   addr </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">200</span><span class="pun">))</span><span class="pln">
+   pin </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">10</span><span class="pun">))</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> name</span><span class="pun">,</span><span class="pln"> city</span><span class="pun">,</span><span class="pln"> addr</span><span class="pun">,</span><span class="pln">pin</span><span class="pun">):</span><span class="pln">
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> name
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">city </span><span class="pun">=</span><span class="pln"> city
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">addr </span><span class="pun">=</span><span class="pln"> addr
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">pin </span><span class="pun">=</span><span class="pln"> pin</span></pre>
+<p><b>Step 5</b> − To create / use database mentioned in URI, run the <b>create_all<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; /&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"></math></span></span><script type="math/tex" id="MathJax-Element-2"></script></b> method.</p>
+<pre class="result notranslate">db.create_all()
+</pre>
+<p>The <b>Session</b> object of <b>SQLAlchemy</b> manages all persistence operations of <b>ORM</b> object.</p>
+<p>The following session methods perform CRUD operations −</p>
+<ul class="list">
+<li><p><b>db.session.add</b><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>b</mi><mi>j</mi><mi>e</mi><mi>c</mi><mi>t</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">model object</script> − inserts a record into mapped table</p></li>
+<li><p><b>db.session.delete</b><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>b</mi><mi>j</mi><mi>e</mi><mi>c</mi><mi>t</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">model object</script> − deletes record from table</p></li>
+<li><p><b>model.query.all<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; /&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"></math></span></span><script type="math/tex" id="MathJax-Element-5"></script></b> − retrieves all records from table <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mi>o</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>p</mi><mi>o</mi><mi>n</mi><mi>d</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>o</mi><mi>S</mi><mi>E</mi><mi>L</mi><mi>E</mi><mi>C</mi><mi>T</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">corresponding to SELECT query</script>.</p></li>
+</ul>
+<p>You can apply a filter to the retrieved record set by using the filter attribute. For instance, in order to retrieve records with <b>city = ’Hyderabad’</b> in students table, use following statement −</p>
+<pre class="result notranslate">Students.query.filter_by(city = ’Hyderabad’).all()
+</pre>
+<p>With this much of background, now we shall provide view functions for our application to add a student data.</p>
+<p>The entry point of the application is <b>show_all<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; /&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"></math></span></span><script type="math/tex" id="MathJax-Element-7"></script></b> function bound to <b>‘/’</b> URL. The Record set of students table is sent as parameter to the HTML template. The Server side code in the template renders the records in HTML table form.</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="lit">@app</span><span class="pun">.</span><span class="pln">route</span><span class="pun">(</span><span class="str">'/'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> show_all</span><span class="pun">():</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> render_template</span><span class="pun">(</span><span class="str">'show_all.html'</span><span class="pun">,</span><span class="pln"> students </span><span class="pun">=</span><span class="pln"> students</span><span class="pun">.</span><span class="pln">query</span><span class="pun">.</span><span class="pln">all</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span></pre>
+<p>The HTML script of the template <b><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo&gt;&amp;#x2018;&lt;/mo&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/msub&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;msup&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>‘</mo><mi>s</mi><mi>h</mi><mi>o</mi><msub><mi>w</mi><mi>a</mi></msub><mi>l</mi><mi>l</mi><mo>.</mo><mi>h</mi><mi>t</mi><mi>m</mi><msup><mi>l</mi><mo>′</mo></msup></math></span></span><script type="math/tex" id="MathJax-Element-8">‘show_all.html’</script></b> is like this −</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"en"</span><span class="tag">&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;&lt;/head&gt;</span><span class="pln">
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;h3&gt;</span><span class="pln">
+         </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"{{ url_for('show_all') }}"</span><span class="tag">&gt;</span><span class="pln">Comments - Flask 
+            SQLAlchemy example</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;hr/&gt;</span><span class="pln">
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      </span><span class="tag">&lt;h3&gt;</span><span class="pln">Students (</span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"{{ url_for('new') }}"</span><span class="tag">&gt;</span><span class="pln">Add Student
+         </span><span class="tag">&lt;/a&gt;</span><span class="pln">)</span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;table&gt;</span><span class="pln">
+         </span><span class="tag">&lt;thead&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+               </span><span class="tag">&lt;th&gt;</span><span class="pln">Name</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+               </span><span class="tag">&lt;th&gt;</span><span class="pln">City</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+               </span><span class="tag">&lt;th&gt;</span><span class="pln">Address</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+               </span><span class="tag">&lt;th&gt;</span><span class="pln">Pin</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/thead&gt;</span><span class="pln">
+         
+         </span><span class="tag">&lt;tbody&gt;</span><span class="pln">
+            {% for student in students %}
+               </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;td&gt;</span><span class="pln">{{ student.name }}</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;td&gt;</span><span class="pln">{{ student.city }}</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;td&gt;</span><span class="pln">{{ student.addr }}</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;td&gt;</span><span class="pln">{{ student.pin }}</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            {% endfor %}
+         </span><span class="tag">&lt;/tbody&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+      
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p>The above page contains a hyperlink to <b>‘/new’</b> URL mapping <b>new<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; /&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"></math></span></span><script type="math/tex" id="MathJax-Element-9"></script></b> function. When clicked, it opens a Student Information form. The data is posted to the same URL in <b>POST</b> method.</p>
+<h2>new.html</h2>
+<pre class="prettyprint notranslate prettyprinted"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+   
+      </span><span class="tag">&lt;h3&gt;</span><span class="pln">Students - Flask SQLAlchemy example</span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+      </span><span class="tag">&lt;hr/&gt;</span><span class="pln">
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"alert alert-danger"</span><span class="tag">&gt;</span><span class="pln">
+            {{ message }}
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+      {%- endfor %}
+      
+      </span><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">action</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"{{ request.path }}"</span><span class="pln"> </span><span class="atn">method</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"post"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"name"</span><span class="tag">&gt;</span><span class="pln">Name</span><span class="tag">&lt;/label&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"name"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Name"</span><span class="pln"> </span><span class="tag">/&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"email"</span><span class="tag">&gt;</span><span class="pln">City</span><span class="tag">&lt;/label&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"city"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"city"</span><span class="pln"> </span><span class="tag">/&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"addr"</span><span class="tag">&gt;</span><span class="pln">addr</span><span class="tag">&lt;/label&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;textarea</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"addr"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"addr"</span><span class="tag">&gt;&lt;/textarea&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"PIN"</span><span class="tag">&gt;</span><span class="pln">City</span><span class="tag">&lt;/label&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"pin"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"pin"</span><span class="pln"> </span><span class="tag">/&gt;&lt;br&gt;</span><span class="pln">
+         </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"submit"</span><span class="pln"> </span><span class="atn">value</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Submit"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/form&gt;</span><span class="pln">
+      
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p>When the http method is detected as POST, the form data is added in the students table and the application returns to homepage showing the added data.</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="lit">@app</span><span class="pun">.</span><span class="pln">route</span><span class="pun">(</span><span class="str">'/new'</span><span class="pun">,</span><span class="pln"> methods </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'GET'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">])</span><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> </span><span class="kwd">new</span><span class="pun">():</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">method </span><span class="pun">==</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">:</span><span class="pln">
+      </span><span class="kwd">if</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">]</span><span class="pln"> </span><span class="kwd">or</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'city'</span><span class="pun">]</span><span class="pln"> </span><span class="kwd">or</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'addr'</span><span class="pun">]:</span><span class="pln">
+         flash</span><span class="pun">(</span><span class="str">'Please enter all the fields'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'error'</span><span class="pun">)</span><span class="pln">
+      </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+         student </span><span class="pun">=</span><span class="pln"> students</span><span class="pun">(</span><span class="pln">request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">],</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'city'</span><span class="pun">],</span><span class="pln">
+            request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'addr'</span><span class="pun">],</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'pin'</span><span class="pun">])</span><span class="pln">
+         
+         db</span><span class="pun">.</span><span class="pln">session</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">student</span><span class="pun">)</span><span class="pln">
+         db</span><span class="pun">.</span><span class="pln">session</span><span class="pun">.</span><span class="pln">commit</span><span class="pun">()</span><span class="pln">
+         
+         flash</span><span class="pun">(</span><span class="str">'Record was successfully added'</span><span class="pun">)</span><span class="pln">
+         </span><span class="kwd">return</span><span class="pln"> redirect</span><span class="pun">(</span><span class="pln">url_for</span><span class="pun">(</span><span class="str">'show_all'</span><span class="pun">))</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> render_template</span><span class="pun">(</span><span class="str">'new.html'</span><span class="pun">)</span></pre>
+<p>Given below is the complete code of application <b><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax_Error" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><span aria-hidden="true">[Math Processing Error]</span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mi>p</mi><mi>p</mi><mo>.</mo><mi>p</mi><mi>y</mi></math></span></span><script type="math/tex" id="MathJax-Element-10">app.py</script></b>.</p>
+<pre class="prettyprint notranslate prettyprinted"><span class="kwd">from</span><span class="pln"> flask </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Flask</span><span class="pun">,</span><span class="pln"> request</span><span class="pun">,</span><span class="pln"> flash</span><span class="pun">,</span><span class="pln"> url_for</span><span class="pun">,</span><span class="pln"> redirect</span><span class="pun">,</span><span class="pln"> render_template
+</span><span class="kwd">from</span><span class="pln"> flask_sqlalchemy </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">SQLAlchemy</span><span class="pln">
+
+app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Flask</span><span class="pun">(</span><span class="pln">__name__</span><span class="pun">)</span><span class="pln">
+app</span><span class="pun">.</span><span class="pln">config</span><span class="pun">[</span><span class="str">'SQLALCHEMY_DATABASE_URI'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'sqlite:///students.sqlite3'</span><span class="pln">
+app</span><span class="pun">.</span><span class="pln">config</span><span class="pun">[</span><span class="str">'SECRET_KEY'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">"random string"</span><span class="pln">
+
+db </span><span class="pun">=</span><span class="pln"> </span><span class="typ">SQLAlchemy</span><span class="pun">(</span><span class="pln">app</span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> students</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">Model</span><span class="pun">):</span><span class="pln">
+   id </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="str">'student_id'</span><span class="pun">,</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Integer</span><span class="pun">,</span><span class="pln"> primary_key </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">True</span><span class="pun">)</span><span class="pln">
+   name </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">100</span><span class="pun">))</span><span class="pln">
+   city </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">50</span><span class="pun">))</span><span class="pln">
+   addr </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">200</span><span class="pun">))</span><span class="pln"> 
+   pin </span><span class="pun">=</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Column</span><span class="pun">(</span><span class="pln">db</span><span class="pun">.</span><span class="typ">String</span><span class="pun">(</span><span class="lit">10</span><span class="pun">))</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> name</span><span class="pun">,</span><span class="pln"> city</span><span class="pun">,</span><span class="pln"> addr</span><span class="pun">,</span><span class="pln">pin</span><span class="pun">):</span><span class="pln">
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> name
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">city </span><span class="pun">=</span><span class="pln"> city
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">addr </span><span class="pun">=</span><span class="pln"> addr
+   </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">pin </span><span class="pun">=</span><span class="pln"> pin
+
+</span><span class="lit">@app</span><span class="pun">.</span><span class="pln">route</span><span class="pun">(</span><span class="str">'/'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> show_all</span><span class="pun">():</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> render_template</span><span class="pun">(</span><span class="str">'show_all.html'</span><span class="pun">,</span><span class="pln"> students </span><span class="pun">=</span><span class="pln"> students</span><span class="pun">.</span><span class="pln">query</span><span class="pun">.</span><span class="pln">all</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+
+</span><span class="lit">@app</span><span class="pun">.</span><span class="pln">route</span><span class="pun">(</span><span class="str">'/new'</span><span class="pun">,</span><span class="pln"> methods </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'GET'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">])</span><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> </span><span class="kwd">new</span><span class="pun">():</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">method </span><span class="pun">==</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">:</span><span class="pln">
+      </span><span class="kwd">if</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">]</span><span class="pln"> </span><span class="kwd">or</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'city'</span><span class="pun">]</span><span class="pln"> </span><span class="kwd">or</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'addr'</span><span class="pun">]:</span><span class="pln">
+         flash</span><span class="pun">(</span><span class="str">'Please enter all the fields'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'error'</span><span class="pun">)</span><span class="pln">
+      </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+         student </span><span class="pun">=</span><span class="pln"> students</span><span class="pun">(</span><span class="pln">request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'name'</span><span class="pun">],</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'city'</span><span class="pun">],</span><span class="pln">
+            request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'addr'</span><span class="pun">],</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">[</span><span class="str">'pin'</span><span class="pun">])</span><span class="pln">
+         
+         db</span><span class="pun">.</span><span class="pln">session</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">student</span><span class="pun">)</span><span class="pln">
+         db</span><span class="pun">.</span><span class="pln">session</span><span class="pun">.</span><span class="pln">commit</span><span class="pun">()</span><span class="pln">
+         flash</span><span class="pun">(</span><span class="str">'Record was successfully added'</span><span class="pun">)</span><span class="pln">
+         </span><span class="kwd">return</span><span class="pln"> redirect</span><span class="pun">(</span><span class="pln">url_for</span><span class="pun">(</span><span class="str">'show_all'</span><span class="pun">))</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> render_template</span><span class="pun">(</span><span class="str">'new.html'</span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">'__main__'</span><span class="pun">:</span><span class="pln">
+   db</span><span class="pun">.</span><span class="pln">create_all</span><span class="pun">()</span><span class="pln">
+   app</span><span class="pun">.</span><span class="pln">run</span><span class="pun">(</span><span class="pln">debug </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">True</span><span class="pun">)</span></pre>
+<p>Run the script from Python shell and enter <b>http://localhost:5000/</b> in the browser.</p>
+<img src="./Flask SQLAlchemy_files/flask_sqlalchemy_example.jpg" alt="Flask SQLAlchemy Example">
+<p>Click the <b>‘Add Student’</b> link to open <b>Student information</b> form.</p>
+<img src="./Flask SQLAlchemy_files/add_student.jpg" alt="Add Student">
+<p>Fill the form and submit. The home page reappears with the submitted data.</p>
+<p>We can see the output as shown below.</p>
+<img src="./Flask SQLAlchemy_files/flask_sqlalchemy_example_output.jpg" alt="Flask SQLAlchemy Example Output">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<div class="extLives"></div><div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Size4, monospace;"></div></div></body></html>

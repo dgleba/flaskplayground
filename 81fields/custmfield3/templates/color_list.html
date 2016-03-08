@@ -1,0 +1,5 @@
+{% extends 'admin/model/list.html' %}
+
+{% macro color(model, column) %}
+<div style="width: 16px; height: 16px; border-radius: 5px; background-color: {{ model.value }}">&nbsp;</div>
+{% endmacro %}

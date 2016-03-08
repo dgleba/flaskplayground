@@ -1,0 +1,5 @@
+
+
+extending minitwit.
+http://librelist.com/browser/flask/2011/10/1/ui-multiple-autocomplete-plug-in/#d544696aed3ff5fcbb871cc42a03103e
+

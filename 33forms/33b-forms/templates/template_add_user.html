@@ -1,0 +1,24 @@
+{% block content %}
+<div class="form">
+    <form method="POST" action="/users/add" class="form">
+      <p class="username">
+      {{ form.username }} {{ form.username.label }}
+      </p>
+      <p class="email">
+      {{ form.email }} {{ form.email.label }}
+      </p>
+      <p class="password">
+      {{ form.password }} {{ form.password.label }}
+      </p>
+      <p class="confirm">
+      {{ form.confirm }} {{ form.confirm.label }}
+      </p>
+      <p class="country_id">
+      {{ form.country_id }} {{ form.country_id.label }}
+      </p>
+      <p class="submit">
+      <input type="submit" value="Register" class="button orange">
+      </p>
+    </form>
+</div>
+{% endblock content %}

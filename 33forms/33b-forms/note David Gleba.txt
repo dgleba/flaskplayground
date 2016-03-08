@@ -1,0 +1,60 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-07[Mar-Mon]13-12PM
+
+http://thomasbhatia.blogspot.ca/2012/10/flask-mysql-wtforms-sqlalchemy-that.html
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+old
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-07[Mar-Mon]10-38AM
+
+flask wtforms how to write data
+http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm
+
+
+try
+http://thomasbhatia.blogspot.ca/2012/10/flask-mysql-wtforms-sqlalchemy-that.html
+
+
+
+command line tool:
+http://projects.iccode.net/stef/flaskapp/wikis/home
+http://iccode.net/an-example-of-a-flask-application-done-with-the-flask-command-line-tool/
+https://github.com/stef-k/flaskapp
+
+ref
+http://librelist.com/browser//flask/2013/1/15/help-example-for-sqlalchemy-wtforms-edit-form/#58126e105a3db6bdf14910491af538f4
+
+ref
+https://github.com/pythonthusiast/bio
+
+example:
+http://latticeqcd.org/book_herman/default/chapter/10/06
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-07[Mar-Mon]12-55PM
+
+http://www.tutorialspoint.com/flask/flask_sqlalchemy.htm
+
+C:\p2\python27\Scripts\pip.exe install  flask-sqlalchemy
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
