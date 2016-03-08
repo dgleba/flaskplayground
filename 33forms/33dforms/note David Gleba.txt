@@ -1,0 +1,14 @@
+
+works
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-07[Mar-Mon]13-12PM
+
+based on
+chapter4
+from 
+C:\n\Dropbox\csd\serve\flaskbook\Flask Framework Cookbook - Aggarwal, Shalabh [SRG].pdf
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
