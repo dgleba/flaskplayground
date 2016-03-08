@@ -4,11 +4,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
 from flask_admin.contrib import sqla
-from wtforms import SelectField
-from functools import wraps
+#from wtforms import SelectField
+#from functools import wraps
 from flask import request, Blueprint, render_template, jsonify, flash, \
     redirect, url_for
-from sqlalchemy.orm.util import join
 
 app = Flask(__name__)  # Create application
 app.config['SECRET_KEY'] = '123456790'  # Create dummy secrey key so we can use sessions
@@ -19,7 +18,7 @@ db = SQLAlchemy(app)
 def index():
     return '''
     <a href="/admin/">Click me to get to Admin!</a>
-    </br>
+    </br></br>
     <a href="/pcr">Click me to create a product</a>
     '''
 class Product(db.Model):
@@ -36,7 +35,6 @@ class Product(db.Model):
     def __repr__(self):
         return '<Product %d>' % self.id
 
-
 @app.route('/pcr', methods=['GET', 'POST'])
 def create_product():
     if request.method == 'POST':
@@ -49,8 +47,6 @@ def create_product():
         flash('The product %s has been created' % name, 'success')
         return redirect(url_for('create_product', id=product.id))
     return render_template('product-create.html')
-
-
     
 # Create admin
 admin = admin.Admin(app, name='Select - from Local list', template_mode='bootstrap3')

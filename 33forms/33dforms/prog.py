@@ -40,7 +40,6 @@ def create_product():
         flash('The product %s has been created' % name, 'success')
         return redirect(url_for('create_product', id=product.id))
     return render_template('product-create.html')
-
   
 # Create admin
 admin = admin.Admin(app, name='Select - from Local list', template_mode='bootstrap3')
