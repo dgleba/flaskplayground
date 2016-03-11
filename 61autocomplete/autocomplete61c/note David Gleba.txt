@@ -1,0 +1,18 @@
+
+works
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-07[Mar-Mon]13-12PM
+
+autocomplete based on:
+
+  http://stackoverflow.com/questions/34704997/jquery-autocomplete-in-flask
+
+
+form based on
+  chapter4 from 
+  C:\n\Dropbox\csd\serve\flaskbook\Flask Framework Cookbook - Aggarwal, Shalabh [SRG].pdf
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

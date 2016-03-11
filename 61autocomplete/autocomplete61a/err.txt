@@ -1,0 +1,53 @@
+werkzeug.routing.BuildError
+BuildError: Could not build url for endpoint 'autocomplete'. Did you mean 'product.delete_view' instead?
+
+Traceback (most recent call last)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1836, in __call__
+return self.wsgi_app(environ, start_response)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1820, in wsgi_app
+response = self.make_response(self.handle_exception(e))
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1403, in handle_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1817, in wsgi_app
+response = self.full_dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1477, in full_dispatch_request
+rv = self.handle_user_exception(e)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1381, in handle_user_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1475, in full_dispatch_request
+rv = self.dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1461, in dispatch_request
+return self.view_functions[rule.endpoint](**req.view_args)
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\33forms\33dforms\prog.py", line 42, in create_product
+return render_template('product-create.html')
+File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 128, in render_template
+context, ctx.app)
+File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 110, in _render
+rv = template.render(context)
+File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 989, in render
+return self.environment.handle_exception(exc_info, True)
+File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 754, in handle_exception
+reraise(exc_type, exc_value, tb)
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\33forms\33dforms\templates\product-create.html", line 1, in top-level template code
+{% extends 'home.html' %}
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\33forms\33dforms\templates\home.html", line 1, in top-level template code
+{% extends 'base.html' %}
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\33forms\33dforms\templates\base.html", line 20, in top-level template code
+$.getJSON("{{url_for('autocomplete')}}",{
+File "C:\p2\Python27\lib\site-packages\flask\helpers.py", line 312, in url_for
+return appctx.app.handle_url_build_error(error, endpoint, values)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1641, in handle_url_build_error
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\helpers.py", line 305, in url_for
+force_external=external)
+File "C:\p2\Python27\lib\site-packages\werkzeug\routing.py", line 1758, in build
+raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'autocomplete'. Did you mean 'product.delete_view' instead?
+The debugger caught an exception in your WSGI application. You can now look at the traceback which led to the error.
+To switch between the interactive traceback and the plaintext one, you can click on the "Traceback" headline. From the text traceback you can also create a paste of it. For code execution mouse-over the frame you want to debug and click on the console icon on the right side.
+
+You can execute arbitrary Python code in the stack frames and there are some extra helpers available for introspection:
+
+dump() shows all variables in the frame
+dump(obj) dumps all that's known about the object
+Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.

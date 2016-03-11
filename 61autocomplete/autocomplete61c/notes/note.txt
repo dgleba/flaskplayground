@@ -1,0 +1,33 @@
+
+    <script src="{{ url_for('static', filename='dgmain.js') }}"></script>
+
+_____________
+
+    
+<script>
+//
+$(document).ready(function autoc1(){
+    
+    // jquery works in html file but not separate file
+    // https://www.codecademy.com/forum_questions/5438227f8c1ccc12e6000037
+    // http://localhost:5000/%7B%7Burl_for('_autocomplete')%7D%7D?q=a 404 (NOT FOUND)
+    // /%7B%7Burl_for(' ')%7D%7D? 404 (NOT FOUND)
+        
+    //var $ = jQuery;
+
+    $("#namefld")
+    .autocomplete({
+        source:function(request, response) {
+            $.getJSON('{{url_for("user_email_autocomplete")}}',{
+                q: request.term, // in flask, "q" will be the argument to look for using request.args
+            }, function(data) {
+                response(data.matching_results); // matching_results from jsonify
+            });
+        },
+        minLength: 1,
+        select: function(event, ui) {
+            console.log(ui.item.value); 
+        }
+    });
+});
+</script>
