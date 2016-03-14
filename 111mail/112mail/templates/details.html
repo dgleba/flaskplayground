@@ -1,0 +1,19 @@
+{% extends 'admin/model/details.html' %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block details_search %}
+    {{ super() }}
+<!--      <a href="{{ url_for('index') }}">Email this record to the group.</a>
+ -->     
+        <a href="{{ url_for('index') }}" class="btn btn-info" role="button">Email this to the group</a>
+     <hr>
+{% endblock %}
+
+ 
+{% block tail %}
+    {{ super() }}
+{% endblock %}

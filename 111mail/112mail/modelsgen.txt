@@ -1,0 +1,78 @@
+# coding: utf-8
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Table, Text
+from sqlalchemy.sql.sqltypes import NullType
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Base = declarative_base()
+metadata = Base.metadata
+
+
+class Order(Base):
+    __tablename__ = 'Orders'
+
+    O_Id = Column(Integer, primary_key=True)
+    OrderNo = Column(Integer, nullable=False, unique=True)
+    P_Id = Column(Integer)
+
+
+class Person(Base):
+    __tablename__ = 'Persons'
+
+    P_Id = Column(Integer, primary_key=True)
+    LastName = Column(String(255), nullable=False)
+    FirstName = Column(String(255))
+    Address = Column(String(255))
+    City = Column(String(255))
+    Group = Column(Text)
+
+
+class Car(Base):
+    __tablename__ = 'cars'
+
+    id = Column(Integer, primary_key=True)
+    desc = Column(String(50))
+
+
+class City(Base):
+    __tablename__ = 'cities'
+
+    c_id = Column(Integer, primary_key=True)
+    citylist = Column(Text, nullable=False)
+
+
+t_sqlite_sequence = Table(
+    'sqlite_sequence', metadata,
+    Column('name', NullType),
+    Column('seq', NullType)
+)
+
+
+class Tyre(Base):
+    __tablename__ = 'tyres'
+
+    car_id = Column(ForeignKey(u'cars.id'), primary_key=True, nullable=False)
+    tyre_id = Column(Integer, primary_key=True, nullable=False)
+    desc = Column(String(50))
+
+    car = relationship(u'Car')
+
+
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(Text(50), unique=True)
+    email = Column(Text(120), unique=True)
+    comment = Column(Text(245))
+    c3 = Column(Text(99))
+    upd = Column(DateTime)
+
+
+t_vw_user1 = Table(
+    'vw_user1', metadata,
+    Column('id', Integer),
+    Column('name', Text(50)),
+    Column('comment', Text(245))
+)
