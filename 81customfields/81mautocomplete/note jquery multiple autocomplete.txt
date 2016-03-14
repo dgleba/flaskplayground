@@ -1,20 +1,22 @@
 
-works 
+works:
 
-jq autocomplete
+jquery multiple autocomplete
 
 in flask-admin - replacing a form field - custom field
 
-3/13
+2016-03-13
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Title:  .
 -----------------------2016-03-07[Mar-Mon]13-12PM
 
-autocomplete based on:
+autocomplete ref:
 
   http://stackoverflow.com/questions/34704997/jquery-autocomplete-in-flask
 
-
+    https://jqueryui.com/autocomplete/#multiple-remote
+    
+    
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

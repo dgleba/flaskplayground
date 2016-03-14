@@ -1,0 +1,65 @@
+{% extends 'admin/model/create.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+{% endblock %}
+
+    
+{% block tail %}
+    {{ super() }}
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+    <script>
+    $(function() {
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+    $( "#tag_f1" )
+      // don't navigate away from the field on tab when selecting an item
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+            $.getJSON('{{url_for("tag_f1_autocomplete")}}',{
+                q: extractLast( request.term ) // in flask, "q" will be the argument to look for using request.args
+            }, function(data) {
+                response(data.matching_results); // matching_results from jsonify
+            });
+        },
+        search: function() {
+          // custom minLength
+          var term = extractLast( this.value );
+          if ( term.length < 1 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+    });
+    </script>
+     
+{% endblock %}
+
+ 

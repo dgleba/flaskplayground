@@ -1,6 +1,5 @@
 '''
-jQuery autocomplete List.tag_f1 field from User.email field choices
-
+jQuery multiple autocomplete List.tag_f1 autocompletes multiple times from User.email field choices
 '''
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -39,6 +38,7 @@ class User(db.Model):
 def index():
     return '<a href="/admin/">Click me to get to Admin!</a>'
 
+# query for multiple autocomplete field
 @app.route('/ue_autocomplete', methods=['GET'])
 def tag_f1_autocomplete():
     search = request.args.get('q')
@@ -53,7 +53,7 @@ class ListAdminView(sqla.ModelView):
 
 if __name__ == '__main__':
     # Create admin
-    admin = admin.Admin(app, name="jQuery Autocomplete" , template_mode='bootstrap3')
+    admin = admin.Admin(app, name="jQuery MultipleAutocomplete" , template_mode='bootstrap3')
     admin.add_view(ListAdminView(List, db.session))
     db.create_all()
     app.run(debug=True)
