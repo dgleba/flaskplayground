@@ -1,0 +1,24 @@
+{% extends 'admin/model/edit.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='simplecolorpicker.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block edit_form %}
+ <a href="{{ url_for('index') }}">Email this record to the group.</a>
+ <a href="{{ url_for('index') }}" class="btn btn-info" role="button">Email this to the group. (press Save and Continue editing first)</a>
+  <hr>
+    {{ super() }}
+{% endblock %}
+
+ 
+{% block tail %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='jquery.simplecolorpicker.js') }}"></script>
+
+    <script language="javascript">
+        $('select#value').simplecolorpicker();
+    </script>
+{% endblock %}

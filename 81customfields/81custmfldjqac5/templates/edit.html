@@ -1,0 +1,41 @@
+{% extends 'admin/model/create.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+{% endblock %}
+
+    
+{% block tail %}
+    {{ super() }}
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+    <script>
+    //
+    $(document).ready(function autotag_f1(){
+        
+        // jquery works in html file but not separate file
+        // https://www.codecademy.com/forum_questions/5438227f8c1ccc12e6000037
+        // in seperate .js file i got this error. just put in the scripts block. David Gleba 2016-03-10 03:19PM
+        // http://localhost:5000/%7B%7Burl_for('_autocomplete')%7D%7D?q=a 404 (NOT FOUND)
+        // /%7B%7Burl_for(' ')%7D%7D? 404 (NOT FOUND)
+
+        $("#tag_f1")
+        .autocomplete({
+            source:function(request, response) {
+                $.getJSON('{{url_for("tag_f1_autocomplete")}}',{
+                    q: request.term, // in flask, "q" will be the argument to look for using request.args
+                }, function(data) {
+                    response(data.matching_results); // matching_results from jsonify
+                });
+            },
+            minLength: 1,
+            select: function(event, ui) {
+                console.log(ui.item.value); 
+            }
+        });
+    });
+    </script>
+{% endblock %}
+
+

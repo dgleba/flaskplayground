@@ -1,0 +1,34 @@
+{% import 'admin/static.html' as admin_static with context %}
+{% import 'admin/lib.html' as lib with context %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Select2</title>
+    <link href="{{ admin_static.url(filename='bootstrap/bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ admin_static.url(filename='bootstrap/bootstrap3/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ admin_static.url(filename='admin/css/bootstrap3/admin.css') }}" rel="stylesheet">
+    {{ lib.form_css() }}
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <form>
+                    {{ lib.render_form_fields(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ admin_static.url(filename='vendor/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='bootstrap/bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='vendor/moment-2.8.4.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='vendor/select2/select2.min.js') }}" type="text/javascript"></script>
+    {{ lib.form_js() }}
+
+</body>
+</html>
+

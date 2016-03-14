@@ -10,8 +10,7 @@ import flask_admin as admin
 from flask_admin.contrib import sqla
 #from wtforms import SelectField
 #from functools import wraps
-from flask import request, Blueprint, render_template, jsonify, flash, \
-    redirect, url_for
+from flask import request, Blueprint, render_template, jsonify, flash, redirect, url_for
 
 app = Flask(__name__)  # Create application
 app.config['SECRET_KEY'] = '123456790'  # Create dummy secrey key so we can use sessions
