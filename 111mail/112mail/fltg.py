@@ -45,7 +45,7 @@ app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = creds.cred['gmailu']
-app.config["MAIL_PASSWORD"] = creds.cred['gmailpassn']
+app.config["MAIL_PASSWORD"] = creds.cred['gmailpass']
 mail.init_app(app)
 
 
@@ -66,6 +66,18 @@ class Person(db.Model):
 @app.route('/')
 def index():
     return '<a href="/admin/">Click me to get to Admin!</a>'
+    
+@app.route('/sendmail1')
+def msendmail1():
+    msg = Message('test-sendmail1-920160314', sender=creds.cred['gmailu'], recipients=['dgleba@gmail.com'])
+    msg.body = """
+    From: %s <%s>
+    %s
+    """ % ('dave', creds.cred['gmailu'], 'testdata392')
+    mail.send(msg)
+
+    
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # customize views..
   

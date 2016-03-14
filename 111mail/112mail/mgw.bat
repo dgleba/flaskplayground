@@ -14,7 +14,7 @@ rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mgw
 
 set wpip=c:\p2\Python27\Scripts\pip
 
-: %wpip% install -r requirements.txt
+ %wpip% install -r requirements.txt
 
 
 set wpy=c:\p2\python27\python
