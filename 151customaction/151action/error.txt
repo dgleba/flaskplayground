@@ -1,0 +1,34 @@
+
+_____________
+
+
+
+set wpip=c:\p2\Python27\Scripts\pip
+
+noworky... %wpip% install -e git+https://github.com/flask-admin/flask-admin.git@master#egg=flask-admin
+%wpip% install https://github.com/mitsuhiko/flask/tarball/master
+pip install https://github.com/mitsuhiko/flask/tarball/master
+
+
+%wpip% install --upgrade flask-admin
+
+
+
+_____________
+
+
+The following fixed error:
+
+UndefinedError: 'list_forms' is undefined // Werkzeug Debugger
+
+undefined 'list_forms' error. 
+when going to dog view in
+C:\n\Dropbox\csd\VCS-git\flaskplay\151customaction\151action\app.py
+https://github.com/flask-admin/flask-admin/issues/998#issuecomment-149047400
+
+%wpip% install --upgrade https://github.com/flask-admin/flask-admin/tarball/master
+
+
+
+_____________
+

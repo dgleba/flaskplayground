@@ -1,0 +1,12 @@
+
+http://localhost:5000/admin/list/edit/?url=%2Fadmin%2Flist%2F&id=1
+
+http://localhost:5000/admin/list/edit/?url=/admin/list/&id=1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-16[Mar-Wed]08-05AM
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

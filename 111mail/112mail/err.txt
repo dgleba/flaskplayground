@@ -1,3 +1,11 @@
+error with gmail.
+
+I just used hotmail instead.
+
+
+
+
+
 smtplib.SMTPAuthenticationError
 SMTPAuthenticationError: (534, '5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbvx\n5.7.14 OYJ8DGwC_tsknlcVAH4-LOd41EDxLtiZiLrI4rY_LK9kXWH4D1FAZB5O-z_7qKkHZ0aa-N\n5.7.14 iT6tNcqn3Mi_D9F3kgVbTOnP_cJSpgKRUcyk5ntlD6t3jTmIxJGWTpS9zPujKYXGySUaGA\n5.7.14 -eHnr1AtxmBihUsYSDZKvaO_MED_3fFKs2qBby28ilaT6BAEtXBWrS0YyB44GU-Oa4HhlY\n5.7.14 wrvnpRJ8X0z10E6XMgn8ejcZOy7Is> Please log in via your web browser and\n5.7.14 then try again.\n5.7.14  Learn more at\n5.7.14  https://support.google.com/mail/answer/78754 o15sm6819499igi.9 - gsmtp')
 
@@ -37,3 +45,10 @@ You can execute arbitrary Python code in the stack frames and there are some ext
 dump() shows all variables in the frame
 dump(obj) dumps all that's known about the object
 Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.
+
+
+_____________
+
+
+flask-mail smtplib.SMTPAuthenticationError SMTPAuthenticationError: support.google.com/mail/answer/78754
+accounts.google.com/signin/continue

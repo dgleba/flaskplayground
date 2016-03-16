@@ -1,0 +1,41 @@
+{# star_action.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>Table Name: {{ tbl_name }}</h1>
+
+<h2>Pets Who Favor {{ favorite_food }}, just like {{ pet_name }}</h2>
+
+{% for pet_name in similar_pets %}
+    {{ pet_name }}
+    <br />
+{%- endfor %}
+<br />
+
+<h2>admin_view Data that Could be Used in star_list.html</h2>
+{% for item in adminview_data %}
+    {{ item }}
+    <br /><br />
+{%- endfor %}
+<br />
+
+<h2>admin_view.model Data that Could be Used in star_list.html</h2>
+{% for item in adminview_model_data %}
+    {{ item }}
+    <br /><br />
+{%- endfor %}
+<br />
+
+<h2>row Data that Could be Used in star_list.html</h2>
+{% for item in row_data %}
+    {{ item }}
+    <br /><br />
+{%- endfor %}
+
+</body>
+</html>

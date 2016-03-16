@@ -3,7 +3,7 @@
 mail button on details view will send current record
 '''
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-from flask import Flask
+from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
 from flask_admin.contrib import sqla
@@ -15,7 +15,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from flask_admin.form.widgets import Select2Widget
 from wtforms import SelectField
-
 
 # Create application
 app = Flask(__name__)
@@ -41,13 +40,13 @@ metadata = Base.metadata
 
 from flask.ext.mail import Message, Mail
 mail = Mail()
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = creds.cred['gmailu']
-app.config["MAIL_PASSWORD"] = creds.cred['gmailpass']
+app.config["MAIL_SERVER"] = "smtp.live.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+#app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = creds.cred['mailu']
+app.config["MAIL_PASSWORD"] = creds.cred['mailpass']
 mail.init_app(app)
-
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #reflect table...   
@@ -69,13 +68,14 @@ def index():
     
 @app.route('/sendmail1')
 def msendmail1():
-    msg = Message('test-sendmail1-920160314', sender=creds.cred['gmailu'], recipients=['dgleba@gmail.com'])
+    "{{ get_url('.details_view', id=get_pk_value(row), url=return_url) }}" title="{{ _gettext('View Record') }}"
+    msg = Message('test-sendmail1-9-f-20160314', sender=creds.cred['mailu'], recipients=['dgleba@gmail.com'])
     msg.body = """
     From: %s <%s>
     %s
-    """ % ('dave', creds.cred['gmailu'], 'testdata392')
+    """ % ('dave', creds.cred['mailu'], 'testdata392')
     mail.send(msg)
-
+    return ('<br><br><hr> Mail send processed. Press your browser BACK button.<hr>')
     
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,6 +95,7 @@ class persons_view(drView):
             ]
         )
     )
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create admin
 admin = admin.Admin(app, name='fltg 21selectlocal', template_mode='bootstrap3')

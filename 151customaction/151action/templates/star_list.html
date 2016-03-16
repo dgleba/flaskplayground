@@ -1,0 +1,27 @@
+
+{% extends 'admin/model/list.html' %}
+
+<!-- {% block body %} 
+    <h1>Custom List View</h1> 
+    {{ super() }} 
+{% endblock %}
+ -->
+
+{% block list_row_actions %} 
+    {{ super() }}
+
+    <form class="icon" method="POST" action="/admin/starview/">
+        <input name="tbl_name" value="{{ admin_view.model.__tablename__ }}" type="hidden">
+        <input name="favorite_food" value="{{ row.favorite_food }}" type="hidden">
+        <input name="pet_name" value="{{ row.name }}" type="hidden">
+        <input name="rowid" value="{{ get_pk_value(row) }}" type="hidden">
+        <input name="adminview_model_dict" value="{{ admin_view.model.__dict__ }}" type="hidden">
+        <input name="adminview_dict" value="{{ admin_view.__dict__ }}" type="hidden">
+        <input name="row_dict" value="{{ row.__dict__ }}" type="hidden">
+        <button onclick="return confirm('Are you sure you want to run this?');" title="Accept request">
+            <span class="fa fa-star glyphicon glyphicon-star"></span>
+        </button>
+    </form>
+
+{% endblock %}
+

@@ -1,9 +1,9 @@
 cred = dict(
-    secretkey = '13434343',
+    secretkey = '123sdfs890',
 	dbspec    = 'sqlite:///',
-	csalt     = "ATsadfasdfasdfj",
+	csalt     = "ATasfadfasdfasfasf",
 	dbu = 'x',
 	dbp = 'x',
-	gmailu = 'x@gmail.com',
-	gmailpass = 's',
+	mailu = 'x@hotmail.com',
+	mailpass = 'x',
 )

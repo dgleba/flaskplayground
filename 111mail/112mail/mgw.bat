@@ -14,6 +14,8 @@ rem ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mgw
 
 set wpip=c:\p2\Python27\Scripts\pip
 
+ %wpip% install -e git+https://github.com/flask-admin/flask-admin.git@master#egg=flask-admin
+ 
  %wpip% install -r requirements.txt
 
 

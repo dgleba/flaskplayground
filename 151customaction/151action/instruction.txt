@@ -1,0 +1,16 @@
+
+To run this example:
+
+2. Create and activate a virtual environment::
+
+    virtualenv env
+    source env/bin/activate
+
+3. Install requirements::
+
+    pip install -r 'requirements.txt'
+
+4. Run the application::
+
+    python app.py
+
