@@ -3,6 +3,8 @@ see
 
 gmail:
 C:\n\Dropbox\csd\VCS-git\flaskplay\mailtest\mail1\flaskmailtest1.py
+C:\n\Dropbox\csd\VCS-git\flaskmailtest\mail1\flaskmailtest1.py
+
 for failing mail test app.
 
 I used hotmail instead.

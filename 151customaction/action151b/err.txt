@@ -1,0 +1,43 @@
+TypeError
+TypeError: 'NoneType' object is not callable
+
+Traceback (most recent call last)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1978, in __call__
+return self.wsgi_app(environ, start_response)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1969, in wsgi_app
+response = self.make_response(self.handle_exception(e))
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1545, in handle_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1966, in wsgi_app
+response = self.full_dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1619, in full_dispatch_request
+rv = self.handle_user_exception(e)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1522, in handle_user_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1617, in full_dispatch_request
+rv = self.dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1603, in dispatch_request
+return self.view_functions[rule.endpoint](**req.view_args)
+File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 69, in inner
+return self._run_view(f, *args, **kwargs)
+File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 368, in _run_view
+return fn(self, *args, **kwargs)
+File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 2017, in action_view
+return self.handle_action()
+File "C:\p2\Python27\lib\site-packages\flask_admin\actions.py", line 113, in handle_action
+response = handler[0](ids)
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\151customaction\action151b\app.py", line 61, in action_approve
+if not self.handle_view_exception(ex):
+File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\view.py", line 993, in handle_view_exception
+return super(ModelView, self).handle_view_exception(exc)
+File "C:\n\Dropbox\csd\VCS-git\flaskplay\151customaction\action151b\app.py", line 53, in action_approve
+if user.active():
+TypeError: 'NoneType' object is not callable
+The debugger caught an exception in your WSGI application. You can now look at the traceback which led to the error.
+To switch between the interactive traceback and the plaintext one, you can click on the "Traceback" headline. From the text traceback you can also create a paste of it. For code execution mouse-over the frame you want to debug and click on the console icon on the right side.
+
+You can execute arbitrary Python code in the stack frames and there are some extra helpers available for introspection:
+
+dump() shows all variables in the frame
+dump(obj) dumps all that's known about the object
+Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.

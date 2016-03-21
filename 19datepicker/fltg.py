@@ -30,15 +30,12 @@ app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 #connect and  reflect...
-
 connection = db.engine.connect()
 # no need to reflect view...
 db.metadata.reflect(bind=db.engine, only=['users'])
  
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 #reflect table...   
 class users(db.Model):
     __table__ = db.Table(
@@ -48,28 +45,23 @@ class users(db.Model):
     )
    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
 # Flask views
 @app.route('/')
 def index():
     return '<a href="/admin/">Click me to get to Admin!</a>'
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   
 # customize views..
-   
 class dgview(sqla.ModelView):
     column_display_pk = True
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
 # Create admin
 admin = admin.Admin(app, name='fltg 9datetime picker', template_mode='bootstrap3')
 
 admin.add_view(dgview(users, db.session))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 if __name__ == '__main__':
 
     # Start app
