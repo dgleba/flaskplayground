@@ -14,6 +14,7 @@ import flask_admin as admin
 from flask_admin.contrib import sqla
 from flask import request, Blueprint, render_template, jsonify, flash, redirect, url_for
 from flask_admin.actions import action
+import gettext, time, datetime
 
 # Create application
 app = Flask(__name__)
@@ -52,13 +53,15 @@ class UserView(sqla.ModelView):
 
             count = 0
             for user in query.all():
-                if user.active():
-                    count += 1
 
-            flash(ngettext('User was successfully approved.',
-                           '%(count)s users were successfully approved.',
-                           count,
-                           count=count))
+                #import pdb;  pdb.set_trace()
+                user.active = 1
+                user.confirmed_at = datetime.datetime.fromtimestamp(time.time())
+                db.session.commit()
+                count += 1
+
+            flash('User was successfully approved.'  )
+        
         except Exception as ex:
             if not self.handle_view_exception(ex):
                 raise
