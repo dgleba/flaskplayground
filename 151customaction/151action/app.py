@@ -1,10 +1,13 @@
-""" new_action.py
+""" 
+     This is example code from here: https://github.com/flask-admin/flask-admin/issues/998
+
+    new_action.py
     Demonstrates how to add a custom action at the left of a row
 
     In this case, the action is under the STAR icon in each row
 
     All credit goes to xmm
-     See https://github.com/flask-admin/flask-admin/issues/998
+     
 """
 
 from flask import Flask, request

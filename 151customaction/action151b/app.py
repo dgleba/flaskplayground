@@ -1,6 +1,8 @@
 '''
-batch action
+Trying batch action from:
+https://flask-admin.readthedocs.org/en/latest/advanced/#customizing-batch-actions
 
+my db notes..
 ALTER TABLE user ADD COLUMN active boolean;
 ALTER TABLE user ADD COLUMN confirmed_at datetime;
 
