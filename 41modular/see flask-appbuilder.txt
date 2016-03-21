@@ -1,0 +1,14 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-21[Mar-Mon]08-10AM
+
+
+C:\n\Dropbox\csd\computer\flask\Flask-AppBuilder-master\examples\quicktemplates
+
+try this as a multifile project structure/organization for flask
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

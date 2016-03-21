@@ -1,0 +1,7 @@
+
+http://flask-appbuilder.readthedocs.org/en/latest/quickhowto.html?highlight=filter
+
+search_exclude_columns = None
+List with columns to exclude from search. Search includes all possible columns by default
+
+You can easily use builtin alternative look, using widgets take a look at the widgets example.

@@ -2,4 +2,19 @@
 expand roles
 
 add email this record action
+    consider custom action post issue #998?
 
+ 
+flask-appbuilder
+    add search many fields box like django-admin
+    
+    
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-03-17[Mar-Thu]10-29AM
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
