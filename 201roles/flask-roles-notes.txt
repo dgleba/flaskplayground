@@ -3,11 +3,13 @@ readonly
 createdata  create data in the main data tables, not lookup tables.
 editdata    same idea as createdata.
 editlookup  includes editdata role and can edit lookup tables. 
-admin       edit all data
+admin       edit everything
 
 
 Definitions:
 
-Lookup table=       Example: a table that has names of people used as a suggestion list of names in a main data table. Example: a list of machines that is used to pick from.
+Lookup table=       Example: a table that has names of people used as a suggestion list of names in a main data table. 
+                    Example: a list of machines that is used to pick from.
+                    
 Main data table =   A table with detail info. The meat of the data for the application.
 
