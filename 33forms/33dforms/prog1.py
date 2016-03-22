@@ -49,7 +49,7 @@ def create_product():
     return render_template('product-create.html')
     
 # Create admin
-admin = admin.Admin(app, name='Select - from Local list', template_mode='bootstrap3')
+admin = admin.Admin(app, name='simple create form', template_mode='bootstrap3')
 admin.add_view(sqla.ModelView(Product, db.session))
 
 if __name__ == '__main__':
