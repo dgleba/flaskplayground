@@ -1,0 +1,88 @@
+lbert [9:20 AM] 
+I will have a look today at #projecthours.
+
+[9:20] 
+speaking of which
+
+[9:20] 
+@channel: Project hours tonight at the Grad House, 4pm to 6pm, come in person or chat here online.
+
+albert [4:11 PM] 
+@dgleba I am going to try to look into your issue soon
+
+dgleba [4:43 PM] 
+I will post links to pieces I am working on...
+
+albert [4:44 PM] 
+Assuming it follows Django model, actions might be the easiest way, though it won’t be a button.
+
+[4:44] 
+https://flask-admin.readthedocs.org/en/latest/api/mod_actions/#module-flask_admin.actions
+
+dgleba [4:44 PM] 
+This sends an email after pressing a button on the details page. The email doesn't have any record info yet...  https://github.com/dgleba/flaskplayground/blob/master/111mail/112mail/app.py
+ 
+GitHub
+dgleba/flaskplayground
+flaskplayground - My Flask-admin Testing Ground
+(edited)
+
+albert [4:45 PM] 
+You can define an action called “Email” and then write action which would grab the records in question and email them to logged in user.
+
+[4:45] 
+This doesn’t give you the button experience though
+
+dgleba [4:46 PM] 
+I see
+
+[4:47] 
+This is a custom action that shows how to get the primary key id of a record.   https://github.com/dgleba/flaskplayground/blob/master/151customaction/151action/app.py
+ 
+GitHub
+dgleba/flaskplayground
+flaskplayground - My Flask-admin Testing Ground
+
+[4:48] 
+This is from the flask-admin docs. It shows how to do an action. I am getting an error though. https://github.com/dgleba/flaskplayground/blob/master/151customaction/action151b/app.py
+ 
+GitHub
+dgleba/flaskplayground
+flaskplayground - My Flask-admin Testing Ground
+
+[4:48] 
+error:  https://github.com/dgleba/flaskplayground/blob/master/151customaction/action151b/err.txt
+ 
+GitHub
+dgleba/flaskplayground
+flaskplayground - My Flask-admin Testing Ground
+
+albert [4:49 PM] 
+Does your choosen user class have an active method on it
+
+[4:49] 
+the error you provided implies that it doesn't
+
+[4:50] 
+the problem with flask is since everything is interchangable not all examples translate.
+
+[4:50] 
+https://github.com/dgleba/flaskplayground/blob/master/151customaction/action151b/app.py#L55 (edited)
+
+[4:51] 
+You could insert `import pdb; pdb.set_trace()` above the `user.activate()` line to use pdb to inspect the user object
+
+[4:51] 
+Basically the error has to do with what the action is trying to do, not the function of the action itself. Actions seem to be working you just have to change to code to do something more useful.
+
+dgleba [4:54 PM] 
+I will work on that.
+
+albert [4:55 PM] 
+I hope that helps you take a step forward, if anything is unclear let me know
+
+dgleba [5:56 PM] 
+I got a basic action example going. Thanks.
+
+[5:56] 
+https://github.com/dgleba/flaskplayground/blob/master/151customaction/action151b/app.py

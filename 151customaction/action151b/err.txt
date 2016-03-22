@@ -1,3 +1,5 @@
+problem:
+
 TypeError
 TypeError: 'NoneType' object is not callable
 
@@ -41,3 +43,9 @@ You can execute arbitrary Python code in the stack frames and there are some ext
 dump() shows all variables in the frame
 dump(obj) dumps all that's known about the object
 Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.
+
+
+
+soln:
+
+define the action method. it was not there.
