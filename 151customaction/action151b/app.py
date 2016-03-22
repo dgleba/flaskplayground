@@ -1,5 +1,5 @@
 '''
-Trying batch action from:
+Batch action from:
 https://flask-admin.readthedocs.org/en/latest/advanced/#customizing-batch-actions
 
 my db notes..
@@ -43,7 +43,6 @@ class User(db.Model):
 
     def __str__(self):
         return self.email
-		
         
 class UserView(sqla.ModelView):
     @action('approve', 'Approve', 'Are you sure you want to approve selected users?')
@@ -53,7 +52,6 @@ class UserView(sqla.ModelView):
 
             count = 0
             for user in query.all():
-
                 #import pdb;  pdb.set_trace()
                 user.active = 1
                 user.confirmed_at = datetime.datetime.fromtimestamp(time.time())
@@ -75,7 +73,7 @@ def index():
     return '<a href="/admin/">Click me to get to Admin!</a>'
 
 if __name__ == '__main__':
-    admin = admin.Admin(app, name="batch action" , template_mode='bootstrap3')
+    admin = admin.Admin(app, name="Batch-action" , template_mode='bootstrap3')
     admin.add_view(UserView(User, db.session))
     db.create_all()
     app.run(debug=True)
