@@ -39,8 +39,9 @@ class CarAdmin(ModelView):
             ]))
     # Use CSS to change look of the field.  http://stackoverflow.com/questions/31547401/adjust-field-size-in-flask-admin-w-bootstrap3
     form_widget_args = {
-    'cartype':{'class': 'form-control, width: 0.01%',
-               #'style': "width: 1%",
+    # this doesn't show a radio-inline, it's vertically placed, but I'll take this as a victory!
+    'cartype':{'class': 'radio-inline', 'name':'inlineRadioOptions',
+               #'style': "width: 0.1%",
                #'placeholder':'ex. M132 or T456'
                }
     }           
