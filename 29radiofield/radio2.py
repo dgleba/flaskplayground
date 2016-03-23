@@ -39,7 +39,7 @@ class CarAdmin(ModelView):
             ]))
     # Use CSS to change look of the field.  http://stackoverflow.com/questions/31547401/adjust-field-size-in-flask-admin-w-bootstrap3
     form_widget_args = {
-    'cartype':{'class': 'form-control, width: 1%',
+    'cartype':{'class': 'form-control, width: 0.01%',
                #'style': "width: 1%",
                #'placeholder':'ex. M132 or T456'
                }
