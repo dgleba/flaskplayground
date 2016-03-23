@@ -4,8 +4,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
 from flask_admin.contrib import sqla
-#from wtforms import SelectField
-#from functools import wraps
+from wtforms import SelectField
+from functools import wraps
 from flask import request, Blueprint, render_template, jsonify, flash, \
     redirect, url_for
 

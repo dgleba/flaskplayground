@@ -1,0 +1,79 @@
+TypeError
+TypeError: 'instancemethod' object is not iterable
+
+Traceback (most recent call last)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1978, in __call__
+return self.wsgi_app(environ, start_response)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1969, in wsgi_app
+response = self.make_response(self.handle_exception(e))
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1545, in handle_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1966, in wsgi_app
+response = self.full_dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1619, in full_dispatch_request
+rv = self.handle_user_exception(e)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1522, in handle_user_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1617, in full_dispatch_request
+rv = self.dispatch_request()
+File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1603, in dispatch_request
+return self.view_functions[rule.endpoint](**req.view_args)
+File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 68, in inner
+return self._run_view(f, *args, **kwargs)
+File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 367, in _run_view
+return fn(self, *args, **kwargs)
+File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 1861, in create_view
+return_url=return_url)
+File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 307, in render
+return render_template(template, **kwargs)
+File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 125, in render_template
+context, ctx.app)
+File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 107, in _render
+rv = template.render(context)
+File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 989, in render
+return self.environment.handle_exception(exc_info, True)
+File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 754, in handle_exception
+reraise(exc_type, exc_value, tb)
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\create.html", line 6, in top-level template code
+<input name="_continue_editing" type="submit" class="btn btn-default" value="{{ _gettext('Save and Continue Editing') }}" />
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\master.html", line 1, in top-level template code
+{% extends admin_base_template %}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\base.html", line 30, in top-level template code
+{% block page_body %}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\base.html", line 70, in block "page_body"
+{% block body %}{% endblock %}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\create.html", line 26, in block "body"
+{% block create_form %}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\create.html", line 27, in block "create_form"
+{{ lib.render_form(form, return_url, extra(), form_opts) }}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\lib.html", line 202, in template
+{% call form_tag(action=action) %}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\lib.html", line 182, in template
+{{ caller() }}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\lib.html", line 203, in template
+{{ render_form_fields(form, form_opts=form_opts) }}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\lib.html", line 175, in template
+{{ render_field(form, f, kwargs) }}
+File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\lib.html", line 130, in template
+{{ field(**kwargs)|safe }}
+File "C:\p2\Python27\lib\site-packages\wtforms\fields\core.py", line 153, in __call__
+return self.meta.render_field(self, kwargs)
+File "C:\p2\Python27\lib\site-packages\wtforms\meta.py", line 56, in render_field
+return field.widget(field, **render_kw)
+File "C:\p2\Python27\lib\site-packages\flask_admin\form\widgets.py", line 28, in __call__
+return super(Select2Widget, self).__call__(field, **kwargs)
+File "C:\p2\Python27\lib\site-packages\wtforms\widgets\core.py", line 287, in __call__
+for val, label, selected in field.iter_choices():
+File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\fields.py", line 110, in iter_choices
+for pk, obj in self._get_object_list():
+File "C:\p2\Python27\lib\site-packages\flask_admin\contrib\sqla\fields.py", line 103, in _get_object_list
+self._object_list = [(text_type(get_pk(obj)), obj) for obj in query]
+TypeError: 'instancemethod' object is not iterable
+The debugger caught an exception in your WSGI application. You can now look at the traceback which led to the error.
+To switch between the interactive traceback and the plaintext one, you can click on the "Traceback" headline. From the text traceback you can also create a paste of it. For code execution mouse-over the frame you want to debug and click on the console icon on the right side.
+
+You can execute arbitrary Python code in the stack frames and there are some extra helpers available for introspection:
+
+dump() shows all variables in the frame
+dump(obj) dumps all that's known about the object
+Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.

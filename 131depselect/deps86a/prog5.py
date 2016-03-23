@@ -1,10 +1,16 @@
 '''
 depselect
+http://stackoverflow.com/questions/31764400/custom-flask-admin-form-with-some-select-field-choices-set-according-to-another
+data: http://killerwhale.vanaqua.org/page.aspx?pid=1251
 '''
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
 from flask_admin.contrib import sqla
+from wtforms import SelectField
+from flask.ext.admin.form import Select2Widget
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
+from wtforms import SelectField
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1234567901'
@@ -45,13 +51,8 @@ class Clan(db.Model):
     def __unicode__(self):
         return self.name
 
-from flask_admin.contrib import sqla
-from wtforms import SelectField
-from flask.ext.admin.form import Select2Widget
-
 class MatrilineView(sqla.ModelView):
-
-    '''
+    
     column_hide_backrefs = False
     form_extra_fields = {
         'clan': sqla.fields.QuerySelectField(
@@ -61,16 +62,12 @@ class MatrilineView(sqla.ModelView):
         )
     }
     column_list = ('name', 'pod', 'clan')
-    '''
-
+    
 # Create admin
-admin = admin.Admin(app, name='db-simple', template_mode='bootstrap3')
+admin = admin.Admin(app, name='depselect', template_mode='bootstrap3')
 admin.add_view(MatrilineView(Matriline, db.session))
 
 if __name__ == '__main__':
-    # Create DB
     db.create_all()
-    # Start app
     app.run(host='0.0.0.0', port=5000, debug=True)
-
     
