@@ -134,7 +134,7 @@ def before_first_request():
 @app.route('/')
 # Users must be authenticated to view the home page, but they don't have to have any particular role.
 # Flask-Security will display a login form if the user isn't already authenticated.
-@login_required
+#@login_required
 def index():
     return render_template('index.html')
 
