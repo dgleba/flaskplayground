@@ -50,6 +50,7 @@ def tag_f1_autocomplete():
 class ListAdminView(sqla.ModelView):
     create_template = 'edit.html'
     edit_template = 'edit.html'
+    can_export=True
 
 if __name__ == '__main__':
     # Create admin

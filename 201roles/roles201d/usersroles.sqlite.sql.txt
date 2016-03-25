@@ -1,0 +1,35 @@
+
+
+DROP TABLE IF EXISTS "role";
+CREATE TABLE role (
+	id INTEGER NOT NULL, 
+	name VARCHAR(80), 
+	description VARCHAR(255), 
+	PRIMARY KEY (id), 
+	UNIQUE (name)
+);
+INSERT INTO "role" VALUES(1,'user',NULL);
+INSERT INTO "role" VALUES(2,'superuser',NULL);
+DROP TABLE IF EXISTS "roles_users";
+CREATE TABLE roles_users (
+	user_id INTEGER, 
+	role_id INTEGER, 
+	FOREIGN KEY(user_id) REFERENCES user (id), 
+	FOREIGN KEY(role_id) REFERENCES role (id)
+);
+INSERT INTO "roles_users" VALUES(1,1);
+INSERT INTO "roles_users" VALUES(1,2);
+DROP TABLE IF EXISTS "user";
+CREATE TABLE user (
+	id INTEGER NOT NULL, 
+	first_name VARCHAR(255), 
+	last_name VARCHAR(255), 
+	email VARCHAR(255), 
+	password VARCHAR(255), 
+	active BOOLEAN, 
+	confirmed_at DATETIME, 
+	PRIMARY KEY (id), 
+	UNIQUE (email), 
+	CHECK (active IN (0, 1))
+);
+INSERT INTO "user" VALUES(1,'Admin',NULL,'admin','$pbkdf2-sha512$25000$fS8FoLT2vrfWWgvBGINQqg$f4jKKK8O5h3l5DTXkV1TSIZQo4EhQqvP2qWh34Gev42wZr2XLdZzLyT81UewS.bP2EoDFhl/sgGUx14bG8blhA',1,NULL);
