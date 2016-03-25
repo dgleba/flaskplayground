@@ -33,3 +33,6 @@ CREATE TABLE user (
 	CHECK (active IN (0, 1))
 );
 INSERT INTO "user" VALUES(1,'Admin',NULL,'admin','$pbkdf2-sha512$25000$fS8FoLT2vrfWWgvBGINQqg$f4jKKK8O5h3l5DTXkV1TSIZQo4EhQqvP2qWh34Gev42wZr2XLdZzLyT81UewS.bP2EoDFhl/sgGUx14bG8blhA',1,NULL);
+INSERT INTO "user" VALUES(Null,'read',NULL,'read','$pbkdf2-sha512$25000$8/7/fy8lpNS6V6qVMuYcow$75lD.TpgV45nxeMQUirJuUKi.tf.z4icITpKm//JUf3az/lGUZTbZd/9U3qqeWDYJB9xOppOcqb5HYdi8Lw8WA',1,NULL);
+INSERT INTO "user" VALUES(Null,'dg',NULL,'dg','$pbkdf2-sha512$25000$8/7/fy8lpNS6V6qVMuYcow$75lD.TpgV45nxeMQUirJuUKi.tf.z4icITpKm//JUf3az/lGUZTbZd/9U3qqeWDYJB9xOppOcqb5HYdi8Lw8WA',1,NULL);
+

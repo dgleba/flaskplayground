@@ -94,16 +94,16 @@ class rbacBaseView(ModelView):
         
         if current_user.has_role('read'):
             print "i am read"
-            can_create = False
-            can_edit = False
-            can_delete = False
-            can_export = False
+            self.can_create = False
+            self.can_edit = False
+            self.can_delete = False
+            self.can_export = False
 
         if current_user.has_role('superuser'): 
             print 'i am superuser'
-            can_edit = False
-            can_create = True
-            can_delete = True
+            self.can_edit = True
+            self.can_create = True
+            self.can_delete = True
             can_export = True
         
         #Override builtin _handle_view in order to redirect users when a view is not accessible.
