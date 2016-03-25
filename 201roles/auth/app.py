@@ -70,7 +70,7 @@ class MyModelView(sqla.ModelView):
         Override builtin _handle_view in order to redirect users when a view is not accessible.
         """
         if current_user.has_role('superuser'):
-            can_export = True
+            self.can_export = True
             print ' ---- superuser '
             
         if not self.is_accessible():
@@ -139,18 +139,16 @@ def build_sample_db():
 
         first_names = [
             'Harry', 'Amelia', 'Oliver', 'Jack', 'Isabella', 'Charlie', 'Sophie', 'Mia',
-            'Jacob', 'Thomas', 'Emily', 'Lily', 'Ava', 'Isla', 'Alfie', 'Olivia', 'Jessica',
-            'Riley', 'William', 'James', 'Geoffrey', 'Lisa', 'Benjamin', 'Stacey', 'Lucy'
+            
         ]
         last_names = [
             'Brown', 'Smith', 'Patel', 'Jones', 'Williams', 'Johnson', 'Taylor', 'Thomas',
-            'Roberts', 'Khan', 'Lewis', 'Jackson', 'Clarke', 'James', 'Phillips', 'Wilson',
-            'Ali', 'Mason', 'Mitchell', 'Rose', 'Davis', 'Davies', 'Rodriguez', 'Cox', 'Alexander'
+            
         ]
 
         for i in range(len(first_names)):
-            tmp_email = first_names[i].lower() + "." + last_names[i].lower() + "@example.com"
-            tmp_pass = ''.join(random.choice(string.ascii_lowercase + string.digits) for i in range(10))
+            tmp_email = first_names[i].lower()
+            tmp_pass = 'a'
             user_datastore.create_user(
                 first_name=first_names[i],
                 last_name=last_names[i],
