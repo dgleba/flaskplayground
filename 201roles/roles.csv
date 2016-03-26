@@ -1,0 +1,7 @@
+function,rolename,description
+readonly,read,can only read data
+createdata  ,create,"create data in the main data tables, not lookup tables."
+editdata,edit,same idea for the edit function as for createdata.
+editlookup  ,supervisor,includes editdata role and can edit lookup tables. 
+delete,delete,can delete
+admin       ,adminrole,all access to  everything including system tables like user and role.

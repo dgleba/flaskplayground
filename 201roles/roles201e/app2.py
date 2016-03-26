@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Define models directly without reflection...
-class Customer(db.Model, UserMixin):
+class Customer(db.Model):
     CustomerId = db.Column(db.Integer(), primary_key=True)
     FirstName = db.Column(db.Unicode(40), nullable=False)
     LastName = db.Column(db.String(20), nullable=False)
@@ -23,7 +23,7 @@ class Customer(db.Model, UserMixin):
     Email = db.Column(db.Unicode(60))
  
     def __str__(self):
-        return self.CustomerId
+        return self.CustomerID
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Define models
@@ -71,6 +71,8 @@ class dgBaseView(sqla.ModelView):
     column_display_pk = True
     page_size = 20
     can_view_details = True
+    #can_export = False
+    can_export = True
 
     def _handle_view(self, name, **kwargs):
         """
@@ -84,25 +86,30 @@ class dgBaseView(sqla.ModelView):
                 # login
                 return redirect(url_for('security.login', next=request.url))
               
-class rUserView(dgBaseView):
+class regularRbacView(dgBaseView):
 
     def is_accessible(self):
-        #set defaults..
-        self.can_export = False
 
         # set accessibility...
         if not current_user.is_active or not current_user.is_authenticated:
             return False
-        # roles not tied to assending permissions...
-        if current_user.has_role('export'):
-            self.can_export = True
-        # roles with assending permissions...
-        if current_user.has_role('superuser'):
+
+        # roles not tied to ascending permissions...
+        if  not current_user.has_role('export'):
+            self.can_export = False
+            
+        # roles with ascending permissions...
+        if current_user.has_role('adminrole'):
             self.can_create = True
             self.can_edit = True
             self.can_delete = True
             self.can_export = True
             return True
+        if current_user.has_role('supervisor'):
+            self.can_create = True
+            self.can_edit = True
+            self.can_delete = False
+            return True
         if current_user.has_role('user'):
             self.can_create = True
             self.can_edit = True
@@ -117,11 +124,12 @@ class rUserView(dgBaseView):
             self.can_create = False
             self.can_edit = False
             self.can_delete = False
-            #self.can_export = False
             return True
         return False
  
-class lookupView(dgBaseView):
+class lookupRbacView(dgBaseView):
+
+#this class is unfinished.
 
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
@@ -130,28 +138,31 @@ class lookupView(dgBaseView):
             self.can_create = False
             self.can_edit = False
             self.can_delete = False
-            self.can_export = False
             return True
         if current_user.has_role('create'):
             self.can_create = False
             self.can_edit = False
             self.can_delete = False
-            self.can_export = True
             return True
         if current_user.has_role('user'):
             self.can_create = False
             self.can_edit = False
             self.can_delete = False
-            self.can_export = True
             return True
         return False
  
 class SuperView(dgBaseView):
 
+    can_export = True
+
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
             return False
-        if current_user.has_role('superuser'):
+        if current_user.has_role('adminrole'):
+            self.can_create = True
+            self.can_edit = True
+            self.can_delete = True
+            #self.can_export = True
             return True
         return False
               
@@ -174,36 +185,41 @@ admin = flask_admin.Admin(
     template_mode='bootstrap3',
 )
 
-class customer_view(rUserView):
+class customer_view(regularRbacView):
 
     column_searchable_list = ['CustomerId', 'City',  'Email', 'FirstName', 'LastName',]
     # make sure the type of your filter matches your hybrid_property
     column_filters = ['FirstName', 'LastName',  'City',  'Email'   ]
     # column_default_sort = ('part_timestamp', True)
+    #column_export_list = ['CustomerId', 'City',  'Email', 'FirstName', 'LastName',]
 
 # Add model views
 admin.add_view(SuperView(Role, db.session))
 admin.add_view(SuperView(User, db.session))
 admin.add_view(customer_view(Customer, db.session))
-
+#admin.add_view(dgBaseView(Customer, db.session))
 
 
 def build_sample_db():
     """
     Populate a small db with some example entries.
     """
-
     import string
-    import random
 
-    db.drop_all()
+    #db.drop_all()
     db.create_all()
 
     with app.app_context():
+        read_role = Role(name='read')
         user_role = Role(name='user')
-        super_user_role = Role(name='superuser')
+        super_user_role = Role(name='adminrole')
         db.session.add(user_role)
         db.session.add(super_user_role)
+        db.session.add(Role(name='read'))
+        db.session.add(Role(name='create'))     
+        db.session.add(Role(name='supervisor'))
+        db.session.add(Role(name='delete'))
+        db.session.add(Role(name='export'))
         db.session.commit()
 
         test_user = user_datastore.create_user(
@@ -212,23 +228,28 @@ def build_sample_db():
             password=encrypt_password('admin'),
             roles=[user_role, super_user_role]
         )
+        
 
         first_names = [
-            'Harry', 'Amelia', 'Oliver', 'Jack', 'Isabella', 'Charlie', 'Sophie', 'Mia',
+            'read', 'create', 'user', 'suser',  'delete',   'Charlie', 'Sophie',  'Mia',
         ]
         last_names = [
-            'Brown', 'Smith', 'Patel', 'Jones', 'Williams', 'Johnson', 'Taylor', 'Thomas',
+            'Brown', 'Smith',  'Patel', 'Jones', 'Williams', 'Johnson', 'Taylor', 'Thomas',
+        ]
+        roles1 = [
+            'read',  'create',  'user', 'supervisor', 'delete', 'read', 'read', 'read',
         ]
 
         for i in range(len(first_names)):
             tmp_email = first_names[i].lower()
+            # initialize the users with simple password...  'a'
             tmp_pass = 'a'
             user_datastore.create_user(
                 first_name=first_names[i],
                 last_name=last_names[i],
                 email=tmp_email,
                 password=encrypt_password(tmp_pass),
-                roles=[user_role, ]
+                roles=[read_role, ]
             )
         db.session.commit()
     return

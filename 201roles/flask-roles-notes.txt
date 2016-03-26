@@ -17,7 +17,7 @@ _____________
 
 roles that fall outside usual hierarchy.
 
-exportdata
+exportdata export
 
 _____________
 
@@ -34,3 +34,6 @@ Lookup table=       Supporting Tables used as suggestion lookup lists.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+
+http://localhost:5000/admin/customer/new/?url=%2Fadmin%2Fcustomer%2F
