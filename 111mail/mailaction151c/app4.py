@@ -23,6 +23,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fground.sqlite'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
+#secrets...
+import creds
+app.config.from_pyfile('creds.py')
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+from flask.ext.mail import Message, Mail
+mail = Mail()
+app.config["MAIL_SERVER"] = "smtp.live.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+#app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = creds.cred['mailu']
+app.config["MAIL_PASSWORD"] = creds.cred['mailpass']
+mail.init_app(app)
+    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Model
 class List(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,28 +62,37 @@ class User(db.Model):
         return self.email
         
 class UserView(sqla.ModelView):
-    @action('approve', 'Approve', 'Are you sure you want to approve selected users?')
-    def action_approve(self, ids):
+    @action('mail1', 'Mail1', 'Are you sure you want to mail selected record?')
+    def action_mail1(self, ids):
         try:
+            # if more than one row is selected, show error and don't mail anything..
+            totalcount = User.query.filter(User.id.in_(ids)).count()
+            print 'totalcount= ', totalcount
+            if totalcount > 1:
+                flash('Error!  Only select one row to email to the group!'  )
+                return
+            
+            # Mail the one record.
             query = User.query.filter(User.id.in_(ids))
-
             count = 0
             for user in query.all():
-                #import pdb;  pdb.set_trace()
-                user.active = 1
-                user.confirmed_at = datetime.datetime.fromtimestamp(time.time())
-                db.session.commit()
+                msg = Message('test-sendmail1-9-f-20160314', sender=creds.cred['mailu'], recipients=['dgleba@gmail.com'])
+                msg.body = """
+                From: %s <%s>
+                user name: %s 
+                """ % ('dave', creds.cred['mailu'], user.last_name)
+                mail.send(msg)
+                #return ('<br><br><hr> Mail send processed. Press your browser BACK button.<hr>')
                 count += 1
 
-            flash('User was successfully approved.'  )
+            flash('Mail was successfully sent.  '  )
         
         except Exception as ex:
             if not self.handle_view_exception(ex):
                 raise
 
-            flash(gettext('Failed to approve users. %(error)s', error=str(ex)), 'error')        
+            flash(gettext('Failed . %(error)s', error=str(ex)), 'error')        
         
-
 # Flask views
 @app.route('/')
 def index():
