@@ -1,8 +1,6 @@
 ''' 
-Small-Example: 
-modular .py files project. 
-originally based on ...\VCS-git\flaskplay\25selectlocal-eg
-cartype is a select field widget. Create or edit a car record to see it working. David Gleba.
+Example: 
+Full featured project. 
 '''
 import os
 from flask import Flask, url_for, redirect, render_template, request, abort
@@ -33,11 +31,15 @@ admin = flask_admin.Admin(
     app, 'Full Feature App', base_template='my_master.html', template_mode='bootstrap3',
 )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # Add model views
 admin.add_view(SuperView(Role, db.session))
 admin.add_view(SuperView(User, db.session))
 admin.add_view(customer_view(Customer, db.session))
 admin.add_view(lookupRbacView(City, db.session))
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 # Setup Flask-Security

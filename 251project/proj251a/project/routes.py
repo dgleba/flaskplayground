@@ -1,6 +1,6 @@
 from . import *
 
-# Flask views
+# Flask routes
 @app.route('/')
 def index():
     return render_template('index.html')
