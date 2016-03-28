@@ -1,4 +1,7 @@
 
+I cannot login. I can't logout.
+
+
 2016-02-16_Tue_16.14-PM
 I ran pip install requirements again.
 It did something.

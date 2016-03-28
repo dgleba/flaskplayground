@@ -3,6 +3,7 @@
 #flask
 sample_db.sqlite
 creds.py
+creden.py
 Chinook_Sqlite_AutoIncrementPKs.sqlite
 
 # for trakberry
