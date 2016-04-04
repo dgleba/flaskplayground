@@ -16,6 +16,8 @@ from flask_admin import helpers as admin_helpers
 import os, sys
 sys.path.insert(0, os.getcwd())
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 app = Flask(__name__)  # Create application
 app.config.from_pyfile('config.py')
 app.config.from_pyfile('creden.py')
@@ -57,6 +59,7 @@ def security_context_processor():
         h=admin_helpers,
     )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def build_sample_db():
     """
