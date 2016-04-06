@@ -1,0 +1,20 @@
+{% extends 'admin/model/list.html' %}
+
+{% block head %}
+
+    <style>
+    body {
+        background-color: rgb(229, 255, 255);
+    }
+    /*  this is working to style the css of the table header column name text...  */
+    th.column-header.col-tag_f1 {   
+        color: red ; 
+        font-size: 40px; 
+        width: 95%;
+    }
+    </style>
+
+    {{ super() }}
+    
+{% endblock %}
+

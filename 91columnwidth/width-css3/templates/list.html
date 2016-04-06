@@ -1,0 +1,32 @@
+{% extends 'admin/model/list.html' %}
+
+{% block head %}
+
+    <style>
+    body {
+        background-color: rgb(229, 255, 255);
+    }
+    table {
+      width: 100%;
+      border: 1px solid #000;
+      }
+      
+     table th {
+        width: auto !important;
+        } 
+    /*  this is working to style the css of the table header column ... 
+        it changes the lettering to take up more space and the effect is to make the column wider.
+        http://stackoverflow.com/questions/928849/setting-table-column-width
+    */
+    th.col-desc6 {   
+        /*  width seems to have no effect..   */
+        width: 1222 px;
+        letter-spacing: 42px;
+        font-size: 115%;
+    }
+    </style>
+
+    {{ super() }}
+    
+{% endblock %}
+
