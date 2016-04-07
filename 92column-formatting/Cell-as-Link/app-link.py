@@ -1,5 +1,7 @@
-# Small-Example: email is shown as a link to the edit view of the record.
-
+'''
+Small-Example: email is shown as a link to the edit view of the record.
+    http://stackoverflow.com/questions/17174707/can-model-views-in-flask-admin-hyperlink-to-other-model-views
+'''
 from flask import Flask, Markup, url_for
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
