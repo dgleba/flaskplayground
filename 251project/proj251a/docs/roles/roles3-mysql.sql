@@ -20,7 +20,7 @@ CREATE TABLE `roles_users` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE user (
-	id INTEGER NOT NULL, 
+	id INTEGER NOT NULL  AUTO_INCREMENT, 
 	first_name VARCHAR(255), 
 	last_name VARCHAR(255), 
 	email VARCHAR(255), 
