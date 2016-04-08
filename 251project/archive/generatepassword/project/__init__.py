@@ -87,12 +87,22 @@ def build_sample_db():
             password=encrypt_password('admin'),
             roles=[user_role, super_user_role]
         )
-        
+
+        #set user / pass in creden.py
+        uname=app.config['USER1']
+        user1a = user_datastore.create_user(
+            first_name=uname,
+            email=uname,
+            password=encrypt_password(app.config['PASS1']),
+            roles=[user_role, super_user_role]
+        )
+
+       
         first_names = [
-            'read', 'create', 'user', 
+            'read', 
         ]
         last_names = [
-            'Brown', 'Smith',  'Patel', 
+            'Brown', 
         ]
  
         for i in range(len(first_names)):
