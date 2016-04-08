@@ -1,0 +1,155 @@
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 262-901-384
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [08/Apr/2016 14:50:40] "GET /admin/user/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1978, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1969, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1545, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1966, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1619, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1522, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1617, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\p2\Python27\lib\site-packages\flask\app.py", line 1603, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 69, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 368, in _run_view
+    return fn(self, *args, **kwargs)
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 1849, in index_view
+    return_url=self._get_list_url(view_args),
+  File "C:\p2\Python27\lib\site-packages\flask_admin\base.py", line 308, in render
+    return render_template(template, **kwargs)
+  File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 125, in render_template
+    context, ctx.app)
+  File "C:\p2\Python27\lib\site-packages\flask\templating.py", line 107, in _render
+    rv = template.render(context)
+  File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\p2\Python27\lib\site-packages\jinja2\environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\list.html", line 5, in top-level tem
+plate code
+    {% import 'admin/actions.html' as actionlib with context %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\master.html", line 1, in top-level templat
+e code
+    {% extends admin_base_template %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\base.html", line 30, in top-level template
+ code
+    {% block page_body %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\base.html", line 70, in block "page_body"
+    {% block body %}{% endblock %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\list.html", line 61, in block "body"
+
+    {% block model_list_table %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\list.html", line 109, in block "mode
+l_list_table"
+    {% block list_row scoped %}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\templates\bootstrap3\admin\model\list.html", line 166, in block "list
+_row"
+    {{ get_value(row, c) }}
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 1692, in get_list_value
+    self.column_type_formatters,
+  File "C:\p2\Python27\lib\site-packages\flask_admin\model\base.py", line 1657, in _get_list_value
+    value = column_fmt(self, context, model, name)
+  File "C:\n\Dropbox\csd\VCS-git\flaskplay\92column-formatting\Cell-as-Link3\app3.py", line 35, in _user_formatter
+    )   if model.email else ""
+TypeError: not enough arguments for format string
+127.0.0.1 - - [08/Apr/2016 14:50:40] "GET /admin/user/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:50:40] "GET /admin/user/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:50:40] "GET /admin/user/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:50:40] "GET /admin/user/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:50:41] "GET /admin/user/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ * Detected change in 'C:\\n\\Dropbox\\csd\\VCS-git\\flaskplay\\92column-formatting\\Cell-as-Link3\\app3.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 262-901-384
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [08/Apr/2016 14:50:58] "GET /admin/user/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:50:58] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap.min.css?v=3.3.5 HTTP/1.1" 304 -
+
+127.0.0.1 - - [08/Apr/2016 14:50:58] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap-theme.min.css?v=3.3.5 HTTP/1.1"
+ 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:58] "GET /admin/static/admin/css/bootstrap3/admin.css?v=1.1.1 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/select2/select2.css?v=3.5.2 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/select2/select2-bootstrap3.css?v=1.4.6 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/bootstrap-daterangepicker/daterangepicker-bs3.css?v=1.3.22
+HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/jquery.min.js?v=2.1.4 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/bootstrap/bootstrap3/js/bootstrap.min.js?v=3.3.5 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/moment.min.js?v=2.9.0 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/select2/select2.min.js?v=3.5.2 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/admin/js/filters.js?v=1.0.0 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/vendor/bootstrap-daterangepicker/daterangepicker.js?v=1.3.22 HTTP/
+1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/admin/js/form.js?v=1.0.1 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/admin/js/actions.js?v=1.0.0 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:50:59] "GET /admin/static/bootstrap/bootstrap3/fonts/glyphicons-halflings-regular.woff2 HTTP
+/1.1" 304 -
+ * Detected change in 'C:\\n\\Dropbox\\csd\\VCS-git\\flaskplay\\92column-formatting\\Cell-as-Link3\\app3.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 262-901-384
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [08/Apr/2016 14:51:20] "GET /admin/user/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:52:05] "GET /admin/user/new/?url=%2Fadmin%2Fuser%2F HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:52:24] "POST /admin/user/new/?url=%2Fadmin%2Fuser%2F HTTP/1.1" 302 -
+127.0.0.1 - - [08/Apr/2016 14:52:24] "GET /admin/user/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/user/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap.min.css?v=3.3.5 HTTP/1.1" 304 -
+
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap-theme.min.css?v=3.3.5 HTTP/1.1"
+ 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/admin/css/bootstrap3/admin.css?v=1.1.1 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/select2/select2.css?v=3.5.2 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/select2/select2-bootstrap3.css?v=1.4.6 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/bootstrap-daterangepicker/daterangepicker-bs3.css?v=1.3.22
+HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/jquery.min.js?v=2.1.4 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/bootstrap/bootstrap3/js/bootstrap.min.js?v=3.3.5 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/moment.min.js?v=2.9.0 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/select2/select2.min.js?v=3.5.2 HTTP/1.1" 304 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/admin/js/filters.js?v=1.0.0 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/vendor/bootstrap-daterangepicker/daterangepicker.js?v=1.3.22 HTTP/
+1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/admin/js/form.js?v=1.0.1 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:53:52] "GET /admin/static/admin/js/actions.js?v=1.0.0 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Apr/2016 14:55:02] "GET /admin/user/new/?url=%2Fadmin%2Fuser%2F HTTP/1.1" 200 -
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "C:\p2\Python27\lib\threading.py", line 810, in __bootstrap_inner
+    self.run()
+  File "C:\p2\Python27\lib\threading.py", line 763, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "C:\p2\Python27\lib\site-packages\werkzeug\serving.py", line 659, in inner
+    srv.serve_forever()
+  File "C:\p2\Python27\lib\site-packages\werkzeug\serving.py", line 499, in serve_forever
+    HTTPServer.serve_forever(self)
+  File "C:\p2\Python27\lib\SocketServer.py", line 238, in serve_forever
+    self._handle_request_noblock()
+  File "C:\p2\Python27\lib\SocketServer.py", line 297, in _handle_request_noblock
+    self.handle_error(request, client_address)
+  File "C:\p2\Python27\lib\SocketServer.py", line 295, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\p2\Python27\lib\SocketServer.py", line 321, in process_request
+    self.finish_request(request, client_address)
+  File "C:\p2\Python27\lib\SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\p2\Python27\lib\SocketServer.py", line 657, in __init__
+    self.finish()
+  File "C:\p2\Python27\lib\SocketServer.py", line 716, in finish
+    self.wfile.close()
+  File "C:\p2\Python27\lib\socket.py", line 279, in close
+    self.flush()
+  File "C:\p2\Python27\lib\socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 10053] An established connection was aborted by the software in your host machine
+

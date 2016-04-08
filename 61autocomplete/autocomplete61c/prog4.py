@@ -1,6 +1,6 @@
 '''
 Small-Example: 
-move js to separate file
+tried to move js to separate file. Ended up putting in a template.
 jquery autocomplete widget.  David Gleba.
     http://stackoverflow.com/questions/34704997/jquery-autocomplete-in-flask
 '''
@@ -68,7 +68,7 @@ def create_product():
     return render_template('product-create2.html')
     
 # Create admin
-admin = admin.Admin(app, name='Select - from Local list', template_mode='bootstrap3')
+admin = admin.Admin(app, name='autocomplete', template_mode='bootstrap3')
 admin.add_view(sqla.ModelView(Product, db.session))
 admin.add_view(sqla.ModelView(User, db.session))
 

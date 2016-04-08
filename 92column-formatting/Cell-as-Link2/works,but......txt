@@ -1,0 +1,8 @@
+
+this works, but chrome and firefox won't open local files/folders due to security.
+-- you can use an addon, ...maybe.
+
+IE seems to work.
+
+
+2016-04-08_Fri_15.33-PM

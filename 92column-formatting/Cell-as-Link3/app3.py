@@ -29,8 +29,8 @@ class uAdmin(sqla.ModelView):
 
     def _user_formatter(view, context, model, name):
         return Markup(
-            "<a href='%s' target='_blank'>Link...</a>" % (
-                model.email
+            "<a href='%s' target='_blank'>%s</a>" % (
+                model.email, model.email
             )
         )   if model.email else ""
 

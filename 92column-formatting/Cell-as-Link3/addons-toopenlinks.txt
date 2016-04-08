@@ -1,0 +1,34 @@
+
+
+firefox
+
+removed
+text link - it didn't respect \ , only / 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-04-08[Apr-Fri]15-29PM
+
+
+
+file:///csd-server/Interdepartment/CI/CI-Lists/2016/
+
+\\Csd-server\Interdepartment\CI\CI-Lists\2016\CI-Ideas-2016\201-300\16c232 
+
+file://///Csd-server/Interdepartment/CI/CI-Lists/2016/CI-Ideas-2016/201-300/16c232/
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
