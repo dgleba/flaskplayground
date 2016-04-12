@@ -1,11 +1,20 @@
-# create field list...
-#
-# process sqlacodegen output to create comma delimited fields list that
-# can be copied and pasted into flask-admin app...
+'''
+create field list...
+David Gleba 2016-02-09
 
-# David Gleba 2016-02-09
 
-# %wpy% txp-fl.py
+purpose:
+process sqlacodegen output to create comma delimited fields list that
+can be copied and pasted into flask-admin app...
+
+This reads file: modelsgen.txt
+
+output: modelsgen-fieldlist.txt
+
+python txp-fl.py
+or
+%wpy% txp-fl.py
+'''
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -55,7 +64,7 @@ finput.close()
 #in file... 
 rf = open("tmpout2.txt")
 #output file..
-wf = open("modelsgen-fieldlist.txt","w")
+wf = open("tmpout3.txt","w")
 for line in rf:
     if line.find("_tablename_") == -1:  # if that string is not found..
         # remove everything after the = sign. i guess it gets rid of the newline as well, this is what I want.
@@ -64,6 +73,70 @@ for line in rf:
         wf.write(beg)
     else:
         wf.write(line) #if it is found.. (in my case -- do nothing - just write the line that was found.)
+wf.close()
+rf.close()
     
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# views:
+
+# views look like this.. 'Column('fullcommonname',String(33)),
+
+# remove all after ,
+
+#in file... 
+rf = open("tmpout3.txt")
+#output file..
+wf = open("tmpout4.txt","w")
+for line in rf:
+    if line.find("'Column(") >= 0:  # if that string is not found..
+        # debug.. print "column found"
+        # remove everything after the ,  . i guess it gets rid of the newline as well.
+        sep = ','
+        beg = line.split(sep, 1)[0]
+        beg2= beg+",_zxz_\n"
+        wf.write(beg2)
+    else:
+        wf.write(line) #if it is found.. (in my case -- do nothing - just write the line that was found.)
+wf.close()
+rf.close()
+
+
+time.sleep(.1)
+
+
+# remove >>  'Column('
+
+#in file... 
+rf = open("tmpout4.txt")
+#output file..
+wf = open("tmpout5.txt","w")
+for line in rf:
+    # remove >>  'Column('
+        line = line.replace("'Column(", '') 
+        wf.write(line)
+wf.close()
+rf.close()
+
+
+# remove everything after the , sign. i guess it gets rid of the newline as well, this is what I want.
+
+#in file... 
+rf = open("tmpout5.txt")
+#output file..
+wf = open("modelsgen-fieldlist.txt","w")
+for line in rf:
+    if line.find("_zxz_") > -1:  # if that string is not found..
+        # remove everything after the , sign. i guess it gets rid of the newline as well, this is what I want.
+        sep = ','
+        beg = line.split(sep, 1)[0]
+        wf.write(beg+",")
+    else:
+        wf.write(line) #if it is found.. (in my case -- do nothing - just write the line that was found.)
+wf.close()
+rf.close()
+
+
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

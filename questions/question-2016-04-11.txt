@@ -1,0 +1,1 @@
+I have used sqlacodegen to get models listed to text. I then wrote a little python script to take the field names and put them in a comma separated list like: 
