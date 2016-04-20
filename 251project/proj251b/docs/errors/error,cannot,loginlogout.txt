@@ -1,0 +1,68 @@
+
+cannot login can't logout
+
+run this:
+pip install flask-login --upgrade
+
+then it worked..
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\251project\proj251a>run.py
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 262-901-384
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [28/Mar/2016 10:25:34] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [28/Mar/2016 10:25:36] "GET /admin/logout/ HTTP/1.1" 302 -
+127.0.0.1 - - [28/Mar/2016 10:25:36] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [28/Mar/2016 10:25:38] "GET /admin/ HTTP/1.1" 200 -
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\251project\proj251a>pip install flask-login --upgrade
+Downloading/unpacking flask-login from https://pypi.python.org/packages/source/F/Flask-Login/Flask-Login-0.3.2.tar.gz#md5=
+d95c2275d3e1c755145910077366dc45
+  Downloading Flask-Login-0.3.2.tar.gz
+  Running setup.py (path:c:\users\dgleba\appdata\local\temp\pip_build_dgleba\flask-login\setup.py) egg_info for package fl
+ask-login
+
+Requirement already up-to-date: Flask in c:\p2\python27\lib\site-packages (from flask-login)
+Downloading/unpacking Werkzeug>=0.7 from https://pypi.python.org/packages/2.7/W/Werkzeug/Werkzeug-0.11.5-py2.py3-none-any.
+whl#md5=7d5d6360f14e431de6fb10dfdece9e51 (from Flask->flask-login)
+Requirement already up-to-date: Jinja2>=2.4 in c:\p2\python27\lib\site-packages (from Flask->flask-login)
+Requirement already up-to-date: itsdangerous>=0.21 in c:\p2\python27\lib\site-packages (from Flask->flask-login)
+Downloading/unpacking click>=2.0 from https://pypi.python.org/packages/2.7/c/click/click-6.4-py2.py3-none-any.whl#md5=4f34
+3d0f3ddf2b3ef7b678fc4d80fe43 (from Flask->flask-login)
+Installing collected packages: flask-login, Werkzeug, click
+  Found existing installation: Flask-Login 0.2.11
+    Uninstalling Flask-Login:
+      Successfully uninstalled Flask-Login
+  Running setup.py install for flask-login
+
+  Found existing installation: Werkzeug 0.11.4
+    Uninstalling Werkzeug:
+      Successfully uninstalled Werkzeug
+  Found existing installation: click 6.3
+    Uninstalling click:
+      Successfully uninstalled click
+Successfully installed flask-login Werkzeug click
+Cleaning up...
+
+C:\n\Dropbox\csd\VCS-git\flaskplay\251project\proj251a>run.py
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 262-901-384
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap.min.css?v=3.3.5 HTTP/1.1" 304 -
+
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/bootstrap/bootstrap3/css/bootstrap-theme.min.css?v=3.3.5 HTTP/1.1"
+ 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/admin/css/bootstrap3/admin.css?v=1.1.1 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/vendor/jquery.min.js?v=2.1.4 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/bootstrap/bootstrap3/js/bootstrap.min.js?v=3.3.5 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/vendor/moment.min.js?v=2.9.0 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/vendor/select2/select2.min.js?v=3.5.2 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Mar/2016 10:26:12] "GET /admin/static/bootstrap/bootstrap3/fonts/glyphicons-halflings-regular.woff2 HTTP
+/1.1" 304 -

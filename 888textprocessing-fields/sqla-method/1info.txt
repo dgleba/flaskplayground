@@ -1,0 +1,37 @@
+
+slack:  April 11th 
+
+
+
+I have used sqlacodegen to get models listed to text. I then wrote a little python script 
+to take the field names and put them in a comma separated list like:  'name', 'address', 'city', . 
+Then I can use that for field lists in flask-admin. Is there another way to get comma separated 
+quoted field names from a database table?
+
+rrg [6:31 PM] 
+@dgleba: this might help you. 
+http://stackoverflow.com/questions/2537471/method-of-iterating-over-sqlalchemy-models-defined-columns
+
+ 
+method of iterating over sqlalchemy model's defined columns?
+I've been trying to figure out how to iterate over the list of
+ columns defined in a SqlAlchemy model. I want it for writing some
+ serialization and copy methods to a couple of models. I can't just i...
+
+[6:31] 
+Check the mapper part
+
+
+
+_____________
+
+
+
+from sqlalchemy import inspect
+mapper = inspect(JobStatus)
+for column in mapper.attrs:
+    print column.key
+    
+    
+inspect(JobStatus).columns.keys()
+    

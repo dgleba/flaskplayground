@@ -1,0 +1,97 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Title:  .  change from user to users table flask-admin
+
+-----------------------2016-04-13[Apr-Wed]12-34PM
+
+ALTER TABLE  `users` ADD column 	active BOOLEAN after email;
+
+ALTER TABLE  `users` ADD column 	confirmed_at DATETIME after email;
+
+ALTER TABLE  `users` ADD column 	first_name VARCHAR(255)  after email;
+ALTER TABLE  `users` ADD column 	last_name VARCHAR(255)  after first_name;
+
+ALTER TABLE `users` DROP INDEX `PRIMARY`;
+ALTER TABLE  `users` ADD Unique  (username);
+ALTER TABLE  `users` ADD Unique  (email);
+
+ALTER TABLE users ADD id INT PRIMARY KEY AUTO_INCREMENT;
+
+
+=
+
+ALTER TABLE  `users` ADD PRIMARY KEY  (id);
+
+    
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+===================================================
+===================================================
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  . move column
+
+
+-----------------------2016-01-06[Jan-Wed]11-08AM
+
+
+eg:
+ALTER TABLE Employees MODIFY COLUMN empName VARCHAR(50) AFTER department;
+
+actual:
+makes it the second column
+ALTER TABLE emp_ceridian MODIFY COLUMN id int(11) after x1a;
+
+first column: make it the first column...
+
+ALTER TABLE emp_ceridian MODIFY COLUMN id int(11) first;
+
+last:
+ALTER TABLE emp_ceridian MODIFY COLUMN id int(11) after x11;
+
+
+
+noworky.. must have int(11)
+ALTER TABLE emp_ceridian MODIFY COLUMN id  before x1a;
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ALTER TABLE Persons
+ADD DateOfBirth date
+
+ALTER TABLE  `nte_note`
+drop `country_id` ;
+
+===
+
+
+ALTER TABLE  `nte_note`
+ADD column `city_id` int(11) DEFAULT NULL after  `state_fld`;
+
+ALTER TABLE  `nte_note`
+ADD column `province_id` int(11) DEFAULT NULL after  `state_fld`;
+
+ALTER TABLE  `nte_note`
+ADD column `country_id` int(11) DEFAULT NULL  after `state_fld`;
+
+
+

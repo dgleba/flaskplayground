@@ -1,0 +1,39 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+assending roles. higher roles include lower permissions.
+
+readonly
+createdata  create data in the main data tables, not lookup tables.
+editdata    same idea for the edit function as for createdata.
+editlookup  includes editdata role and can edit lookup tables. 
+delete		can delete
+admin       all access to  everything including system tables like user and role.
+
+_____________
+
+
+
+roles that fall outside usual hierarchy.
+
+exportdata export
+
+_____________
+
+
+
+Definitions:
+
+Main data table =   A table with detail info. The meat of the data for the application.
+
+Lookup table=       Supporting Tables used as suggestion lookup lists.
+                    Example: a table that has names of people used as a suggestion list of names in a main data table. 
+                    Example: a list of machines that is used to pick from.
+                    
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+http://localhost:5000/admin/customer/new/?url=%2Fadmin%2Fcustomer%2F
