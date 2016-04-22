@@ -17,26 +17,11 @@ or
 '''
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# make /tmp folder
-
-import os
-import errno
-
-def make_sure_path_exists(path):
-    try:
-        os.makedirs(path)
-    except OSError as exception:
-        if exception.errno != errno.EEXIST:
-            raise
-        
-make_sure_path_exists("/tmp")    
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # phase 1  remove white space and add ', to the = signs.
 
 #output file..
-wf = open("/tmp/tmpout1.txt","w")
+wf = open("tmpout1.txt","w")
 #input file..
 with open("modelsgen.txt", "r") as f:
     for line in f:
@@ -57,9 +42,9 @@ time.sleep(.3)
 
 #http://stackoverflow.com/questions/7633485/insert-string-at-the-beginning-of-each-line
 
-infile = '/tmp/tmpout1.txt'
+infile = 'tmpout1.txt'
 with open(infile) as finput:
-    with open('/tmp/tmpout2.txt', 'w') as fout:
+    with open('tmpout2.txt', 'w') as fout:
         for line2 in finput: 
             #print line2               #print for debugging
             #line3= ("'"+line2)        #print for debugging
@@ -77,9 +62,9 @@ finput.close()
 
     
 #in file... 
-rf = open("/tmp/tmpout2.txt")
+rf = open("tmpout2.txt")
 #output file..
-wf = open("/tmp/tmpout3.txt","w")
+wf = open("tmpout3.txt","w")
 for line in rf:
     if line.find("_tablename_") == -1:  # if that string is not found..
         # remove everything after the = sign. i guess it gets rid of the newline as well, this is what I want.
@@ -100,9 +85,9 @@ rf.close()
 # remove all after ,
 
 #in file... 
-rf = open("/tmp/tmpout3.txt")
+rf = open("tmpout3.txt")
 #output file..
-wf = open("/tmp/tmpout4.txt","w")
+wf = open("tmpout4.txt","w")
 for line in rf:
     if line.find("'Column(") >= 0:  # if that string is not found..
         # debug.. print "column found"
@@ -123,9 +108,9 @@ time.sleep(.1)
 # remove >>  'Column('
 
 #in file... 
-rf = open("/tmp/tmpout4.txt")
+rf = open("tmpout4.txt")
 #output file..
-wf = open("/tmp/tmpout5.txt","w")
+wf = open("tmpout5.txt","w")
 for line in rf:
     # remove >>  'Column('
         line = line.replace("'Column(", '') 
@@ -137,7 +122,7 @@ rf.close()
 # remove everything after the , sign. i guess it gets rid of the newline as well, this is what I want.
 
 #in file... 
-rf = open("/tmp/tmpout5.txt")
+rf = open("tmpout5.txt")
 #output file..
 wf = open("modelsgen-fieldlist.txt","w")
 for line in rf:
@@ -151,30 +136,7 @@ for line in rf:
 wf.close()
 rf.close()
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# add db. to models so the can be used in flask...
 
-#output file..
-wf = open("/tmp/tempout49.txt","w")
-#input file..
-with open("modelsgen.txt", "r") as f:
-    for line in f:
-        # replace = with ",=  -- we will get rid of the = later..
-        line = line.replace("= Column(", "= db.Column(db.") 
-        wf.write(line)
-wf.close()
-f.close()
-
-#output file..
-wf = open("models.db.flask.txt","w")
-#input file..
-with open("/tmp/tempout49.txt", "r") as f:
-    for line in f:
-        # replace = with ",=  -- we will get rid of the = later..
-        line = line.replace(", ForeignKey", ", db.ForeignKey") 
-        wf.write(line)
-wf.close()
-f.close()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
