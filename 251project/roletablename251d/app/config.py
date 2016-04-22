@@ -1,15 +1,17 @@
 # Create dummy secret key so we can use sessions
-SECRET_KEY = '1234x5672890'
+SECRET_KEY = '123490'
 
 # Create in-memory database
-DATABASE_FILE = 'app2.sqlite'
+DATABASE_FILE = 'test_db.sqlite'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DATABASE_FILE
 SQLALCHEMY_ECHO = True
 
 # Flask-Security config
 SECURITY_URL_PREFIX = "/admin"
-SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
-SECURITY_PASSWORD_SALT = "ATGUOHAELKiubaq3fgo8hiughaerGOJAEGj"
+#SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
+#SECURITY_PASSWORD_SALT = "ATGUOHAELKiubaq3fgo8hiughaerGOJAEGj"
+
+SECURITY_USER_IDENTITY_ATTRIBUTES = 'username'
 
 # Flask-Security URLs, overridden because they don't put a / at the end
 SECURITY_LOGIN_URL = "/login/"

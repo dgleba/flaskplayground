@@ -15,38 +15,41 @@ app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 
 
-# Define models
-roles_users = db.Table(
-    'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+#-------- Define user role models --------------
+
+fs_user_role = db.Table(
+    'fs_user_role', 
+    db.Column('fs_user_id', db.ForeignKey(u'fs_user.id'), nullable=False, index=True),
+    db.Column('fs_role_id', db.ForeignKey(u'fs_role.id'), nullable=False, index=True)
 )
 
-
 class Role(db.Model, RoleMixin):
-    id = db.Column(db.Integer(), primary_key=True)
+    __tablename__ = 'fs_role'
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
+    #fs_users = db.relationship(u'User', secondary='fs_user_role')
 
     def __str__(self):
         return self.name
 
-
 class User(db.Model, UserMixin):
+    __tablename__ = 'fs_user'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
+    username = db.Column(db.String(145), nullable=False, unique=True)
     password = db.Column(db.String(255))
-    active = db.Column(db.Boolean())
-    confirmed_at = db.Column(db.DateTime())
-    roles = db.relationship('Role', secondary=roles_users,
-                            backref=db.backref('users', lazy='dynamic'))
-
+    active = db.Column(db.Boolean)
+    confirmed_at = db.Column(db.DateTime)
+    roles = db.relationship('Role', secondary=fs_user_role,
+                            backref=db.backref('Users', lazy='dynamic'))
     def __str__(self):
-        return self.email
+        return self.username
 
 
+        
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -133,18 +136,15 @@ def build_sample_db():
         test_user = user_datastore.create_user(
             first_name='Admin',
             email='admin',
+            username='admin',
             password=encrypt_password('admin'),
             roles=[user_role, super_user_role]
         )
 
         first_names = [
-            'Harry', 'Amelia', 'Oliver', 'Jack', 'Isabella', 'Charlie', 'Sophie', 'Mia',
-            
-        ]
+            'Harry', 'Amelia', 'Oliver',        ]
         last_names = [
-            'Brown', 'Smith', 'Patel', 'Jones', 'Williams', 'Johnson', 'Taylor', 'Thomas',
-            
-        ]
+            'Brown', 'Smith', 'Patel',         ]
 
         for i in range(len(first_names)):
             tmp_email = first_names[i].lower()
@@ -154,6 +154,7 @@ def build_sample_db():
                 last_name=last_names[i],
                 email=tmp_email,
                 password=encrypt_password(tmp_pass),
+                username=tmp_email,
                 roles=[user_role, ]
             )
         db.session.commit()
