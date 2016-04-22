@@ -2,12 +2,13 @@ from . import *
  
 # Define models
 roles_users = db.Table(
-    'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
-)
+                       'roles_users',
+                       db.Column('user_id', db.Integer(), db.ForeignKey('fs_user.id')),
+                       db.Column('role_id', db.Integer(), db.ForeignKey('fs_role.id'))
+                       )
 
 class Role(db.Model, RoleMixin):
+    __tablename__ = 'fs_role',
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
@@ -16,6 +17,7 @@ class Role(db.Model, RoleMixin):
         return self.name
 
 class Users(db.Model, UserMixin):
+    __tablename__ = 'fs_user'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
@@ -25,7 +27,7 @@ class Users(db.Model, UserMixin):
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
-                            backref=db.backref('userss', lazy='dynamic'))
+                            backref=db.backref('Userss', lazy='dynamic'))
 
     def __str__(self):
         return self.username
