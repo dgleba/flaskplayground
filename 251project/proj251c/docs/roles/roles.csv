@@ -1,0 +1,26 @@
+,Role descriptions,,
+,,,
+,Assending roles. Higher roles include permissions from lower roles:,,
+,,,
+,FUNCTION,ROLENAME,DESCRIPTON
+1,readonly,read,can only read data
+2,createdata  ,create,"create data in the main data tables, not lookup tables."
+3,editdata,edit,same idea for the edit function as for createdata.
+4,editlookup  ,supervisor,includes editdata role and can edit lookup tables. 
+5,delete,delete,can delete
+6,admin       ,adminrole,all access to  everything including system tables like user and role.
+,,,
+,,,
+,Roles that fall outside usual hierarchy:,,
+,,,
+1,exportdata ,export,
+,,,
+,,,
+,Definitions:,,
+,,,
+,Main data table =   A table with detail info. The primary core data for the application.,,
+,,,
+,Lookup table=       Supporting Tables used as suggestion lookup lists or other supporting data.,,
+,                    Example: a table that has names of people used as a suggestion list of names in a main data table. ,,
+,                    Example: a list of machines that is used to pick from.,,
+,                    ,,

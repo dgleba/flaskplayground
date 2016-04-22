@@ -1,0 +1,90 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-04-08[Apr-Fri]12-48PM
+
+got error below.
+
+ans.
+mysql table was not auto increment.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cif207b
+HomeRole
+Usercilisting1
+leader  Admin 
+
+× Integrity error. (_mysql_exceptions.IntegrityError) (1062, "Duplicate entry '0' for key 'PRIMARY'") [SQL: u'INSERT INTO user (first_name, last_name, email, password, active, confirmed_at) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: ('a', 'a', 'a', 'a', 0, datetime.datetime(2016, 4, 8, 12, 25))]
+
+ListCreateRoles  userRoles   First Name   
+a
+Last Name   
+a
+Email   
+a
+Password   
+a
+Active   
+Confirmed At   
+2016-04-08 12:25:00
+Save  Save and Add Another  Save and Continue Editing Cancel
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-04-08[Apr-Fri]12-37PM
+
+-- Adminer 4.2.2 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `confirmed_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- 2016-04-08 16:36:10
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-04-08[Apr-Fri]12-37PM
+
+-- Adminer 4.2.2 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `confirmed_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- 2016-04-08 16:39:30
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
