@@ -19,10 +19,24 @@ or
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # make /tmp folder
 
-import os
-import errno
+import os, errno
 
 def make_sure_path_exists(path):
+    
+    try:
+        os.mkdir(path)
+    except OSError as exc:
+        if exc.errno != errno.EEXIST:
+          raise exc
+        pass
+
+    # check to see if path name exists as a file.
+    if os.path.isfile(path):
+        #let user know there is a naming problem with the /tmp folder...
+        print "\n\n Problem:  hmm.. /tmp does exist as a file at this time. Can't create it as a folder\n"
+    else:
+        print "Temp folder success. Using folder /tmp."
+
     try:
         os.makedirs(path)
     except OSError as exception:
