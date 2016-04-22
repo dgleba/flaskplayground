@@ -16,6 +16,7 @@ or
 %wpy% txp-fl.py
 '''
 
+print "\nReading input file modelsgen.txt...\n"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # make /tmp folder
 
@@ -25,17 +26,19 @@ def make_sure_path_exists(path):
     
     try:
         os.mkdir(path)
+        print "\nMaking tmp folder our using existing one...\n"
     except OSError as exc:
         if exc.errno != errno.EEXIST:
-          raise exc
+            print "\n PROBLEM Oops.. There seems to be a problem making the tmp folder.\n"
+            raise exc
         pass
 
     # check to see if path name exists as a file.
     if os.path.isfile(path):
         #let user know there is a naming problem with the /tmp folder...
-        print "\n\n Problem:  hmm.. /tmp does exist as a file at this time. Can't create it as a folder\n"
+        print "\n\n PROBLEM:  hmm.. /tmp does exist as a file at this time. Can't create it as a folder\n"
     else:
-        print "Temp folder success. Using folder /tmp."
+        print "Info.. Temp foler. Using folder /tmp."
 
     try:
         os.makedirs(path)
@@ -190,5 +193,7 @@ with open("/tmp/tempout49.txt", "r") as f:
         wf.write(line)
 wf.close()
 f.close()
+
+print "\nFinished.. Look for output files: modelsgen-fieldlist.txt, models.db.flask.txt. \n"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
