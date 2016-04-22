@@ -153,7 +153,7 @@ rf.close()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# add db. to models so the can be used in flask...
+# add  " db. "  to models so the can be used in flask...
 
 #output file..
 wf = open("/tmp/tempout49.txt","w")
