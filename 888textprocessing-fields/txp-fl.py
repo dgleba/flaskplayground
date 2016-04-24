@@ -1,7 +1,6 @@
 '''
-create field list...
+create field list and flask models for sqla from sqlacodegen...
 David Gleba 2016-02-09
-
 
 purpose:
 process sqlacodegen output to create comma delimited fields list that
@@ -9,7 +8,7 @@ can be copied and pasted into flask-admin app...
 
 This reads file: modelsgen.txt
 
-output: modelsgen-fieldlist.txt
+output: modelsgen-fieldlist.txt  and...
 
 python txp-fl.py
 or
@@ -38,7 +37,7 @@ def make_sure_path_exists(path):
         #let user know there is a naming problem with the /tmp folder...
         print "\n\n PROBLEM:  hmm.. /tmp does exist as a file at this time. Can't create it as a folder\n"
     else:
-        print "Info.. Temp foler. Using folder /tmp."
+        print "INFO.. Temp folder. Using folder /tmp."
 
     try:
         os.makedirs(path)
@@ -170,30 +169,46 @@ rf.close()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# add  " db. "  to models so the can be used in flask...
+# add  " db. "  to models so the can be used in flask with sqlalchemy...
+# there are several replacements needed..
+# and..  from.. "Column('"  to..  "db.Column('" .   
+# and  from ..  blah   to.. " = db.Table("
 
 #output file..
-wf = open("/tmp/tempout49.txt","w")
+wf = open("/tmp/tempout41.txt","w")
 #input file..
 with open("modelsgen.txt", "r") as f:
     for line in f:
-        # replace = with ",=  -- we will get rid of the = later..
+        # replace x with  ..
         line = line.replace("= Column(", "= db.Column(db.") 
+        line = line.replace("Column('", "db.Column('") 
+        line = line.replace(" = Table(", " = db.Table(") 
         wf.write(line)
 wf.close()
 f.close()
 
 #output file..
-wf = open("models.db.flask.txt","w")
+wf = open("/tmp/tempout42.txt","w")
 #input file..
-with open("/tmp/tempout49.txt", "r") as f:
+with open("/tmp/tempout41.txt", "r") as f:
     for line in f:
-        # replace = with ",=  -- we will get rid of the = later..
+        # replace x with xx
+        line = line.replace("(Base):", "(db.Model):") 
+        wf.write(line)
+wf.close()
+f.close()
+
+#output file..
+wf = open("models.db.flask-sqla.txt","w")
+#input file..
+with open("/tmp/tempout42.txt", "r") as f:
+    for line in f:
+        # replace this with that
         line = line.replace(", ForeignKey", ", db.ForeignKey") 
         wf.write(line)
 wf.close()
 f.close()
 
-print "\nFinished.. Look for output files: modelsgen-fieldlist.txt, models.db.flask.txt. \n"
+print "\nFINISHED.. Look for output files: modelsgen-fieldlist.txt, models.db.flask-sqla.txt. \n"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
