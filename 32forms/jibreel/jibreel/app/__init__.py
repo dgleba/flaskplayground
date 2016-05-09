@@ -14,9 +14,10 @@ db = SQLAlchemy(app)
 from admin import admin
 app.register_blueprint(admin, url_prefix='/admin')
 
+db.create_all()
 
 
 @app.route('/')
 def home():
-    return 'Blog be here'
+    return 'Blog be here.  <br><br>Visit localhost:5000/admin/blog for the admin...'
 

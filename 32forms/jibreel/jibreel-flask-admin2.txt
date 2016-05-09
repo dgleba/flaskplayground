@@ -20,6 +20,14 @@ run --  create commands on python command line.
 %wpy% run.py
 
 
+i added db.create_all()
+in
+C:\n\Dropbox\csd\VCS-git\flaskplay\32forms\jibreel\jibreel\app\__init__.py
+
+
+visit:
+
+http://localhost:5000/admin/blog/
 
 
 
